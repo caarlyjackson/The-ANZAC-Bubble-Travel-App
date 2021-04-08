@@ -1,4 +1,11 @@
-.hero {
-    background-image: url(Assets\images\heroimage.jpg);
+:root {
     
+}
+
+.hero {
+    width: 100vw;
+    height: 100vh;
+    background-image: url(https://mustdonewzealand.co.nz/wp-content/uploads/2013/09/Milford-mirrowed-Mitre-Peak.jpg);
+    background-size: cover;
+    background-position: center center;
 }
