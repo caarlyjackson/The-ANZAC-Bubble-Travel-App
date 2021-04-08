@@ -4,6 +4,11 @@
 
 }
 
+h1 {
+    color: var(--light);
+}
+
+/* landing page and hero css */
 .hero {
     position: relative;
     width: 100vw;
@@ -18,10 +23,6 @@
     background-size: cover;
     background-position: center center;
     filter: contrast(70%) brightness(50%);
-}
-
-h1 {
-    color: var(--light);
 }
 
 .custom-btn {
