@@ -1,7 +1,6 @@
 :root {
     --light: white;
     --button: rgb(206, 0, 0);
-
 }
 
 h1 {
@@ -19,7 +18,7 @@ h1 {
     position: absolute;
     width: 100vw;
     height: 100vh;
-    background-image: url(https://mustdonewzealand.co.nz/wp-content/uploads/2013/09/Milford-mirrowed-Mitre-Peak.jpg);
+    background-image: url(https://cdn.cnn.com/cnnnext/dam/assets/170606121305-new-zealand---travel-destination---shutterstock-180140354.jpg);
     background-size: cover;
     background-position: center center;
     filter: contrast(70%) brightness(50%);
