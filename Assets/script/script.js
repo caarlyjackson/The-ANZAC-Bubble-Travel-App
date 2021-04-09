@@ -1,20 +1,28 @@
+//hero screen
+var heroButton = document.querySelector(".custom-btn");
+var landingPage = document.querySelector(".hero");
+
+// hides landing page on button click
+heroButton.addEventListener("click", function () {
+    landingPage.style.display = "none";
+});
 // Returns list of cities in new zealand, use to get city code
 // match user selection to response values to obtain city code
 //No parameters needed as we only care about NZ
 
 fetch("https://hotels4.p.rapidapi.com/locations/search?query=new%20zealand&locale=en_US", {
-	"method": "GET",
-	"headers": {
-		"x-rapidapi-key": "652a2de92cmsh43a2bf88c4f4751p196d97jsnfa734ca7135b",
-		"x-rapidapi-host": "hotels4.p.rapidapi.com"
-	}
+    "method": "GET",
+    "headers": {
+        "x-rapidapi-key": "652a2de92cmsh43a2bf88c4f4751p196d97jsnfa734ca7135b",
+        "x-rapidapi-host": "hotels4.p.rapidapi.com"
+    }
 })
-.then(response => {
-	console.log(response);
-})
-.catch(err => {
-	console.error(err);
-});
+    .then(response => {
+        console.log(response);
+    })
+    .catch(err => {
+        console.error(err);
+    });
 
 //searches hotels in city by city code obtained above
 //Need to match user selection to reponse value to obtain hotel code for the below
@@ -40,18 +48,18 @@ fetch("https://hotels4.p.rapidapi.com/locations/search?query=new%20zealand&local
 
 //Query string needs completing from parameters above, will need to be taken from user selection.
 fetch("https://hotels4.p.rapidapi.com/properties/list?", {
-	"method": "GET",
-	"headers": {
-		"x-rapidapi-key": "652a2de92cmsh43a2bf88c4f4751p196d97jsnfa734ca7135b",
-		"x-rapidapi-host": "hotels4.p.rapidapi.com"
-	}
+    "method": "GET",
+    "headers": {
+        "x-rapidapi-key": "652a2de92cmsh43a2bf88c4f4751p196d97jsnfa734ca7135b",
+        "x-rapidapi-host": "hotels4.p.rapidapi.com"
+    }
 })
-.then(response => {
-	console.log(response);
-})
-.catch(err => {
-	console.error(err);
-});
+    .then(response => {
+        console.log(response);
+    })
+    .catch(err => {
+        console.error(err);
+    });
 
 //get property details
 //REQUIRED PARAMETER
@@ -67,18 +75,18 @@ fetch("https://hotels4.p.rapidapi.com/properties/list?", {
 
 //Query string needs completing from parameters above, will need to be taken from user selection.
 fetch("https://hotels4.p.rapidapi.com/properties/get-details?", {
-	"method": "GET",
-	"headers": {
-		"x-rapidapi-key": "652a2de92cmsh43a2bf88c4f4751p196d97jsnfa734ca7135b",
-		"x-rapidapi-host": "hotels4.p.rapidapi.com"
-	}
+    "method": "GET",
+    "headers": {
+        "x-rapidapi-key": "652a2de92cmsh43a2bf88c4f4751p196d97jsnfa734ca7135b",
+        "x-rapidapi-host": "hotels4.p.rapidapi.com"
+    }
 })
-.then(response => {
-	console.log(response);
-})
-.catch(err => {
-	console.error(err);
-});
+    .then(response => {
+        console.log(response);
+    })
+    .catch(err => {
+        console.error(err);
+    });
 
 //Get Hotel Photo
 //REQUIRED PARAMETER
@@ -86,18 +94,18 @@ fetch("https://hotels4.p.rapidapi.com/properties/get-details?", {
 
 //complete with hotel code to display photos
 fetch("https://hotels4.p.rapidapi.com/properties/get-hotel-photos?", {
-	"method": "GET",
-	"headers": {
-		"x-rapidapi-key": "652a2de92cmsh43a2bf88c4f4751p196d97jsnfa734ca7135b",
-		"x-rapidapi-host": "hotels4.p.rapidapi.com"
-	}
+    "method": "GET",
+    "headers": {
+        "x-rapidapi-key": "652a2de92cmsh43a2bf88c4f4751p196d97jsnfa734ca7135b",
+        "x-rapidapi-host": "hotels4.p.rapidapi.com"
+    }
 })
-.then(response => {
-	console.log(response);
-})
-.catch(err => {
-	console.error(err);
-});
+    .then(response => {
+        console.log(response);
+    })
+    .catch(err => {
+        console.error(err);
+    });
 
 //Get hotel reviews
 //REQUIRED PARAMETERS
@@ -109,15 +117,15 @@ fetch("https://hotels4.p.rapidapi.com/properties/get-hotel-photos?", {
 
 //complete string with id parameter
 fetch("https://hotels4.p.rapidapi.com/reviews/list?", {
-	"method": "GET",
-	"headers": {
-		"x-rapidapi-key": "652a2de92cmsh43a2bf88c4f4751p196d97jsnfa734ca7135b",
-		"x-rapidapi-host": "hotels4.p.rapidapi.com"
-	}
+    "method": "GET",
+    "headers": {
+        "x-rapidapi-key": "652a2de92cmsh43a2bf88c4f4751p196d97jsnfa734ca7135b",
+        "x-rapidapi-host": "hotels4.p.rapidapi.com"
+    }
 })
-.then(response => {
-	console.log(response);
-})
-.catch(err => {
-	console.error(err);
-});
+    .then(response => {
+        console.log(response);
+    })
+    .catch(err => {
+        console.error(err);
+    });
