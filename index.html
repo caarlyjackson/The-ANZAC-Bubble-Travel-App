@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,23 +8,273 @@
     <title>The ANZAC Bubble Travel App</title>
 
     <!-- bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" 
-    integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" 
-    crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
 
     <!-- custom css -->
     <link rel="stylesheet" type="text/css" href="Assets\css\style.css" />
 
 </head>
+
 <body>
     <!-- hero/ landing page -->
     <div class="hero">
-        <div class=" text-center position-absolute top-50 start-50 translate-middle">
+        <div class="text-center position-absolute top-50 start-50 translate-middle">
             <h1 class="hero-title ">ANZAC TRAVEL <br>BUBBLE</h1>
-            <button type="button" class="btn btn-dark custom-btn btn-lg ">Lets Fly</button>
+            <button type="button" class="btn btn-dark custom-btn btn-lg">Lets Fly</button>
         </div>
     </div>
-    
+
+    <!-- Small Page Header -->
+    <header id="pageHeader" class="hide">
+        <h3 class="header-title">Anzac Travel Bubble</h3>
+    </header>
+
+    <!-- Choice Page -->
+    <section id="select-options" class="hide">
+        <form>
+            <!-- Monthly Calendar TO BE ADDED IN -->
+
+            <!-- Sort By -->
+            <div id="parameter" style="text-align: left; padding: 15px 0 10px 0;">
+                <p class=" parameter-question sort" style="text-align: left; font-size: smaller;">Sort By:</p>
+                <select id="sortOrder" class="form-control form-control-sm" style="font-size: smaller;">
+                    <option value="priceMin" selected="selected">Price Min - Max</option>
+                    <option value="priceMax">Price Max - Min</option>
+                    <option value="guestRatingMin">Rating</option>
+                </select>
+            </div>
+
+            <div id="parameter">
+                <!-- City Parameter -->
+                <p class="parameter-question">What city would you like to visit?</p>
+                <select id="loc" class="form-control form-control-sm">
+                    <option>Select City</option>
+                    <option value="Auckland">Auckland</option>
+                    <option value="BayOfPlenty">Bay of Plenty</option>
+                    <option value="CentralOtago">Central Otago</option>
+                    <option value="ChathamIslands">Chatham Islands</option>
+                    <option value="ChristchurchCanterbury">Christchurch - Canterbury</option>
+                    <option value="Clutha">Clutha</option>
+                    <option value="TheCoromandel">The Coromandel</option>
+                    <option value="Dunedin">Dunedin</option>
+                    <option value="Fiordland">Fiordland</option>
+                    <option value="Hawke's Bay">Hawke's Bay</option>
+                    <option value="Manawatu">Manawatu</option>
+                    <option value="Marlborough">Marlborough</option>
+                    <option value="Nelson Tasman">Nelson Tasman</option>
+                    <option value="Northland">Northland & Bay of Islands</option>
+                    <option value="Queenstown">Queenstown</option>
+                    <option value="Rotorua">Rotorua</option>
+                    <option value="Ruapehu">Ruapehu</option>
+                    <option value="Southland">Southland</option>
+                    <option value="StewartIsland">Stewart Island - Rakiura</option>
+                    <option value="SubantarcticIslands">Subantarctic Islands</option>
+                    <option value="Tairawhiti">Tairawhiti</option>
+                    <option value="Taranaki">Taranaki</option>
+                    <option value="Taupō">Taupō</option>
+                    <option value="Waitaki">Waitaki</option>
+                    <option value="Wairarapa">Wairarapa</option>
+                    <option value="Wanaka">Wanaka</option>
+                    <option value="Wellington">Wellington</option>
+                    <option value="WestCoast">West Coast</option>
+                    <option value="Whanganui">Whanganui</option>
+                </select>
+            </div>
+
+            <!-- Town Parameter -->
+            <div id="parameter">
+                <p class="parameter-question">What town would you like to visit?</p>
+                <select class="form-control form-control-sm">
+                    <option value="PLACEHOLDER">PLACEHOLDER</option>
+                </select>
+            </div>
+
+            <!-- Type of Accomodation Parameter -->
+            <div id="parameter">
+                <p class="parameter-question">What type of accomodation would you like?</p>
+                <select class="form-control form-control-sm">
+                    <option value="AllTypes" selected="selected">All Accomodation Types</option>
+                    <option value="BedBreakfast">Bed & Breakfast</option>
+                    <option value="Appartments">Appartments</option>
+                    <option value="Backpackers">Backpackers & Hostels</option>
+                    <option value="Boutique">Boutique & Lodge</option>
+                    <option value="Farmstays">Farmstays</option>
+                    <option value="Guest">Guest & Hosted</option>
+                    <option value="HolidayHomes">Holiday Homes</option>
+                    <option value="Campgrounds">Holiday Parks & Campgrounds</option>
+                    <option value="Hotels">Hotels</option>
+                    <option value="LuxuryLodge">Luxury Lodge</option>
+                    <option value="Motels">Motels</option>
+                    <option value="SelfContainedServiced">Self Contained & Serviced</option>
+                </select>
+            </div>
+
+            <!-- Price -->
+            <div id="parameter">
+                <p class="parameter-question" style="text-align:left">Price:</p>
+                <select id="currency" class="form-control form-control-sm">
+                    <option value="allPrices" selected="selected">All Prices</option>
+                    <option value="fifty">NZD$0-50</option>
+                    <option value="hundred">NZD$50-100</option>
+                    <option value="hundredFifty">NZD$100-150</option>
+                    <option value="twoHundred">NZD$150-200</option>
+                    <option value="twoHundredFifty">NZD$200-300</option>
+                    <option value="threeHundredPlue">NZD$300+</option>
+                </select>
+            </div>
+
+            <!-- Adults -->
+            <div id="parameter">
+                <label class="parameter-question" style="text-align:left; text-indent: none;">Number of
+                    Adults:</label><br>
+                <input type="number" id="adults1" name="adultInput" class="input" min="0" max="14"
+                    placeholder="Insert Number">
+            </div>
+
+
+            <!-- More Parametres Button -->
+            <button id="button-show" type="button" class="collapsible">More Options</button>
+            <div class="content">
+
+                <!-- Children -->
+                <div id="parameter" style="padding-top: 30px;">
+                    <label class="parameter-question" style="text-align:left">Number of Children:</label><br>
+                    <input type="number" id="children1" name="childrenInput" class="input" min="0" max="14"
+                        placeholder="Insert Number">
+                </div>
+
+                <!-- Currency -->
+                <div id="parameter">
+                    <p class="parameter-question" style="text-align:left">Currency:</p>
+                    <select id="currency" class="form-control form-control-sm">
+                        <option value="NZD" selected="selected">New Zealand Dollars</option>
+                        <option value="AUD">Australian Dollar</option>
+                        <option value="EUR">Euro</option>
+                        <option value="GBP">United Kingdom Pound</option>
+                        <option value="USD">United States Dollar</option>
+                        <option value="AFN">Afghan Afghani</option>
+                        <option value="DZD">Algerian Dinar</option>
+                        <option value="ARP">Argentine Peso</option>
+                        <option value="ATS">Austrian Schilling</option>
+                        <option value="BSD">Bahama Dollar</option>
+                        <option value="BBD">Barbados Dollar</option>
+                        <option value="BEF">Belgium Francs</option>
+                        <option value="BMD">Bermuda Dollars</option>
+                        <option value="BRR">Brazilian Real</option>
+                        <option value="BGL">Bulgarian Lev</option>
+                        <option value="CAD">Canadian Dollar</option>
+                        <option value="CLP">Chilean Pesos</option>
+                        <option value="CNY">Chinese Yuan Renmimbi</option>
+                        <option value="CYP">Cyprus Pounds</option>
+                        <option value="CSK">Czech Republic Koruna</option>
+                        <option value="DKK">Denmark Kroner</option>
+                        <option value="NLG">Dutch Guilders</option>
+                        <option value="XCD">Eastern Caribbean Dollar</option>
+                        <option value="EGP">Egyptian Pounds</option>
+                        <option value="FJD">Fijian Dollar</option>
+                        <option value="FIM">Finland Markka</option>
+                        <option value="FRF">French Francs</option>
+                        <option value="DEM">German Deutsche Marks</option>
+                        <option value="XAU">Gold Ounces</option>
+                        <option value="GRD">Greek Drachmas</option>
+                        <option value="HKD">Hong Kong Dollar</option>
+                        <option value="HUF">Hungary Forint</option>
+                        <option value="ISK">Iceland Krona</option>
+                        <option value="INR">India Rupees</option>
+                        <option value="IDR">Indonesian Rupiah</option>
+                        <option value="IEP">Ireland Punt</option>
+                        <option value="ILS">Israeli New Shekels</option>
+                        <option value="ITL">Italian Lira</option>
+                        <option value="JMD">Jamaican Dollar</option>
+                        <option value="JPY">Japanese Yen</option>
+                        <option value="JOD">Jordan Dinar</option>
+                        <option value="KRW">Korean (South) Won</option>
+                        <option value="LBP">Lebanon Pound</option>
+                        <option value="LUF">Luxembourg Francs</option>
+                        <option value="MYR">Malaysian Ringgit</option>
+                        <option value="MXP">Mexican Pesos</option>
+                        <option value="NLG">Netherlands Guilders</option>
+                        <option value="NZD">New Zealand Dollar</option>
+                        <option value="NOK">Norwegian Kroner</option>
+                        <option value="PKR">Pakistani Rupees</option>
+                        <option value="XPD">Palladium Ounces</option>
+                        <option value="PHP">Philippine Pesos</option>
+                        <option value="XPT">Platinum Ounces</option>
+                        <option value="PLZ">Poland Zloty</option>
+                        <option value="PTE">Portugal Escudo</option>
+                        <option value="ROL">Romanian Leu</option>
+                        <option value="RUR">Russian Rubles</option>
+                        <option value="SAR">Saudi Arabian Riyal</option>
+                        <option value="XAG">Silver Ounces</option>
+                        <option value="SGD">Singapore Dollars</option>
+                        <option value="SKK">Slovak Koruna</option>
+                        <option value="ZAR">South African Rand</option>
+                        <option value="KRW">South Korean Won</option>
+                        <option value="ESP">Spanish Pesetas</option>
+                        <option value="XDR">Special Drawing Right (IMF)</option>
+                        <option value="SDD">Sudanese Dinar</option>
+                        <option value="SEK">Swedish Krona</option>
+                        <option value="CHF">Switzerland Francs</option>
+                        <option value="TWD">Taiwan Dollars</option>
+                        <option value="THB">Thailand Baht</option>
+                        <option value="TTD">Trinidad and Tobago Dollars</option>
+                        <option value="TRL">Turkish Lira</option>
+                        <option value="VEB">Venezuela Bolivar</option>
+                        <option value="ZMK">Zambian Kwacha</option>
+                        <option value="EUR">Euro</option>
+                        <option value="XCD">Eastern Caribbean Dollars</option>
+                        <option value="XDR">Special Drawing Right (IMF)</option>
+                        <option value="XAG">Silver Ounces</option>
+                        <option value="XAU">Gold Ounces</option>
+                        <option value="XPD">Palladium Ounces</option>
+                        <option value="XPT">Platinum Ounces</option>
+                    </select>
+                </div>
+
+                <!-- Rating -->
+                <div id="parameter">
+                    <p class="parameter-question" style="text-align:left">Rating:</p>
+                    <select id="guestRatingMin" class="form-control form-control-sm">
+                        <option value="one-star" selected="selected">5 Star</option>
+                        <option value="two-star">4 Star</option>
+                        <option value="three-star">3 Star</option>
+                        <option value="four-star">2 Star</option>
+                        <option value="five-star">1 Star</option>
+                    </select>
+                </div>
+
+                <!-- More filters -->
+                <div id="parameter">
+                    <p class="parameter-question" style="text-align:left">More Filters:</p>
+                    <div id="checkboxes" style="text-align: left;">
+                        <label for="zero">
+                            <input type="checkbox" class="box" value="familyFriendly" />Family Friendly</label>
+                        <label for="one">
+                            <input type="checkbox" class="box" value="Accessibility" />Wheelchair Accessible</label>
+                        <label for="two">
+                            <input type="checkbox" class="box" value="beach" />Beach</label>
+                        <label for="three">
+                            <input type="checkbox" class="box" value="pool" />Pool</label>
+                        <label for="four">
+                            <input type="checkbox" class="box" value="gym" />Gym</label>
+                        <label for="five">
+                            <input type="checkbox" class="box" value="restaurant" />Restaurant</label>
+                        <label for="four">
+                            <input type="checkbox" class="box" value="carPark" />Car Park</label>
+                        <label for="three">
+                            <input type="checkbox" class="box" value="wifi" />Wifi</label>
+                    </div>
+                </div>
+            </div>
+
+            <br />
+            <!-- Submit Button -->
+            <input type="submit" class="submit-one btn-lg btn btn-dark">
+        </form>
+    </section>
+
 </body>
 <script src="Assets\script\script.js"></script>
+
 </html>

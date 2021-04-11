@@ -3,6 +3,14 @@
     --button: rgb(206, 0, 0);
 }
 
+.show {
+    display: block;
+}
+
+.hide {
+    display: none;
+}
+
 h1 {
     color: var(--light);
 }
@@ -26,4 +34,97 @@ h1 {
 
 .custom-btn {
     background-color: var(--button) ;
+}
+
+header {
+    display: block;
+    width: 100%;
+    height: 40px;
+    background-color: var(--button);
+}
+
+.header-title {
+    padding-top: 7px;
+    text-align: center;
+}
+
+/* Parameters */
+.parameter-question {
+    font-weight: 600;
+    margin-bottom: 5px;
+    width: 90%;
+}
+
+#select-options {
+    width: 100%;
+    position: absolute;
+    text-align: center;
+    padding-bottom: 30px;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+label {
+    margin: 0;
+    padding: 0;
+}
+
+.input {
+    width: 90%;
+    display: block;
+}
+
+select {
+    text-align: center;
+}
+
+#sortOrder {
+    width: 40%;
+    /* display: block; */
+}
+
+.sort {
+    width: 53px;
+}
+
+.sort,
+#sortOrder {
+    display: inline-block;
+    justify-items:left;
+}
+
+.form-control-sm {
+    width: 90%;
+    border-color: rgb(73, 73, 73);
+}
+
+#parameter {
+    padding: 15px 0 10px 0;
+}
+
+#checkboxes label {
+    display: block;
+}
+
+input.box {
+      margin-right: 5px;
+}
+
+.content {
+    display: none;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+}
+
+#button-show {
+    background-color: white;
+    border: none;
+    margin-top: 20px;
+    font-weight: 600;
+    cursor: grab;
+}
+
+.submit-one {
+    margin: 20px;
+    background-color: var(--button);
 }
