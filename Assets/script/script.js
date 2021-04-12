@@ -36,32 +36,28 @@ for (i = 0; i < coll.length; i++) {
 
 
 
-function searchCities() {
+	// match city text to id
 
-	// Returns list of cities in new zealand, use to get city code
-	// match user selection to response values to obtain city code
-	//No parameters needed as we only care about NZ
+	var city = document.getElementById('loc').value;
+	if(city == 'Auckland'){destinationId=950540}
+	else if (city =='Wellington'){destinationId=951308}
+	else if (city == 'Christchurch') {destinationId=1636970}
+	else if (city == 'Queenstown') {destinationid=1633614}
+	else if (city == 'Rotorua') {destinationId=1633616}
+	else if (city == 'Bay of Islands'){destinationId=1640249}
+	else if (city == 'Auckland Central Business District'){destinationId=1645372}
+	else if (city == 'Te Anau'){destinationId=950424}
+	else {destinationId=950155};
+	console.log(destinationId)
 
-	fetch("https://hotels4.p.rapidapi.com/locations/search?query=new%20zealand&locale=en_US", {
-		"method": "GET",
-		"headers": {
-			"x-rapidapi-key": "652a2de92cmsh43a2bf88c4f4751p196d97jsnfa734ca7135b",
-			"x-rapidapi-host": "hotels4.p.rapidapi.com"
-		}
-	})
-		.then(response => {
-			console.log(response);
-		})
-		.catch(err => {
-			console.error(err);
-		});
+	
 
-	function searchHotels(destinationId, pageNumber, checkIn, pageSize, adults1) {
+	function searchHotels() {
 		//searches hotels in city by city code obtained above
 		//Need to match user selection to reponse value to obtain hotel code for the below
 		//REQUIRED PARAMETERS:
 		//destinationId(number) City code
-		//pageNumber(number) The page number in which data is display
+		//pageNumber(number) The page number in which data is display, removed as field, set at 1
 		//checkIn(string) check in date MUST BE IN FORMAT yyyy-MM-dd
 		//checkOut(string) check out date MUST BE IN FORMAT yyyy-MM-dd
 		//pageSize(number) Total items returned in every requests (max 25)
@@ -79,9 +75,9 @@ function searchCities() {
 		//loc(string) The language code should be left as en_US or not used for our purposes
 
 		//Basic string with required parameters
-		var requiredString = "https://hotels4.p.rapidapi.com/properties/list?destinationId=" + destinationId + '&pagenumber=' + pageNumber + '&checkIn=' + checkIn + '&checkOut=' + checkOut + '&pageSize=' + pageSize + '&adults1=' + adults1
+		var requiredString = "https://hotels4.p.rapidapi.com/properties/list?destinationId=" + destinationId + '&pagenumber=1&checkIn=' + checkIn + '&checkOut=' + checkOut + '&pageSize=' + pageSize + '&adults1=' + adults1
 
-		addOptions(requiredString)
+		//addOptions(requiredString)
 
 		//Optional parameter select string building
 		function addOptions() {
@@ -169,25 +165,30 @@ function searchCities() {
 				}
 				url = url + symbol_insert + 'locs=' + loc;
 			}
+			return url
 		}
-		var hotelSearchQuery = url
+							  //url
+		var hotelSearchQuery = requiredString
 
 		//Fetch hotel listing.
 		fetch(hotelSearchQuery, {
 			"method": "GET",
 			"headers": {
-				"x-rapidapi-key": "652a2de92cmsh43a2bf88c4f4751p196d97jsnfa734ca7135b",
+				"x-rapidapi-key": "c6aa062b9amsh42c409cede2d9bep1e5e77jsnbca33b5d4fcc",
 				"x-rapidapi-host": "hotels4.p.rapidapi.com"
 			}
 		})
 
-			.then(response => {
-				console.log(response);
-			})
-			.catch(err => {
-				console.error(err);
-			});
+		.then(function (response) {
+			return response.json();
+		  })
+		
+		.then(function (data) {
+			console.log(data);
+		})
 	};
+
+
 
 	function getPropDetails() {
 		//get property details
@@ -266,6 +267,7 @@ function searchCities() {
 				}
 				url = url + symbol_insert + 'locs=' + loc;
 			}
+			return url
 		}
 		var getDetails = url
 
@@ -284,6 +286,8 @@ function searchCities() {
 				console.error(err);
 			});
 	};
+
+	
 
 	function getPhotos() {
 
@@ -307,6 +311,7 @@ function searchCities() {
 			});
 	};
 
+	
 	function getReviewsList() {
 		//Get hotel reviews
 		//REQUIRED PARAMETERS
@@ -316,7 +321,7 @@ function searchCities() {
 		//loc(string) The language code should be left as en_US or not used for our purposes
 
 		//Basic string with required parameters
-		var requiredString = "https://hotels4.p.rapidapi.com/reviews/list?id=" + Id
+		var requiredString = "https://hotels4.p.rapidapi.com/reviews/list?id=" + id
 
 		addOptions(requiredString)
 
@@ -343,6 +348,7 @@ function searchCities() {
 				}
 				url = url + symbol_insert + 'locs=' + loc;
 			}
+			return url
 		}
 
 		var getReviews = url
@@ -361,5 +367,12 @@ function searchCities() {
 			.catch(err => {
 				console.error(err);
 			});
-		}	
-	};
+		};	
+
+	var button = document.getElementById('button')
+	button.addEventListener("click", function(event){
+		searchHotels(destinationId, checkIn, checkOut, pageSize, adults1);
+		event.preventDefault();
+		
+	},false);
+	
