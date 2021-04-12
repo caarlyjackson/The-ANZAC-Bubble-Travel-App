@@ -86,43 +86,14 @@
                 <p class="parameter-question">What city would you like to visit?</p>
                 <select id="loc" class="form-control form-control-sm">
                     <option>Select City</option>
-                    <option value="Auckland">Auckland</option>
-                    <option value="BayOfPlenty">Bay of Plenty</option>
-                    <option value="CentralOtago">Central Otago</option>
-                    <option value="ChathamIslands">Chatham Islands</option>
-                    <option value="ChristchurchCanterbury">Christchurch - Canterbury</option>
-                    <option value="Clutha">Clutha</option>
-                    <option value="TheCoromandel">The Coromandel</option>
-                    <option value="Dunedin">Dunedin</option>
-                    <option value="Fiordland">Fiordland</option>
-                    <option value="Hawke's Bay">Hawke's Bay</option>
-                    <option value="Manawatu">Manawatu</option>
-                    <option value="Marlborough">Marlborough</option>
-                    <option value="Nelson Tasman">Nelson Tasman</option>
-                    <option value="Northland">Northland & Bay of Islands</option>
-                    <option value="Queenstown">Queenstown</option>
-                    <option value="Rotorua">Rotorua</option>
-                    <option value="Ruapehu">Ruapehu</option>
-                    <option value="Southland">Southland</option>
-                    <option value="StewartIsland">Stewart Island - Rakiura</option>
-                    <option value="SubantarcticIslands">Subantarctic Islands</option>
-                    <option value="Tairawhiti">Tairawhiti</option>
-                    <option value="Taranaki">Taranaki</option>
-                    <option value="Taupō">Taupō</option>
-                    <option value="Waitaki">Waitaki</option>
-                    <option value="Wairarapa">Wairarapa</option>
-                    <option value="Wanaka">Wanaka</option>
-                    <option value="Wellington">Wellington</option>
-                    <option value="WestCoast">West Coast</option>
-                    <option value="Whanganui">Whanganui</option>
-                </select>
-            </div>
-
-            <!-- Town Parameter -->
-            <div id="parameter">
-                <p class="parameter-question">What town would you like to visit?</p>
-                <select class="form-control form-control-sm">
-                    <option value="PLACEHOLDER">PLACEHOLDER</option>
+                    <option value="950540">Auckland</option>
+                    <option value="1636970">Christchurch - Canterbury</option>
+                    <option value="950155">Nelson Tasman</option>
+                    <option value="1640249">Northland & Bay of Islands</option>
+                    <option value="1633614">Queenstown</option>
+                    <option value="1633616">Rotorua</option>
+                    <option value="950424">Southland</option>
+                    <option value="951308">Wellington</option>
                 </select>
             </div>
 
@@ -306,10 +277,15 @@
 
             <br />
             <!-- Submit Button -->
-            <input type="submit" class="submit-one btn-lg btn btn-dark">
+            <input id="submit-user-choices" type="submit" class="submit-one btn-lg btn btn-dark">
         </form>
     </section>
 
+
+    <!-- Chosen City Page -->
+    <div id="city-page" class="hide">
+        <h1 class="loc"></h1>
+    </div>
 </body>
 
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>

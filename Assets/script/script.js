@@ -7,6 +7,9 @@ var smallHeader = document.querySelector("#pageHeader");
 var selectPage = document.querySelector("#select-options");
 var fromDate;
 var toDate;
+var submitButton = document.querySelector("#submit-user-choices");
+//city searched page
+cityPage = document.querySelector("#city-page")
 
 heroButton.addEventListener("click", function () {
 	landingPage.style.display = "none";
@@ -77,6 +80,11 @@ for (i = 0; i < coll.length; i++) {
 // Need to build parameter verification(string, number)
 
 
+
+submitButton.addEventListener("click", function () {
+	cityPage.style.display = "block";
+	searchCities();
+});
 
 function searchCities() {
 
@@ -406,4 +414,3 @@ function searchCities() {
 			});
 		}	
 	};
-
