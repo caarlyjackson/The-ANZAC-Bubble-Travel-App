@@ -26,9 +26,38 @@
     </div>
 
     <!-- Small Page Header -->
-    <header id="pageHeader" class="hide">
-        <h3 class="header-title">Anzac Travel Bubble</h3>
-    </header>
+    
+      <nav class="navbar navbar-dark bg-dark pageHeader navbar-fixed-top " role="navigation">
+        <div class="container-fluid">
+        <a class="navbar-brand" href="#">ANZAC Travel Bubble</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+       <!-- Collapse Menu -->    
+          <div class="collapse navbar-collapse " id="navbarNav">
+            <ul class="nav navbar-nav collapse-custom">
+              <li class="nav-item d-md-none item-nav-custom">
+                  <!-- collapse menu -->
+                  <div class="user-name">
+                    <label for="user name" class="form-label text-light">Name</label>
+                    <input type="name" class="form-control" id="userNameInput" >
+                  </div>
+                  <div class="user-home">
+                    <label for="user home" class="form-label text-light">Home City</label>
+                    <input type="email" class="form-control" id="userHomeInput">
+                  </div>
+                  <div class="user-mail">
+                    <label for="user mail" class="form-label text-light">Email address</label>
+                    <input type="email" class="form-control" id="userMail">
+                  </div>
+                  
+                  <div class="d-grid gap-2 col-6 mx-auto">
+                    <button class="btn btn-primary" id="nav-btn" type="button">save</button>
+                  </div>
+              </li> 
+            </ul>
+          </div>
+        </nav>
 
     <!-- Choice Page -->
     <section id="select-options" class="hide">
@@ -282,6 +311,13 @@
     </section>
 
 </body>
+
 <script src="Assets\script\script.js"></script>
+<script src="Assets\script\userInfo.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
 
 </html>
