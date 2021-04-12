@@ -32,7 +32,7 @@ for (i = 0; i < coll.length; i++) {
 	});
 }
 
-Need to build parameter verification(string, number)
+// Need to build parameter verification(string, number)
 
 
 
@@ -361,4 +361,5 @@ function searchCities() {
 			.catch(err => {
 				console.error(err);
 			});
+		}	
 	};
