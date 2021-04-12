@@ -5,11 +5,53 @@ var landingPage = document.querySelector(".hero");
 var smallHeader = document.querySelector("#pageHeader");
 //initial select page
 var selectPage = document.querySelector("#select-options");
+var fromDate;
+var toDate;
 
 heroButton.addEventListener("click", function () {
 	landingPage.style.display = "none";
 	selectPage.style.display = "block";
 	smallHeader.style.display = "block";
+});
+
+// Date Picker
+$(function () {
+	var dateFormat = "dd/mm/yy",
+		checkIn = $("#from")
+			.datepicker({
+				dateFormat: 'dd/mm/yy',
+				defaultDate: "+1w",
+				changeMonth: true,
+				numberOfMonths: 3
+			})
+			.on("change", function () {
+				checkIn.datepicker("option", "minDate", getDate(this));
+
+			}),
+		checkOut = $("#to").datepicker({
+			dateFormat: 'dd/mm/yy',
+			defaultDate: "+1w",
+			changeMonth: true,
+			numberOfMonths: 3
+		})
+			.on("change", function () {
+				checkOut.datepicker("option", "maxDate", getDate(this));
+			});
+
+	function getDate(element) {
+		var date;
+		try {
+			date = $.datepicker.parseDate(dateFormat, element.value);
+		} catch (error) {
+			date = null;
+		}
+		console.log(date);
+		checkInDate = $('#checkIn').val();
+		checkOutDate = $('#checkOut').val();
+
+		return date;
+	}
+
 });
 
 // Parameter Page - More Options - collapse/hide and show
@@ -360,6 +402,8 @@ function searchCities() {
 			})
 			.catch(err => {
 				console.error(err);
+
 			});
 		}	
 	};
+}

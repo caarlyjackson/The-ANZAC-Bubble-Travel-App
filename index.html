@@ -33,7 +33,6 @@
     <!-- Choice Page -->
     <section id="select-options" class="hide">
         <form>
-            <!-- Monthly Calendar TO BE ADDED IN -->
 
             <!-- Sort By -->
             <div id="parameter" style="text-align: left; padding: 15px 0 10px 0;">
@@ -44,6 +43,14 @@
                     <option value="guestRatingMin">Rating</option>
                 </select>
             </div>
+
+            <!-- Monthly Calendar TO BE ADDED IN -->
+            <!-- DatePicker form elements -->
+            <p class="parameter-question">When would you like to travel?</p>
+            <label for="checkIn">From: </label>
+            <input type="text" id="checkIn" name="checkIn">
+            <label for="checkOut">To: </label>
+            <input type="text" id="checkOut" name="checkOut">
 
             <div id="parameter">
                 <!-- City Parameter -->
@@ -113,7 +120,7 @@
             <!-- Price -->
             <div id="parameter">
                 <p class="parameter-question" style="text-align:left">Price:</p>
-                <select id="currency" class="form-control form-control-sm">
+                <select id="priceMin" class="form-control form-control-sm">
                     <option value="allPrices" selected="selected">All Prices</option>
                     <option value="fifty">NZD$0-50</option>
                     <option value="hundred">NZD$50-100</option>
