@@ -128,3 +128,16 @@ input.box {
     margin: 20px;
     background-color: var(--button);
 }
+
+/* nav collapse */
+.collapse-custom {
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+#nav-btn {
+    margin-top: 10px;
+}
+
+.user-mail {
+    padding-top: 10px;
+}

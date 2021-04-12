@@ -9,6 +9,7 @@ var selectPage = document.querySelector("#select-options");
 heroButton.addEventListener("click", function () {
 	landingPage.style.display = "none";
 	selectPage.style.display = "block";
+
 });
 
 // Parameter Page - More Options - collapse/hide and show

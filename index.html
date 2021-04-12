@@ -27,20 +27,32 @@
 
     <!-- Small Page Header -->
     
-      <nav class="navbar navbar-dark bg-dark pageHeader">
+      <nav class="navbar navbar-dark bg-dark pageHeader navbar-fixed-top " role="navigation">
         <div class="container-fluid">
         <a class="navbar-brand" href="#">ANZAC Travel Bubble</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-        </div>
-      </nav>
-    <div class="collapse" id="navbarToggleExternalContent">
-        <div class="bg-dark p-4">
-          <h5 class="text-white h4">Collapsed content</h5>
-          <span class="text-muted">Toggleable via the navbar brand.</span>
-        </div>
-      </div>
+       <!-- Collapse Menu -->    
+          <div class="collapse navbar-collapse " id="navbarNav">
+            <ul class="nav navbar-nav collapse-custom">
+              <li class="nav-item d-md-none ">
+                  <!-- collapse menu -->
+                  <div class="user-name">
+                    <label for="exampleFormControlInput1" class="form-label text-light">Name</label>
+                    <input type="name" class="form-control" id="exampleFormControlInput1" >
+                  </div>
+                  <div class="user-mail">
+                    <label for="exampleFormControlInput1" class="form-label text-light">Email address</label>
+                    <input type="email" class="form-control" id="exampleFormControlInput1">
+                  </div>
+                  <div class="d-grid gap-2 col-6 mx-auto">
+                    <button class="btn btn-primary" id="nav-btn" type="button">save</button>
+                  </div>
+              </li> 
+            </ul>
+          </div>
+        </nav>
 
     <!-- Choice Page -->
     <section id="select-options" class="hide">
@@ -289,5 +301,11 @@
 </body>
 
 <script src="Assets\script\script.js"></script>
+
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
 
 </html>
