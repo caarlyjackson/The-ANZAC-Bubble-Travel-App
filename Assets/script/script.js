@@ -406,4 +406,4 @@ function searchCities() {
 			});
 		}	
 	};
-}
+
