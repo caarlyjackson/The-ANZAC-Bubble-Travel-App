@@ -404,5 +404,6 @@ function searchCities() {
 				console.error(err);
 
 			});
+		}	
 	};
 }
