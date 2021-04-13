@@ -7,6 +7,9 @@ var smallHeader = document.querySelector("#pageHeader");
 var selectPage = document.querySelector("#select-options");
 var fromDate;
 var toDate;
+var submitButton = document.querySelector("#submit-user-choices");
+//city searched page
+cityPage = document.querySelector("#city-page")
 
 heroButton.addEventListener("click", function () {
 	landingPage.style.display = "none";
@@ -79,6 +82,11 @@ for (i = 0; i < coll.length; i++) {
 
 
 
+submitButton.addEventListener("click", function () {
+	cityPage.style.display = "block";
+	searchCities();
+});
+
 function searchCities() {
 
 	// Returns list of cities in new zealand, use to get city code
@@ -104,7 +112,7 @@ function searchCities() {
 		//Need to match user selection to reponse value to obtain hotel code for the below
 		//REQUIRED PARAMETERS:
 		//destinationId(number) City code
-		//pageNumber(number) The page number in which data is display
+		//pageNumber(number) The page number in which data is display, removed as field, set at 1
 		//checkIn(string) check in date MUST BE IN FORMAT yyyy-MM-dd
 		//checkOut(string) check out date MUST BE IN FORMAT yyyy-MM-dd
 		//pageSize(number) Total items returned in every requests (max 25)
@@ -122,9 +130,9 @@ function searchCities() {
 		//loc(string) The language code should be left as en_US or not used for our purposes
 
 		//Basic string with required parameters
-		var requiredString = "https://hotels4.p.rapidapi.com/properties/list?destinationId=" + destinationId + '&pagenumber=' + pageNumber + '&checkIn=' + checkIn + '&checkOut=' + checkOut + '&pageSize=' + pageSize + '&adults1=' + adults1
+		var requiredString = "https://hotels4.p.rapidapi.com/properties/list?destinationId=" + destinationId + '&pagenumber=1&checkIn=' + checkIn + '&checkOut=' + checkOut + '&pageSize=' + pageSize + '&adults1=' + adults1
 
-		addOptions(requiredString)
+		//addOptions(requiredString)
 
 		//Optional parameter select string building
 		function addOptions() {
@@ -212,25 +220,30 @@ function searchCities() {
 				}
 				url = url + symbol_insert + 'locs=' + loc;
 			}
+			return url
 		}
-		var hotelSearchQuery = url
+		//url
+		var hotelSearchQuery = requiredString
 
 		//Fetch hotel listing.
 		fetch(hotelSearchQuery, {
 			"method": "GET",
 			"headers": {
-				"x-rapidapi-key": "652a2de92cmsh43a2bf88c4f4751p196d97jsnfa734ca7135b",
+				"x-rapidapi-key": "c6aa062b9amsh42c409cede2d9bep1e5e77jsnbca33b5d4fcc",
 				"x-rapidapi-host": "hotels4.p.rapidapi.com"
 			}
 		})
 
-			.then(response => {
-				console.log(response);
+			.then(function (response) {
+				return response.json();
 			})
-			.catch(err => {
-				console.error(err);
-			});
+
+			.then(function (data) {
+				console.log(data);
+			})
 	};
+
+
 
 	function getPropDetails() {
 		//get property details
@@ -309,6 +322,7 @@ function searchCities() {
 				}
 				url = url + symbol_insert + 'locs=' + loc;
 			}
+			return url
 		}
 		var getDetails = url
 
@@ -327,6 +341,8 @@ function searchCities() {
 				console.error(err);
 			});
 	};
+
+
 
 	function getPhotos() {
 
@@ -350,6 +366,7 @@ function searchCities() {
 			});
 	};
 
+
 	function getReviewsList() {
 		//Get hotel reviews
 		//REQUIRED PARAMETERS
@@ -359,7 +376,7 @@ function searchCities() {
 		//loc(string) The language code should be left as en_US or not used for our purposes
 
 		//Basic string with required parameters
-		var requiredString = "https://hotels4.p.rapidapi.com/reviews/list?id=" + Id
+		var requiredString = "https://hotels4.p.rapidapi.com/reviews/list?id=" + id
 
 		addOptions(requiredString)
 
@@ -386,6 +403,7 @@ function searchCities() {
 				}
 				url = url + symbol_insert + 'locs=' + loc;
 			}
+			return url
 		}
 
 		var getReviews = url
@@ -407,4 +425,3 @@ function searchCities() {
 			});
 		}	
 	};
-
