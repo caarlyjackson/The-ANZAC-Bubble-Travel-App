@@ -5,15 +5,56 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <title>Document</title>
 </head>
 
 <body>
+    <main id="select-options" class="hide">
+
+        <div id="parameter">
+            <!-- City Parameter -->
+            <p class="parameter-question">What city would you like to visit?</p>
+            <select id="search-input-area" class="form-control form-control-sm loc">
+                <option>Select City</option>
+                <option value="950540">Auckland</option>
+                <option value="1636970">Christchurch - Canterbury</option>
+                <option value="950155">Nelson Tasman</option>
+                <option value="1640249">Northland & Bay of Islands</option>
+                <option value="1633614">Queenstown</option>
+                <option value="1633616">Rotorua</option>
+                <option value="950424">Southland</option>
+                <option value="951308">Wellington</option>
+            </select>
+            <button id="search-input-button">Search</button>
+        </div>
+
+    </main>
 
     <h3>This Week's Forecast</h3>
     <div id="forecast">
 
-    </div>
+        <!-- Carousel for weather details -->
+        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div></div>
+
+                    <div class="carousel-item">
+                    </div>
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous Day</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next Day</span>
+                </a>
+            </div>
+
+        </div>
 </body>
 <script src="Assets/script/weather.js"></script>
 
