@@ -7,6 +7,9 @@ var smallHeader = document.querySelector("#pageHeader");
 var selectPage = document.querySelector("#select-options");
 var fromDate;
 var toDate;
+var submitButton = document.querySelector("#submit-user-choices");
+//city searched page
+cityPage = document.querySelector("#city-page")
 
 heroButton.addEventListener("click", function () {
 	landingPage.style.display = "none";
@@ -78,23 +81,32 @@ for (i = 0; i < coll.length; i++) {
 
 
 
-	// match city text to id
+submitButton.addEventListener("click", function () {
+	cityPage.style.display = "block";
+	searchCities();
+});
 
-	var city = document.getElementById('loc').value;
-	if(city == 'Auckland'){destinationId=950540}
-	else if (city =='Wellington'){destinationId=951308}
-	else if (city == 'Christchurch') {destinationId=1636970}
-	else if (city == 'Queenstown') {destinationid=1633614}
-	else if (city == 'Rotorua') {destinationId=1633616}
-	else if (city == 'Bay of Islands'){destinationId=1640249}
-	else if (city == 'Auckland Central Business District'){destinationId=1645372}
-	else if (city == 'Te Anau'){destinationId=950424}
-	else {destinationId=950155};
-	console.log(destinationId)
+function searchCities() {
 
-	
+	// Returns list of cities in new zealand, use to get city code
+	// match user selection to response values to obtain city code
+	//No parameters needed as we only care about NZ
 
-	function searchHotels() {
+	fetch("https://hotels4.p.rapidapi.com/locations/search?query=new%20zealand&locale=en_US", {
+		"method": "GET",
+		"headers": {
+			"x-rapidapi-key": "652a2de92cmsh43a2bf88c4f4751p196d97jsnfa734ca7135b",
+			"x-rapidapi-host": "hotels4.p.rapidapi.com"
+		}
+	})
+		.then(response => {
+			console.log(response);
+		})
+		.catch(err => {
+			console.error(err);
+		});
+
+	function searchHotels(destinationId, pageNumber, checkIn, pageSize, adults1) {
 		//searches hotels in city by city code obtained above
 		//Need to match user selection to reponse value to obtain hotel code for the below
 		//REQUIRED PARAMETERS:
@@ -209,7 +221,7 @@ for (i = 0; i < coll.length; i++) {
 			}
 			return url
 		}
-							  //url
+		//url
 		var hotelSearchQuery = requiredString
 
 		//Fetch hotel listing.
@@ -221,13 +233,13 @@ for (i = 0; i < coll.length; i++) {
 			}
 		})
 
-		.then(function (response) {
-			return response.json();
-		  })
-		
-		.then(function (data) {
-			console.log(data);
-		})
+			.then(function (response) {
+				return response.json();
+			})
+
+			.then(function (data) {
+				console.log(data);
+			})
 	};
 
 
@@ -329,7 +341,7 @@ for (i = 0; i < coll.length; i++) {
 			});
 	};
 
-	
+
 
 	function getPhotos() {
 
@@ -353,7 +365,7 @@ for (i = 0; i < coll.length; i++) {
 			});
 	};
 
-	
+
 	function getReviewsList() {
 		//Get hotel reviews
 		//REQUIRED PARAMETERS
@@ -410,14 +422,5 @@ for (i = 0; i < coll.length; i++) {
 				console.error(err);
 
 			});
-		};	
-
-	var button = document.getElementById('button')
-	button.addEventListener("click", function(event){
-		searchHotels(destinationId, checkIn, checkOut, pageSize, adults1);
-		event.preventDefault();
-		
-	},false);
-		}	
-	};
-
+	}
+};
