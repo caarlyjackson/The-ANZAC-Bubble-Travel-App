@@ -19,8 +19,8 @@ heroButton.addEventListener("click", function () {
 
 // Date Picker
 $(function () {
-	var dateFormat = "dd/mm/yy",
-		checkIn = $("#from")
+	var dateFormat = "yyyy-MM-dd",
+		checkIn = $("#checkIn")
 			.datepicker({
 				dateFormat: 'dd/mm/yy',
 				defaultDate: "+1w",
@@ -31,7 +31,7 @@ $(function () {
 				checkIn.datepicker("option", "minDate", getDate(this));
 
 			}),
-		checkOut = $("#to").datepicker({
+		checkOut = $("#checkOut").datepicker({
 			dateFormat: 'dd/mm/yy',
 			defaultDate: "+1w",
 			changeMonth: true,
@@ -422,5 +422,5 @@ function searchCities() {
 				console.error(err);
 
 			});
-		}	
-	};
+	}
+};
