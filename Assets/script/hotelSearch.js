@@ -1,6 +1,6 @@
 var hotelContainerEl = document.querySelector('#hotels-container');
-
-
+var hotel = data.body.searchresults.results
+var currency = document.getElementById('currency').value;
 // function for results 
 var displayHotels = function (hotels){
     if(hotels.length === 0) {
@@ -25,25 +25,40 @@ var displayHotels = function (hotels){
 
         var hotelNameEL = document.createElement('h5');
         hotelNameEL.classList = 'card-title text-center';
-        hotelNameEL.textContent = //hotel name 
+        hotelNameEL.textContent = data.body.searchresults.results[i].name //hotel name 
+        ;
+
+        var hotelAddEL = document.createElement('h5');
+        hotelAddEL.classList = 'card-title text-center';
+        hotelAddEL.textContent = data.body.searchresults.results[i].streetaddress + ',' + data.doby.searchresults.results[i].locality + ',' + data.doby.searchresults.results[i].postalCode //address
         ;
 
         var hotelCityEl = document.createElement('h6');
         hotelCityEl.classList = 'card-subtitle mb-2 text-muted';
-        hotelCityEl.textContent = //city/town
+        hotelCityEl.textContent = data.body.searchresults.results[i].neighbourhood //city/town
         ;
 
         var hotelDescriptEL = document.createElement('p');
         hotelDescriptEL.classList = 'card-text';
-        hotelDescriptEL.textContent = //hotel description
+        hotelDescriptEL.textContent ='This hotel is a ' + data.body.searchresults.results[i].vrBadge //hotel description
+        ;
+
+        var hotelPriceEL = document.createElement('p');
+        hotelPriceEL.classList = 'card-text';
+        hotelPriceEL.textContent ='current cost per night is ' + data.body.searchresults.results[i].ratePlan.price.exactCurrent  + currency //hotel price
+        ;
+
+        var hotelRatingEL = document.createElement('p');
+        hotelRatingEL.classList = 'card-text';
+        hotelRatingEL.textContent = 'Hotel is rated ' + data.body.searchresults.results[i].guestReviews.rating + '/' + data.body.searchresults.results[i].guestReviews.scale + ' with ' + data.body.searchresults.results[i].guestReviews.total + ' number of reviews'
         ;
 
         var hotelImageEL = document.createElement('img');
         hotelImageEL.classList = 'card-img-bottom';
-        hotelImageEL.setAttribute('src', '');
+        hotelImageEL.setAttribute('src', data.body.searchresults.results[i].optimizedThumbUrls.srpDesktop);
 
         hotelCardEL.appendChild(hotelBodyEL);
         hotelCardEL.appendChild(hotelImageEL);
-        hotelBodyEL.appendChild(hotelNameEL, hotelCityEl, hotelDescriptEL);
+        hotelBodyEL.appendChild(hotelNameEL, hotelAddEL, hotelCityEl, hotelDescriptEL, hotelPriceEL,hotelRatingEL);
     }
 }
