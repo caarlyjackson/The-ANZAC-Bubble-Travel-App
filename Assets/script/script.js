@@ -19,8 +19,8 @@ heroButton.addEventListener("click", function () {
 
 // Date Picker
 $(function () {
-	var dateFormat = "dd/mm/yy",
-		checkIn = $("#from")
+	var dateFormat = "yyyy-MM-dd",
+		checkIn = $("#checkIn")
 			.datepicker({
 				dateFormat: 'dd/mm/yy',
 				defaultDate: "+1w",
@@ -31,7 +31,7 @@ $(function () {
 				checkIn.datepicker("option", "minDate", getDate(this));
 
 			}),
-		checkOut = $("#to").datepicker({
+		checkOut = $("#checkOut").datepicker({
 			dateFormat: 'dd/mm/yy',
 			defaultDate: "+1w",
 			changeMonth: true,
@@ -57,36 +57,18 @@ $(function () {
 
 });
 
-// Parameter Page - More Options - collapse/hide and show
-var coll = document.getElementsByClassName("collapsible");
-var i;
-for (i = 0; i < coll.length; i++) {
-	coll[i].addEventListener("click", function () {
-		this.classList.toggle("active");
-		var button = document.getElementById("button-show")
-		var content = this.nextElementSibling;
-		if (content.style.display === "block") {
-			content.style.display = "none";
-			(content.style.maxHeight)
-			content.style.maxHeight = null;
-		} else {
-			content.style.display = "block";
-			content.style.maxHeight = content.scrollHeight + "px";
-			// button.style.display = "none";
-		}
-	});
-}
-
 // Need to build parameter verification(string, number)
 
 
 
 submitButton.addEventListener("click", function () {
-	cityPage.style.display = "block";
+	event.preventDefault();
 	searchCities();
 });
 
 function searchCities() {
+	$("#select-options").css('display', 'none');
+	$('#city-page').css('display', 'block');
 
 	// Returns list of cities in new zealand, use to get city code
 	// match user selection to response values to obtain city code
@@ -95,7 +77,7 @@ function searchCities() {
 	fetch("https://hotels4.p.rapidapi.com/locations/search?query=new%20zealand&locale=en_US", {
 		"method": "GET",
 		"headers": {
-			"x-rapidapi-key": "652a2de92cmsh43a2bf88c4f4751p196d97jsnfa734ca7135b",
+			"x-rapidapi-key": "5100886f46msh9c8779e6ec05826p134d1ajsnb5679aa19c23",
 			"x-rapidapi-host": "hotels4.p.rapidapi.com"
 		}
 	})
@@ -104,7 +86,9 @@ function searchCities() {
 		})
 		.catch(err => {
 			console.error(err);
+
 		});
+
 
 	function searchHotels(destinationId, pageNumber, checkIn, pageSize, adults1) {
 		//searches hotels in city by city code obtained above
@@ -129,7 +113,7 @@ function searchCities() {
 		//loc(string) The language code should be left as en_US or not used for our purposes
 
 		//Basic string with required parameters
-		var requiredString = "https://hotels4.p.rapidapi.com/properties/list?destinationId=" + destinationId + '&pagenumber=1&checkIn=' + checkIn + '&checkOut=' + checkOut + '&pageSize=' + pageSize + '&adults1=' + adults1
+		var requiredString = "https://hotels4.p.rapidapi.com/properties/list?destinationId=" + destinationId + '&pagenumber=1&checkIn=' + checkIn + '&checkOut=' + checkOut + '&pageSize=20' + pageSize + '&adults1=' + adults1
 
 		//addOptions(requiredString)
 
@@ -228,7 +212,7 @@ function searchCities() {
 		fetch(hotelSearchQuery, {
 			"method": "GET",
 			"headers": {
-				"x-rapidapi-key": "c6aa062b9amsh42c409cede2d9bep1e5e77jsnbca33b5d4fcc",
+				"x-rapidapi-key": "5100886f46msh9c8779e6ec05826p134d1ajsnb5679aa19c23",
 				"x-rapidapi-host": "hotels4.p.rapidapi.com"
 			}
 		})
