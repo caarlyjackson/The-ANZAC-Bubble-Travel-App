@@ -84,310 +84,308 @@ for (i = 0; i < coll.length; i++) {
 submitButton.addEventListener("click", function () {
 	cityPage.style.display = "block";
 	searchHotels();
-	
-	
+
+
 });
 
 
 
-	function searchHotels() {
-		//searches hotels in city by city code obtained above
-		//Need to match user selection to reponse value to obtain hotel code for the below
-		//REQUIRED PARAMETERS:
-		//destinationId(number) City code
-		//pageNumber(number) The page number in which data is display, removed as field, set at 1
-		//checkIn(string) check in date MUST BE IN FORMAT yyyy-MM-dd
-		//checkOut(string) check out date MUST BE IN FORMAT yyyy-MM-dd
-		//pageSize(number) Total items returned in every requests (max 25)
-		//adults1(number) The number of adults in first room
-		//OPTIONAL PARAMETERS
-		//children1(string) The age of every children separated by comma in the first room. Ex : 5,11
-		//currency(string) The currency code
-		//priceMin(number) Minimum price
-		//priceMax(number) Maximum price
-		//amenityIds(string)Check for suitable value (separated by comma to specify multiple values) in facilities field returned right in this endpoint
-		//themeIds(string) Check for suitable value (separated by comma to specify multiple values) in themesAndTypes field returned right in this endpoint
-		//landmarkIds(string)Check for suitable value (separated by comma to specify multiple values) in landmarks field returned right in this endpoint
-		//guestRatingMin(number)Check for suitable min rating in filters/guestRating/range/min field returned right in this endpoint
-		//sortOrder(string)One of the following is allowed BEST_SELLER|STAR_RATING_HIGHEST_FIRST|STAR_RATING_LOWEST_FIRST|DISTANCE_FROM_LANDMARK|GUEST_RATING|PRICE_HIGHEST_FIRST|PRICE
-		//loc(string) The language code should be left as en_US or not used for our purposes
-		//Get perimeters from .index
-		
-		var destinationId = document.getElementById('loc').value;
-		var checkIn = document.getElementById('checkIn').value
-		var checkOut = document.getElementById('checkOut').value
-		var pageSize = 25
-		var adults1 = document.getElementById('adults1').value
+function searchHotels() {
+	//searches hotels in city by city code obtained above
+	//Need to match user selection to reponse value to obtain hotel code for the below
+	//REQUIRED PARAMETERS:
+	//destinationId(number) City code
+	//pageNumber(number) The page number in which data is display, removed as field, set at 1
+	//checkIn(string) check in date MUST BE IN FORMAT yyyy-MM-dd
+	//checkOut(string) check out date MUST BE IN FORMAT yyyy-MM-dd
+	//pageSize(number) Total items returned in every requests (max 25)
+	//adults1(number) The number of adults in first room
+	//OPTIONAL PARAMETERS
+	//children1(string) The age of every children separated by comma in the first room. Ex : 5,11
+	//currency(string) The currency code
+	//priceMin(number) Minimum price
+	//priceMax(number) Maximum price
+	//amenityIds(string)Check for suitable value (separated by comma to specify multiple values) in facilities field returned right in this endpoint
+	//themeIds(string) Check for suitable value (separated by comma to specify multiple values) in themesAndTypes field returned right in this endpoint
+	//landmarkIds(string)Check for suitable value (separated by comma to specify multiple values) in landmarks field returned right in this endpoint
+	//guestRatingMin(number)Check for suitable min rating in filters/guestRating/range/min field returned right in this endpoint
+	//sortOrder(string)One of the following is allowed BEST_SELLER|STAR_RATING_HIGHEST_FIRST|STAR_RATING_LOWEST_FIRST|DISTANCE_FROM_LANDMARK|GUEST_RATING|PRICE_HIGHEST_FIRST|PRICE
+	//loc(string) The language code should be left as en_US or not used for our purposes
+	//Get perimeters from .index
 
-		//Basic string with required parameters
-		var requiredString = "https://hotels4.p.rapidapi.com/properties/list?destinationId=" + destinationId + '&pagenumber=1&checkIn=' + checkIn + '&checkOut=' + checkOut + '&pageSize=' + pageSize + '&adults1=' + adults1;
-		
-		var url=requiredString
-		
-		
-		
+	var destinationId = document.getElementById('loc').value;
+	var checkIn = document.getElementById('checkIn').value
+	var checkOut = document.getElementById('checkOut').value
+	var pageSize = 25
+	var adults1 = document.getElementById('adults1').value
 
-		//Optional parameter select string building
-		
-			var children1 = document.getElementById('children1').value;
-			var currency = document.getElementById('currency').value;
-			//var priceMin = document.getElementById('priceMin').value;
-			//var priceMax = document.getElementById('priceMax').value;
-			//var amenityIds = document.getElementById('amenityIds').value;
-			//var themeIds = document.getElementById('themeIds').value;
-			//var landmarkIds = document.getElementById('landmarkIds').value;
-			//var guestRatingMin = document.getElementById('guestRatingMin').value;
-			//var sortOrder = document.getElementById('sortOrder').value;
-			//var loc = 'en_US'
+	//Basic string with required parameters
+	var requiredString = "https://hotels4.p.rapidapi.com/properties/list?destinationId=" + destinationId + '&pagenumber=1&checkIn=' + checkIn + '&checkOut=' + checkOut + '&pageSize=' + pageSize + '&adults1=' + adults1;
 
-			
-			console.log (url)
+	var url = requiredString
 
-			if (children1) {
-				
-				url = url +'&children1=' + children1;
-			}
-			if (currency) {
-				
-				url = url + '&currency=' + currency;
-			}
-			//if (priceMin) {
-				
-				//url = url + '&priceMin=' + priceMin;
-			//}
-			//if (priceMax) {
-				
-				//url = url + '&priceMax=' + priceMax;
-			//}
-			//if (amenityIds) {
-				
-				//url = url + '&amenityIds=' + amenityIds;
-			//}
-			//if (themeIds) {
-				
-				//url = url + '&themeIds=' + themeIds;
-			//}
-			//if (guestRatingMin) {
-				
-				//url = url + '&guestRatingMins=' + guestRatingMin;
-			//}
-			//if (landmarkIds) {
-				
-				//url = url + '&landmarkIds=' + landmarkIds;
-			//}
-			//if (sortOrder) {
-				
-				//url = url + '&sortOrder=' + sortOrder;
-			//}
-			//if (loc) {
-				
-				//url = url + '&locs=' + loc;
-			//}
-			
-		
-		
-		var hotelSearchQuery = url
-		console.log(hotelSearchQuery)
 
-		//Fetch hotel listing.
-		fetch(hotelSearchQuery, {
-			"method": "GET",
-			"headers": {
-				"x-rapidapi-key": "c6aa062b9amsh42c409cede2d9bep1e5e77jsnbca33b5d4fcc",
-				"x-rapidapi-host": "hotels4.p.rapidapi.com"
-			}
-		})
 
-			.then(function (response) {
-				return response.json();
-			})
 
-			.then(function (data) {
-				console.log(data);
-			});
-		
+	//Optional parameter select string building
+
+	var children1 = document.getElementById('children1').value;
+	var currency = document.getElementById('currency').value;
+	//var priceMin = document.getElementById('priceMin').value;
+	//var priceMax = document.getElementById('priceMax').value;
+	//var amenityIds = document.getElementById('amenityIds').value;
+	//var themeIds = document.getElementById('themeIds').value;
+	//var landmarkIds = document.getElementById('landmarkIds').value;
+	//var guestRatingMin = document.getElementById('guestRatingMin').value;
+	//var sortOrder = document.getElementById('sortOrder').value;
+	//var loc = 'en_US'
+
+
+	console.log(url)
+
+	if (children1) {
+
+		url = url + '&children1=' + children1;
+	}
+	if (currency) {
+
+		url = url + '&currency=' + currency;
+	}
+	//if (priceMin) {
+
+	//url = url + '&priceMin=' + priceMin;
+	//}
+	//if (priceMax) {
+
+	//url = url + '&priceMax=' + priceMax;
+	//}
+	//if (amenityIds) {
+
+	//url = url + '&amenityIds=' + amenityIds;
+	//}
+	//if (themeIds) {
+
+	//url = url + '&themeIds=' + themeIds;
+	//}
+	//if (guestRatingMin) {
+
+	//url = url + '&guestRatingMins=' + guestRatingMin;
+	//}
+	//if (landmarkIds) {
+
+	//url = url + '&landmarkIds=' + landmarkIds;
+	//}
+	//if (sortOrder) {
+
+	//url = url + '&sortOrder=' + sortOrder;
+	//}
+	//if (loc) {
+
+	//url = url + '&locs=' + loc;
+	//}
+
+
+
+	var hotelSearchQuery = url
+	console.log(hotelSearchQuery)
+
+	//Fetch hotel listing.
+	fetch(hotelSearchQuery, {
+		"method": "GET",
+		"headers": {
+			"x-rapidapi-key": "c6aa062b9amsh42c409cede2d9bep1e5e77jsnbca33b5d4fcc",
+			"x-rapidapi-host": "hotels4.p.rapidapi.com"
 		}
-		
+	})
 
-
-	function getPropDetails() {
-		//get property details
-		//REQUIRED PARAMETER
-		//id(number) The value of id field that returned in hotels query above
-		//OPTIONAL PARAMETERS
-		//checkIn(string) check in date MUST BE IN FORMAT yyyy-MM-dd
-		//checkOut(string) check out date MUST BE IN FORMAT yyyy-MM-dd
-		//currency(string) The currency code
-		//adults1(number) The number of adults in first room
-		//children1(string) The age of every children separated by comma in the first room. Ex : 5,11
-		//loc(string) The language code should be left as en_US or not used for our purposes
-
-		//Basic string with required parameters
-		var requiredString = "https://hotels4.p.rapidapi.com/properties/get-details?id=" + Id
-
-		addOptions(requiredString)
-
-		//Optional parameter select string building
-		function addOptions() {
-			var adults1 = document.getElementById('adults1').value;
-			var children1 = document.getElementById('children1').value;
-			var currency = document.getElementById('currency').value;
-			var checkIn = document.getElementById('checkIn').value;
-			var checkOut = document.getElementById('checkOut').value;
-			var loc = document.getElementById('loc').value;
-
-			var url = requiredString;
-
-			if (adults1) {
-				if (indexOf(url, '?') !== false) {
-					var symbol_insert = '&';
-				} else {
-					var symbol_insert = '?';
-				}
-				url = url + symbol_insert + 'adults1=' + adults1;
-			}
-
-			if (children1) {
-				if (indexOf(url, '?') !== false) {
-					var symbol_insert = '&';
-				} else {
-					var symbol_insert = '?';
-				}
-				url = url + symbol_insert + 'children1=' + children1;
-			}
-			if (currency) {
-				if (indexOf(url, '?') !== false) {
-					var symbol_insert = '&';
-				} else {
-					var symbol_insert = '?';
-				}
-				url = url + symbol_insert + 'currency=' + currency;
-			}
-			if (checkIn) {
-				if (indexOf(url, '?') !== false) {
-					var symbol_insert = '&';
-				} else {
-					var symbol_insert = '?';
-				}
-				url = url + symbol_insert + 'checkIn=' + checkIn;
-			}
-			if (checkOut) {
-				if (indexOf(url, '?') !== false) {
-					var symbol_insert = '&';
-				} else {
-					var symbol_insert = '?';
-				}
-				url = url + symbol_insert + 'checkOut=' + checkOut;
-			}
-			if (loc) {
-				if (indexOf(url, '?') !== false) {
-					var symbol_insert = '&';
-				} else {
-					var symbol_insert = '?';
-				}
-				url = url + symbol_insert + 'locs=' + loc;
-			}
-			return url
-		}
-		var getDetails = url
-
-		//Query string needs completing from parameters above, will need to be taken from user selection.
-		fetch(getDetails, {
-			"method": "GET",
-			"headers": {
-				"x-rapidapi-key": "652a2de92cmsh43a2bf88c4f4751p196d97jsnfa734ca7135b",
-				"x-rapidapi-host": "hotels4.p.rapidapi.com"
-			}
+		.then(function (response) {
+			return response.json();
 		})
-			.then(response => {
-				console.log(response);
-			})
-			.catch(err => {
-				console.error(err);
-			});
-	};
+
+		.then(function (data) {
+			console.log(data);
+		});
+
+}
 
 
 
-	function getPhotos() {
+function getPropDetails() {
+	//get property details
+	//REQUIRED PARAMETER
+	//id(number) The value of id field that returned in hotels query above
+	//OPTIONAL PARAMETERS
+	//checkIn(string) check in date MUST BE IN FORMAT yyyy-MM-dd
+	//checkOut(string) check out date MUST BE IN FORMAT yyyy-MM-dd
+	//currency(string) The currency code
+	//adults1(number) The number of adults in first room
+	//children1(string) The age of every children separated by comma in the first room. Ex : 5,11
+	//loc(string) The language code should be left as en_US or not used for our purposes
 
-		//Get Hotel Photo
-		//REQUIRED PARAMETER
-		//id(number) The value of id field that returned in hotels query above
+	//Basic string with required parameters
+	var requiredString = "https://hotels4.p.rapidapi.com/properties/get-details?id=" + Id
 
-		//Fetch Photos
-		fetch("https://hotels4.p.rapidapi.com/properties/get-hotel-photos?&id=" + Id, {
-			"method": "GET",
-			"headers": {
-				"x-rapidapi-key": "652a2de92cmsh43a2bf88c4f4751p196d97jsnfa734ca7135b",
-				"x-rapidapi-host": "hotels4.p.rapidapi.com"
+	addOptions(requiredString)
+
+	//Optional parameter select string building
+	function addOptions() {
+		var adults1 = document.getElementById('adults1').value;
+		var children1 = document.getElementById('children1').value;
+		var currency = document.getElementById('currency').value;
+		var checkIn = document.getElementById('checkIn').value;
+		var checkOut = document.getElementById('checkOut').value;
+		var loc = document.getElementById('loc').value;
+
+		var url = requiredString;
+
+		if (adults1) {
+			if (indexOf(url, '?') !== false) {
+				var symbol_insert = '&';
+			} else {
+				var symbol_insert = '?';
 			}
-		})
-			.then(response => {
-				console.log(response);
-			})
-			.catch(err => {
-				console.error(err);
-			});
-	};
-
-
-	function getReviewsList() {
-		//Get hotel reviews
-		//REQUIRED PARAMETERS
-		//id(number) The value of id field that returned in hotels query above
-		//OPTIONAL PARAMETERS
-		//page(number) paging purposes, probably not needed
-		//loc(string) The language code should be left as en_US or not used for our purposes
-
-		//Basic string with required parameters
-		var requiredString = "https://hotels4.p.rapidapi.com/reviews/list?id=" + id
-
-		addOptions(requiredString)
-
-		//Optional parameter select string building
-		function addOptions() {
-			var page = document.getElementById('page').value;
-			var loc = document.getElementById('loc').value;
-
-			var url = requiredString;
-
-			if (page) {
-				if (indexOf(url, '?') !== false) {
-					var symbol_insert = '&';
-				} else {
-					var symbol_insert = '?';
-				}
-				url = url + symbol_insert + 'page=' + page;
-			}
-			if (loc) {
-				if (indexOf(url, '?') !== false) {
-					var symbol_insert = '&';
-				} else {
-					var symbol_insert = '?';
-				}
-				url = url + symbol_insert + 'locs=' + loc;
-			}
-			return url
+			url = url + symbol_insert + 'adults1=' + adults1;
 		}
 
-		var getReviews = url
-
-		//Fetch Reviews List
-		fetch(getReviews, {
-			"method": "GET",
-			"headers": {
-				"x-rapidapi-key": "652a2de92cmsh43a2bf88c4f4751p196d97jsnfa734ca7135b",
-				"x-rapidapi-host": "hotels4.p.rapidapi.com"
+		if (children1) {
+			if (indexOf(url, '?') !== false) {
+				var symbol_insert = '&';
+			} else {
+				var symbol_insert = '?';
 			}
-		})
-			.then(response => {
-				console.log(response);
-			})
-			.catch(err => {
-				console.error(err);
+			url = url + symbol_insert + 'children1=' + children1;
+		}
+		if (currency) {
+			if (indexOf(url, '?') !== false) {
+				var symbol_insert = '&';
+			} else {
+				var symbol_insert = '?';
+			}
+			url = url + symbol_insert + 'currency=' + currency;
+		}
+		if (checkIn) {
+			if (indexOf(url, '?') !== false) {
+				var symbol_insert = '&';
+			} else {
+				var symbol_insert = '?';
+			}
+			url = url + symbol_insert + 'checkIn=' + checkIn;
+		}
+		if (checkOut) {
+			if (indexOf(url, '?') !== false) {
+				var symbol_insert = '&';
+			} else {
+				var symbol_insert = '?';
+			}
+			url = url + symbol_insert + 'checkOut=' + checkOut;
+		}
+		if (loc) {
+			if (indexOf(url, '?') !== false) {
+				var symbol_insert = '&';
+			} else {
+				var symbol_insert = '?';
+			}
+			url = url + symbol_insert + 'locs=' + loc;
+		}
+		return url
+	}
+	var getDetails = url
 
-			});
-    		}	
-	
+	//Query string needs completing from parameters above, will need to be taken from user selection.
+	fetch(getDetails, {
+		"method": "GET",
+		"headers": {
+			"x-rapidapi-key": "652a2de92cmsh43a2bf88c4f4751p196d97jsnfa734ca7135b",
+			"x-rapidapi-host": "hotels4.p.rapidapi.com"
+		}
+	})
+		.then(response => {
+			console.log(response);
+		})
+		.catch(err => {
+			console.error(err);
+		});
 };
+
+
+
+function getPhotos() {
+
+	//Get Hotel Photo
+	//REQUIRED PARAMETER
+	//id(number) The value of id field that returned in hotels query above
+
+	//Fetch Photos
+	fetch("https://hotels4.p.rapidapi.com/properties/get-hotel-photos?&id=" + Id, {
+		"method": "GET",
+		"headers": {
+			"x-rapidapi-key": "652a2de92cmsh43a2bf88c4f4751p196d97jsnfa734ca7135b",
+			"x-rapidapi-host": "hotels4.p.rapidapi.com"
+		}
+	})
+		.then(response => {
+			console.log(response);
+		})
+		.catch(err => {
+			console.error(err);
+		});
+};
+
+
+function getReviewsList() {
+	//Get hotel reviews
+	//REQUIRED PARAMETERS
+	//id(number) The value of id field that returned in hotels query above
+	//OPTIONAL PARAMETERS
+	//page(number) paging purposes, probably not needed
+	//loc(string) The language code should be left as en_US or not used for our purposes
+
+	//Basic string with required parameters
+	var requiredString = "https://hotels4.p.rapidapi.com/reviews/list?id=" + id
+
+	addOptions(requiredString)
+
+	//Optional parameter select string building
+	function addOptions() {
+		var page = document.getElementById('page').value;
+		var loc = document.getElementById('loc').value;
+
+		var url = requiredString;
+
+		if (page) {
+			if (indexOf(url, '?') !== false) {
+				var symbol_insert = '&';
+			} else {
+				var symbol_insert = '?';
+			}
+			url = url + symbol_insert + 'page=' + page;
+		}
+		if (loc) {
+			if (indexOf(url, '?') !== false) {
+				var symbol_insert = '&';
+			} else {
+				var symbol_insert = '?';
+			}
+			url = url + symbol_insert + 'locs=' + loc;
+		}
+		return url
+	}
+
+	var getReviews = url
+
+	//Fetch Reviews List
+	fetch(getReviews, {
+		"method": "GET",
+		"headers": {
+			"x-rapidapi-key": "652a2de92cmsh43a2bf88c4f4751p196d97jsnfa734ca7135b",
+			"x-rapidapi-host": "hotels4.p.rapidapi.com"
+		}
+	})
+		.then(response => {
+			console.log(response);
+		})
+		.catch(err => {
+			console.error(err);
+
+		});
+}
