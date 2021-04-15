@@ -389,5 +389,5 @@ submitButton.addEventListener("click", function () {
 
 			});
     		}	
-	}
+	
 };
