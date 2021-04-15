@@ -1,18 +1,23 @@
-var searchInputEl = document.querySelector("#search-input-area");
+// THIS IS NOT REQUIRED FOR TRANSPLANT
 var buttonSubmit = document.querySelector("#search-input-button");
-// var loc = document.getElementById('loc').value;
+
+
+
+var searchInputLocEl = document.querySelector("#loc");
 var ApiKey = "510c27e4545e6077957004db2b092e1f";
-// var cityName = document.getElementsByClassName("loc").value;
-var city = "";
+var city;
 
 // Submit button for testing
 $("button").click(function () {
-    console.log("in function");
-    var loc = searchInputEl.value.trim();
-    getUrl(loc);
-    console.log(loc)
+    // console.log("in function");
+    var loc = searchInputLocEl.value;
 
     switch (loc) {
+
+        case "Select City":
+            // Needs error handling
+            console.log("ERROR")
+            return;
         case "950540":
             city = "Auckland";
             break;
@@ -38,20 +43,20 @@ $("button").click(function () {
             city = "Wellington";
             break;
     }
+    getUrl(city);
 });
 
 // Retrieve Forecast API
 function getUrl(city) {
     var requestUrl = "https://api.openweathermap.org/data/2.5/forecast?q=";
     var queryUrl = requestUrl + city + "&appid=" + ApiKey + "&units=metric";
-    console.log(queryUrl)
+    // console.log(queryUrl)
 
     fetch(queryUrl)
         .then(function (response) {
             return response.json();
         }).then(function (data) {
-            console.log(data);
-
+            // console.log(data);
             fiveDayForecastData(data);
         })
         .catch(function (error) {
@@ -61,14 +66,14 @@ function getUrl(city) {
 
 // Print Forecast
 function fiveDayForecastData(forecastData) {
-
     var filteredForecast = forecastData.list.filter(function (day) {
         return day.dt_txt.indexOf("15:00:00") !== -1
     });
+    document.querySelector(".horizontal-scrollable").innerHTML = "";
 
     for (var i = 0; i < filteredForecast.length; i += 1) {
-        console.log(filteredForecast[i].weather[0].icon, filteredForecast[i].main.temp, filteredForecast[i].weather[0].description, filteredForecast[i].main.humidity);
-        console.log(filteredForecast[i].wind.speed);
+        // console.log(filteredForecast[i].weather[0].icon, filteredForecast[i].main.temp, filteredForecast[i].weather[0].description, filteredForecast[i].main.humidity);
+        // console.log(filteredForecast[i].wind.speed);
         var card = $("<div>").attr("class", "card", "weather-card", "col-xs-4");
         var date = $("<h5>").text(moment.unix(filteredForecast[i].dt).format('L')).attr("class", "date");
         var img = $("<img>").attr("src", "https://openweathermap.org/img/wn/" + filteredForecast[i].weather[0].icon + "@2x.png").attr("class", "icon");
@@ -79,5 +84,4 @@ function fiveDayForecastData(forecastData) {
         card.append(date, img, description, p1, p2, p3);
         $(".horizontal-scrollable").append($(card));
     }
-    card.textContent = ""
 }
