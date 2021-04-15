@@ -137,3 +137,17 @@ input.box {
 #nav-btn {
     margin-top: 10px;
 }
+
+/* about us */
+.about::before {
+    content: "";
+    position: absolute;
+    width: 100vw;
+    height: 25vh;
+    background-image: url(https://imgproxy.natucate.com/xa2CVacAP8OdvDJ44etnnZWTdOh7di65401gIOEq0Q4/rs:fill/g:ce/w:3000/h:1500/aHR0cHM6Ly93d3cubmF0dWNhdGUuY29tL21lZGlhL3BhZ2VzL3JlaXNlbi85Nzk5ZjA1OC0yNDI4LTQ1YzAtOGM1OS0wOTVmM2YzOTZjZDYvNzYxMjU2NDk4LTE1NTc5MjA2ODEvZnJlaXdpbGxpZ2VuYXJiZWl0LW5ldXNlZWxhbmQtbmF0dXJzY2h1dHotb3plYW5pZW4tc2VlLWJlcmdlLXNhYmJhdGphaHItbmF0dWNhdGUuanBn);
+    background-size: cover;
+    background-position: center center;
+    background-repeat: none;
+    filter: contrast(70%) brightness(40%);
+}
+

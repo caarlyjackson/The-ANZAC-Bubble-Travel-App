@@ -394,4 +394,4 @@ submitButton.addEventListener("click", function (event) {
 
 			});
     		}	
-	
+};
