@@ -138,11 +138,6 @@ input.box {
     margin-top: 10px;
 }
 
-/* five day forecast */
-.card-forecast-small {
-    
-}
-
 /* about us */
 .about::before {
     content: "";
@@ -155,5 +150,4 @@ input.box {
     background-repeat: none;
     filter: contrast(70%) brightness(40%);
 }
-
 
