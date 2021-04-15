@@ -81,33 +81,16 @@ for (i = 0; i < coll.length; i++) {
 // Need to build parameter verification(string, number)
 
 
-
 submitButton.addEventListener("click", function () {
 	cityPage.style.display = "block";
-	searchCities();
+	searchHotels();
+	
+	
 });
 
-function searchCities() {
 
-	// Returns list of cities in new zealand, use to get city code
-	// match user selection to response values to obtain city code
-	//No parameters needed as we only care about NZ
 
-	fetch("https://hotels4.p.rapidapi.com/locations/search?query=new%20zealand&locale=en_US", {
-		"method": "GET",
-		"headers": {
-			"x-rapidapi-key": "652a2de92cmsh43a2bf88c4f4751p196d97jsnfa734ca7135b",
-			"x-rapidapi-host": "hotels4.p.rapidapi.com"
-		}
-	})
-		.then(response => {
-			console.log(response);
-		})
-		.catch(err => {
-			console.error(err);
-		});
-
-	function searchHotels(destinationId, pageNumber, checkIn, pageSize, adults1) {
+	function searchHotels() {
 		//searches hotels in city by city code obtained above
 		//Need to match user selection to reponse value to obtain hotel code for the below
 		//REQUIRED PARAMETERS:
@@ -128,102 +111,83 @@ function searchCities() {
 		//guestRatingMin(number)Check for suitable min rating in filters/guestRating/range/min field returned right in this endpoint
 		//sortOrder(string)One of the following is allowed BEST_SELLER|STAR_RATING_HIGHEST_FIRST|STAR_RATING_LOWEST_FIRST|DISTANCE_FROM_LANDMARK|GUEST_RATING|PRICE_HIGHEST_FIRST|PRICE
 		//loc(string) The language code should be left as en_US or not used for our purposes
+		//Get perimeters from .index
+		
+		var destinationId = document.getElementById('loc').value;
+		var checkIn = document.getElementById('checkIn').value
+		var checkOut = document.getElementById('checkOut').value
+		var pageSize = 25
+		var adults1 = document.getElementById('adults1').value
 
 		//Basic string with required parameters
-		var requiredString = "https://hotels4.p.rapidapi.com/properties/list?destinationId=" + destinationId + '&pagenumber=1&checkIn=' + checkIn + '&checkOut=' + checkOut + '&pageSize=' + pageSize + '&adults1=' + adults1
-
-		//addOptions(requiredString)
+		var requiredString = "https://hotels4.p.rapidapi.com/properties/list?destinationId=" + destinationId + '&pagenumber=1&checkIn=' + checkIn + '&checkOut=' + checkOut + '&pageSize=' + pageSize + '&adults1=' + adults1;
+		
+		var url=requiredString
+		
+		
+		
 
 		//Optional parameter select string building
-		function addOptions() {
+		
 			var children1 = document.getElementById('children1').value;
 			var currency = document.getElementById('currency').value;
-			var priceMin = document.getElementById('priceMin').value;
-			var amenityIds = document.getElementById('amenityIds').value;
-			var themeIds = document.getElementById('themeIds').value;
-			var landmarkIds = document.getElementById('landmarkIds').value;
-			var guestRatingMin = document.getElementById('guestRatingMin').value;
-			var sortOrder = document.getElementById('sortOrder').value;
-			var loc = document.getElementById('loc').value;
+			//var priceMin = document.getElementById('priceMin').value;
+			//var priceMax = document.getElementById('priceMax').value;
+			//var amenityIds = document.getElementById('amenityIds').value;
+			//var themeIds = document.getElementById('themeIds').value;
+			//var landmarkIds = document.getElementById('landmarkIds').value;
+			//var guestRatingMin = document.getElementById('guestRatingMin').value;
+			//var sortOrder = document.getElementById('sortOrder').value;
+			//var loc = 'en_US'
 
-			var url = requiredString;
+			
+			console.log (url)
 
 			if (children1) {
-				if (indexOf(url, '?') !== false) {
-					var symbol_insert = '&';
-				} else {
-					var symbol_insert = '?';
-				}
-				url = url + symbol_insert + 'children1=' + children1;
+				
+				url = url +'&children1=' + children1;
 			}
 			if (currency) {
-				if (indexOf(url, '?') !== false) {
-					var symbol_insert = '&';
-				} else {
-					var symbol_insert = '?';
-				}
-				url = url + symbol_insert + 'currency=' + currency;
+				
+				url = url + '&currency=' + currency;
 			}
-			if (priceMin) {
-				if (indexOf(url, '?') !== false) {
-					var symbol_insert = '&';
-				} else {
-					var symbol_insert = '?';
-				}
-				url = url + symbol_insert + 'priceMin=' + priceMin;
-			}
-			if (amenityIds) {
-				if (indexOf(url, '?') !== false) {
-					var symbol_insert = '&';
-				} else {
-					var symbol_insert = '?';
-				}
-				url = url + symbol_insert + 'amenityIds=' + amenityIds;
-			}
-			if (themeIds) {
-				if (indexOf(url, '?') !== false) {
-					var symbol_insert = '&';
-				} else {
-					var symbol_insert = '?';
-				}
-				url = url + symbol_insert + 'themeIds=' + themeIds;
-			}
-			if (guestRatingMin) {
-				if (indexOf(url, '?') !== false) {
-					var symbol_insert = '&';
-				} else {
-					var symbol_insert = '?';
-				}
-				url = url + symbol_insert + 'guestRatingMins=' + guestRatingMin;
-			}
-			if (landmarkIds) {
-				if (indexOf(url, '?') !== false) {
-					var symbol_insert = '&';
-				} else {
-					var symbol_insert = '?';
-				}
-				url = url + symbol_insert + 'landmarkIds=' + landmarkIds;
-			}
-			if (sortOrder) {
-				if (indexOf(url, '?') !== false) {
-					var symbol_insert = '&';
-				} else {
-					var symbol_insert = '?';
-				}
-				url = url + symbol_insert + 'sortOrder=' + sortOrder;
-			}
-			if (loc) {
-				if (indexOf(url, '?') !== false) {
-					var symbol_insert = '&';
-				} else {
-					var symbol_insert = '?';
-				}
-				url = url + symbol_insert + 'locs=' + loc;
-			}
-			return url
-		}
-		//url
-		var hotelSearchQuery = requiredString
+			//if (priceMin) {
+				
+				//url = url + '&priceMin=' + priceMin;
+			//}
+			//if (priceMax) {
+				
+				//url = url + '&priceMax=' + priceMax;
+			//}
+			//if (amenityIds) {
+				
+				//url = url + '&amenityIds=' + amenityIds;
+			//}
+			//if (themeIds) {
+				
+				//url = url + '&themeIds=' + themeIds;
+			//}
+			//if (guestRatingMin) {
+				
+				//url = url + '&guestRatingMins=' + guestRatingMin;
+			//}
+			//if (landmarkIds) {
+				
+				//url = url + '&landmarkIds=' + landmarkIds;
+			//}
+			//if (sortOrder) {
+				
+				//url = url + '&sortOrder=' + sortOrder;
+			//}
+			//if (loc) {
+				
+				//url = url + '&locs=' + loc;
+			//}
+			
+		
+		
+		var hotelSearchQuery = url
+		console.log(hotelSearchQuery)
 
 		//Fetch hotel listing.
 		fetch(hotelSearchQuery, {
@@ -240,9 +204,10 @@ function searchCities() {
 
 			.then(function (data) {
 				console.log(data);
-			})
-	};
-
+			});
+		
+		}
+		
 
 
 	function getPropDetails() {
@@ -423,5 +388,6 @@ function searchCities() {
 				console.error(err);
 
 			});
+    		}	
 	}
 };
