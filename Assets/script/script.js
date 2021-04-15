@@ -14,6 +14,7 @@ cityPage = document.querySelector("#city-page")
 heroButton.addEventListener("click", function () {
 	landingPage.style.display = "none";
 	selectPage.style.display = "block";
+	smallHeader.style.display = "block";
 
 });
 
