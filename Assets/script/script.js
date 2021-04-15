@@ -81,10 +81,12 @@ for (i = 0; i < coll.length; i++) {
 // Need to build parameter verification(string, number)
 
 
-submitButton.addEventListener("click", function () {
+submitButton.addEventListener("click", function (event) {
 	cityPage.style.display = "block";
 	searchHotels();
-	
+	$('#select-options').css('display', 'none');          
+	$('#city-page').css('display', 'block');
+	event.preventDefault();
 	
 });
 
@@ -113,6 +115,9 @@ submitButton.addEventListener("click", function () {
 		//loc(string) The language code should be left as en_US or not used for our purposes
 		//Get perimeters from .index
 		
+		$('#select-options').css('display', 'none');          
+		$('#city-page').css('display', 'block');
+
 		var destinationId = document.getElementById('loc').value;
 		var checkIn = document.getElementById('checkIn').value
 		var checkOut = document.getElementById('checkOut').value
@@ -389,5 +394,4 @@ submitButton.addEventListener("click", function () {
 
 			});
     		}	
-	}
-};
+	
