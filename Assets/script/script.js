@@ -14,13 +14,14 @@ cityPage = document.querySelector("#city-page")
 heroButton.addEventListener("click", function () {
 	landingPage.style.display = "none";
 	selectPage.style.display = "block";
+	smallHeader.style.display = "block";
 
 });
 
 // Date Picker
 $(function () {
-	var dateFormat = "dd/mm/yy",
-		checkIn = $("#from")
+	var dateFormat = "yyyy-MM-dd",
+		checkIn = $("#checkIn")
 			.datepicker({
 				dateFormat: 'dd/mm/yy',
 				defaultDate: "+1w",
@@ -31,7 +32,7 @@ $(function () {
 				checkIn.datepicker("option", "minDate", getDate(this));
 
 			}),
-		checkOut = $("#to").datepicker({
+		checkOut = $("#checkOut").datepicker({
 			dateFormat: 'dd/mm/yy',
 			defaultDate: "+1w",
 			changeMonth: true,
@@ -387,6 +388,6 @@ submitButton.addEventListener("click", function () {
 				console.error(err);
 
 			});
-		}	
-	
-		
+    		}	
+	}
+};
