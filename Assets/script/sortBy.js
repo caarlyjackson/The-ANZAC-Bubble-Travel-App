@@ -1,4 +1,4 @@
-//sort by
+//sort by - global
 var sortByValue = document.querySelector("#sortOrder").value;
 const cardsArray = Array.from(document.querySelector(".card"));
 
@@ -8,10 +8,12 @@ var maxPrice = data.body.sortResults.options[3].choices[0];
 var guestRatingMinToMax = data.body.sortResults.options[3].choices[1];
 var guestRatingMaxToMin = data.body.sortResults.options[3].choices[0];
 
-// Value of rating ALTERNATIVE B
+// Value of rating - ALTERNATIVE B
 var guestRating = data.body.searchResults.results[i].guestReviews.rating;
 
-//sort by
+
+
+//sort by - EXAMPLE I FOUND ONLINE
 var sortByOne = [""];
 var numbers1 = [4, 2, 5, 1, 3];
 numbers1.sort(function (a, b) {
@@ -19,26 +21,39 @@ numbers1.sort(function (a, b) {
 });
 console.log(numbers1);// [1, 2, 3, 4, 5]
 
-// SOrt By
 
+
+// beginning of code...
 var sortOrderEl = document.querySelector("#sortOrder");
 function sortOrderEl(sortByValue) {
     if (sortByValue === "priceMin") {
-        cards.sort(function (a, b) { return a - b });
+        priceMin.sort(function (a, b) {
+            var priceA = (cardA.ratePlan.price.current).slice(1)
+            var priceB = (cardB.ratePlan.price.current).slice(1)
+            return priceA - priceB;
+        });
     }
     if (sortByValue === "priceMax") {
-        maxPrice.sort(function (b, a) { return b - a });
+        priceMax.sort(function (b, a) {
+            var priceA = (cardA.ratePlan.price.current).slice(1)
+            var priceB = (cardB.ratePlan.price.current).slice(1)
+            return priceB - priceA;
+        });
     }
     if (sortByValue === "guestRatingMinToMax") {
-        guestRatingMinToMax.sort(function (a, b) { return a - b });
+        guestRatingMinToMax.sort(function (cardA, cardB) {
+            var priceA = parseFloat(cardA.guestReviews.rating)
+            var priceB = parseFloat(cardB.guestReviews.rating)
+            return priceA - priceB;
+        });
     }
 
-    // VALUE
-    if (sortByValue === "guestRatingMinToMax") {
-        guestRating.sort(function (a, b) { return a - b });
-    }
     if (sortByValue === "guestRatingMaxToMin") {
-        guestRating.sort(function (b, a) { return b - a });
+        guestRatingMaxToMin.sort(function (cardB, cardA) {
+            var priceA = parseFloat(cardA.guestReviews.rating)
+            var priceB = parseFloat(cardB.guestReviews.rating)
+            return priceB - priceA;
+        });
     }
 }
 
