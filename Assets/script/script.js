@@ -9,7 +9,14 @@ var fromDate;
 var toDate;
 var submitButton = document.querySelector("#submit-user-choices");
 //city searched page
-cityPage = document.querySelector("#city-page")
+cityPage = document.querySelector("#city-page");
+//about us page
+aboutUsButton = document.querySelector("#about-us-btn");
+aboutUsPage = document.querySelector("#aboutUsPage");
+//previously viewed button
+previouslyViewedButton = document.querySelector("#previouslyViewedBtn");
+previouslyViewedPage = document.querySelector("#previously-viewed-page");
+
 
 heroButton.addEventListener("click", function () {
 	landingPage.style.display = "none";
@@ -17,6 +24,14 @@ heroButton.addEventListener("click", function () {
 	smallHeader.style.display = "block";
 
 });
+
+aboutUsButton.addEventListener("click", function () {
+	aboutUsPage.style.display = "block"
+});
+
+previouslyViewedButton.addEventListener("click", function () {
+	previouslyViewedPage.style.display = "block"
+})
 
 // Date Picker
 $(function () {
@@ -81,10 +96,11 @@ for (i = 0; i < coll.length; i++) {
 // Need to build parameter verification(string, number)
 
 
-submitButton.addEventListener("click", function () {
-	cityPage.style.display = "block";
+submitButton.addEventListener("click", function (event) {
+	event.preventDefault();
 	searchHotels();
-
+	// $('#select-options').css('display', 'none');
+	// $('#city-page').css('display', 'block');
 
 });
 
@@ -113,6 +129,9 @@ function searchHotels() {
 	//loc(string) The language code should be left as en_US or not used for our purposes
 	//Get perimeters from .index
 
+	$('#select-options').css('display', 'none');
+	$('#city-page').css('display', 'block');
+
 	var destinationId = document.getElementById('loc').value;
 	var checkIn = document.getElementById('checkIn').value
 	var checkOut = document.getElementById('checkOut').value
@@ -129,8 +148,9 @@ function searchHotels() {
 
 	//Optional parameter select string building
 
-	var children1 = document.getElementById('children1').value;
-	var currency = document.getElementById('currency').value;
+	// var children1 = document.getElementById('children1').value;
+	// var currency = document.getElementById('currency').value;
+
 	//var priceMin = document.getElementById('priceMin').value;
 	//var priceMax = document.getElementById('priceMax').value;
 	//var amenityIds = document.getElementById('amenityIds').value;
@@ -143,14 +163,104 @@ function searchHotels() {
 
 	console.log(url)
 
-	if (children1) {
+	// if (children1) {
 
-		url = url + '&children1=' + children1;
-	}
-	if (currency) {
+	// 	url = url + '&children1=' + children1;
+	// }
+	// if (currency) {
 
-		url = url + '&currency=' + currency;
-	}
+	// 	url = url + '&currency=' + currency;
+	// }
+
+
+	//if (priceMin) {
+
+	//url = url + '&priceMin=' + priceMin;
+	//}
+	//if (priceMax) {
+
+	//url = url + '&priceMax=' + priceMax;
+	//}
+	//if (amenityIds) {
+
+	//url = url + '&amenityIds=' + amenityIds;
+	//}
+	//if (themeIds) {
+
+	//url = url + '&themeIds=' + themeIds;
+	//}
+	//if (guestRatingMin) {
+
+	//url = url + '&guestRatingMins=' + guestRatingMin;
+	//}
+	//if (landmarkIds) {
+
+	//url = url + '&landmarkIds=' + landmarkIds;
+	//}
+	//if (sortOrder) {
+
+	//url = url + '&sortOrder=' + sortOrder;
+	//}
+	//if (loc) {
+
+	//url = url + '&locs=' + loc;
+	//}
+
+
+
+	var hotelSearchQuery = url
+	console.log(hotelSearchQuery)
+
+	//Fetch hotel listing.
+	fetch(hotelSearchQuery, {
+		"method": "GET",
+		"headers": {
+			"x-rapidapi-key": "c6aa062b9amsh42c409cede2d9bep1e5e77jsnbca33b5d4fcc",
+			"x-rapidapi-host": "hotels4.p.rapidapi.com"
+		}
+	})
+
+	var destinationId = document.getElementById('loc').value;
+	var checkIn = document.getElementById('checkIn').value
+	var checkOut = document.getElementById('checkOut').value
+	var pageSize = 25
+	var adults1 = document.getElementById('adults1').value
+
+	//Basic string with required parameters
+	var requiredString = "https://hotels4.p.rapidapi.com/properties/list?destinationId=" + destinationId + '&pagenumber=1&checkIn=' + checkIn + '&checkOut=' + checkOut + '&pageSize=' + pageSize + '&adults1=' + adults1;
+
+	var url = requiredString
+
+
+
+
+	//Optional parameter select string building
+
+	// var children1 = document.getElementById('children1').value;
+	// var currency = document.getElementById('currency').value;
+
+	//var priceMin = document.getElementById('priceMin').value;
+	//var priceMax = document.getElementById('priceMax').value;
+	//var amenityIds = document.getElementById('amenityIds').value;
+	//var themeIds = document.getElementById('themeIds').value;
+	//var landmarkIds = document.getElementById('landmarkIds').value;
+	//var guestRatingMin = document.getElementById('guestRatingMin').value;
+	//var sortOrder = document.getElementById('sortOrder').value;
+	//var loc = 'en_US'
+
+
+	console.log(url)
+
+	// if (children1) {
+
+	// 	url = url + '&children1=' + children1;
+	// }
+	// if (currency) {
+
+	// 	url = url + '&currency=' + currency;
+	// }
+
+
 	//if (priceMin) {
 
 	//url = url + '&priceMin=' + priceMin;
