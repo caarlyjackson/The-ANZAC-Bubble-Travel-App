@@ -150,7 +150,7 @@ select {
     border-color: rgb(73, 73, 73);
 }
 
-#parameter {
+.parameter {
     padding: 15px 0 10px 0;
 }
 
