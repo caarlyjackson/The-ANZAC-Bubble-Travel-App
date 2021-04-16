@@ -46,10 +46,17 @@ h1 {
 }
 
 /* choice page */
-.custom-card-select {
-    margin: 5vh;
-    margin-top: 10vh;
+.custom-select-container {
+    margin-top: 5vh;
+    padding: 30px;
+    background-image: url(https://img2.goodfon.com/wallpaper/nbig/1/76/auckland-new-zealand-gorod.jpg);
 }
+
+/* form card */
+.custom-card-select {
+    display: flex;
+}
+
 /* Parameters */
 .parameter-question {
     font-weight: 600;
