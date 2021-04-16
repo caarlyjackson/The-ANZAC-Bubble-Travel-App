@@ -8,16 +8,20 @@ var selectPage = document.querySelector("#select-options");
 var fromDate;
 var toDate;
 var submitButton = document.querySelector("#submit-user-choices");
+var returnToSearchPage = document.querySelector("#returnToSearch-btn");
+var searchPageViewAgain = document.querySelector("#pageReset")
 //city searched page
-cityPage = document.querySelector("#city-page");
+var cityPage = document.querySelector("#city-page");
 //about us page
-aboutUsButton = document.querySelector("#about-us-btn");
-aboutUsPage = document.querySelector("#aboutUsPage");
+var aboutUsButton = document.querySelector("#about-us-btn");
+var aboutUsPage = document.querySelector("#aboutUsPage");
 //previously viewed button
-previouslyViewedButton = document.querySelector("#previouslyViewedBtn");
-previouslyViewedPage = document.querySelector("#previously-viewed-page");
+var previouslyViewedButton = document.querySelector("#previouslyViewedBtn");
+var previouslyViewedPage = document.querySelector("#previously-viewed-page");
+var prevPageShow = document.querySelector(".page");
 
 
+// Page change buttons
 heroButton.addEventListener("click", function () {
 	landingPage.style.display = "none";
 	selectPage.style.display = "block";
@@ -26,12 +30,19 @@ heroButton.addEventListener("click", function () {
 });
 
 aboutUsButton.addEventListener("click", function () {
-	aboutUsPage.style.display = "block"
+	aboutUsPage.style.display = "block";
 });
 
 previouslyViewedButton.addEventListener("click", function () {
-	previouslyViewedPage.style.display = "block"
-})
+	previouslyViewedPage.style.display = "block";
+	prevPageShow.style.display = "none";
+});
+
+returnToSearchPage.addEventListener("click", function () {
+	event.preventDefault();
+	selectPage.style.display = "block";
+	searchPageViewAgain.style.display = "none";
+});
 
 // Date Picker
 $(function () {
@@ -104,6 +115,9 @@ submitButton.addEventListener("click", function (event) {
 
 
 function searchHotels() {
+	$('#select-options').css('display', 'none');
+	$('#city-page').css('display', 'block');
+
 	//searches hotels in city by city code obtained above
 	//Need to match user selection to reponse value to obtain hotel code for the below
 	//REQUIRED PARAMETERS:
@@ -126,8 +140,6 @@ function searchHotels() {
 	//loc(string) The language code should be left as en_US or not used for our purposes
 	//Get perimeters from .index
 
-	$('#select-options').css('display', 'none');
-	$('#city-page').css('display', 'block');
 
 	var destinationId = document.getElementById('loc').value;
 	var checkIn = document.getElementById('checkIn').value
@@ -139,7 +151,6 @@ function searchHotels() {
 	var requiredString = "https://hotels4.p.rapidapi.com/properties/list?destinationId=" + destinationId + '&pagenumber=1&checkIn=' + checkIn + '&checkOut=' + checkOut + '&pageSize=' + pageSize + '&adults1=' + adults1;
 
 	var url = requiredString
-
 
 
 
