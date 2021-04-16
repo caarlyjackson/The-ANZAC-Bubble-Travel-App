@@ -376,22 +376,22 @@ submitButton.addEventListener("click", function (event) {
 			return url
 		}
 
-		var getReviews = url
+	var getReviews = url
 
-		//Fetch Reviews List
-		fetch(getReviews, {
-			"method": "GET",
-			"headers": {
-				"x-rapidapi-key": "652a2de92cmsh43a2bf88c4f4751p196d97jsnfa734ca7135b",
-				"x-rapidapi-host": "hotels4.p.rapidapi.com"
-			}
+	//Fetch Reviews List
+	fetch(getReviews, {
+		"method": "GET",
+		"headers": {
+			"x-rapidapi-key": "652a2de92cmsh43a2bf88c4f4751p196d97jsnfa734ca7135b",
+			"x-rapidapi-host": "hotels4.p.rapidapi.com"
+		}
+	})
+		.then(response => {
+			console.log(response);
 		})
-			.then(response => {
-				console.log(response);
-			})
-			.catch(err => {
-				console.error(err);
+		.catch(err => {
+			console.error(err);
 
-			});
-    		}	
-};
+		});
+    }	
+		
