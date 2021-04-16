@@ -50,11 +50,18 @@ h1 {
     margin-top: 5vh;
     padding: 30px;
     background-image: url(https://img2.goodfon.com/wallpaper/nbig/1/76/auckland-new-zealand-gorod.jpg);
+    background-position: center center;
+    background-size: cover;
+
+
 }
 
 /* form card */
 .custom-card-select {
     display: flex;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    background-color: rgba(242, 242, 242, 0.64);
 }
 
 /* Parameters */
