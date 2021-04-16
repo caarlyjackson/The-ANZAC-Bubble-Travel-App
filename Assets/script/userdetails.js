@@ -24,7 +24,7 @@ function handleUserDetails(event) {
         userName = userNameEl.value;
     }
 
-    userHome = userEmailEl.value;
+    userHome = userHomeEl.value;
     userEmail = userEmailEl.value;
     userMobile = userMobileEl.value;
 
