@@ -46,18 +46,22 @@
                             <!-- <div>
                                 <button id="about-us-btn">About Us</button>
                             </div> -->
-
-                            <!-- Button trigger modal -->
+                            <!-- Search Hotels -->
+                            <button id="returnToSearch-btn" type="button" class="btn-menu bg-dark"
+                                data-target="#select-options">
+                                Search Hotels
+                            </button>
+                            <!-- About Modal Button -->
                             <button id="about-us-btn" type="button" class="btn-menu bg-dark" data-toggle="modal"
                                 data-target="#AboutUsModal">
                                 About Us
                             </button>
-
+                            <!-- User Details Modal Button -->
                             <button id="user-details-btn" type="button" class="btn-menu bg-dark" data-toggle="modal"
                                 data-target="#userDetailsModal">
                                 User Details
                             </button>
-
+                            <!-- Previously Viewed Page Button -->
                             <button type="button" data-target="#previously-viewed-page" id="previouslyViewedBtn"
                                 href="#previously-viewed-page" class="nav-link btn-menu bg-dark">Previously
                                 Viewed By You</button>
@@ -146,17 +150,24 @@
                         <label for="user home" class="form-label text-dark">Home City</label>
                         <input type="text" class="form-control" id="userHomeInput">
                     </div>
-                    <div class="user-mail">
-                        <label for="user mail" class="form-label text-dark">Email Address</label>
-                        <input type="email" class="form-control" id="userEmailInput">
-                    </div>
-                    <div class="user-phone">
-                        <label for="user phone" class="form-label text-dark" size="10">Phone Number</label>
-                        <input type="number" class="form-control" id="userPhoneInput">
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary custom-btn" id="user-details">Save</button>
-                        <button type="button" class="btn btn-secondary custom-btn" data-dismiss="modal">Close</button>
+                    <div class="user-home">
+                        <label for="user postcode" class="form-label text-dark">Postcode</label>
+                        <input type="number" maxlength="4" class="form-control" id="userPostcodeInput">
+                        <div class="user-mail">
+                            <label for="user mail" class="form-label text-dark">Email Address</label>
+                            <input type="email" class="form-control" id="userEmailInput">
+                        </div>
+                        <div class="user-phone">
+                            <label for="user phone" class="form-label text-dark">Phone Number</label>
+                            <input type="number" class="form-control" id="userPhoneInput"
+                                oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                                maxlength="10">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary custom-btn" id="user-details">Save</button>
+                            <button type="button" class="btn btn-secondary custom-btn"
+                                data-dismiss="modal">Close</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -165,10 +176,12 @@
 
 
     <!-- Previously Viewed Page -->
-    <section id="previously-viewed-page" class="hide section-body">
-        <h2>You Previously Viewed:</h2>
+    <div id="pageReset">
+        <section id="previously-viewed-page" class="hide section-body">
+            <h2>You Previously Viewed:</h2>
 
-    </section>
+        </section>
+    </div>
 
 
     <!-- Choice Page -->
@@ -255,15 +268,28 @@
     </div>
 
     <!-- Chosen City Page -->
-    <section id="city-page" class="hide section-body">
-        <div class="col-12">
+    <div id="pageReset">
+        <div id="city-page" class="hide section-body page col-12 pageReset">
+            <!-- <div class="col-12"> -->
             <h2 class="title">Results:</h2>
+            <section class="weatherSection">
+                <!-- City's Weather Forecast -->
+                <div class="container-fluid forecast row-horizon row">
+                    <h4>This Week's Forecast</h4>
+                    <div class="container horizontal-scrollable row flex-row flex-nowrap card-deck">
+
+                    </div>
+                </div>
+            </section>
+
             <div id="hotels-container" class="list-group">
-                <!-- hotel cards -->
+                <!-- Hotel Cards -->
             </div>
 
+            <!-- </div> -->
         </div>
-    </section>
+    </div>
+
 
 
         <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
