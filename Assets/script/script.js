@@ -99,9 +99,6 @@ for (i = 0; i < coll.length; i++) {
 submitButton.addEventListener("click", function (event) {
 	event.preventDefault();
 	searchHotels();
-	// $('#select-options').css('display', 'none');
-	// $('#city-page').css('display', 'block');
-
 });
 
 
