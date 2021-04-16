@@ -43,6 +43,10 @@ h1 {
 }
 
 /* choice page */
+.custom-card-select {
+    margin: 5vh;
+    margin-top: 10vh;
+}
 /* Parameters */
 .parameter-question {
     font-weight: 600;
