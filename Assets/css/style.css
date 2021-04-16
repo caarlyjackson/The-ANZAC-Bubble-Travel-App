@@ -24,7 +24,14 @@ h1 {
     color: var(--white);
 }
 
-img{
+.logo-img1 {
+    display: block;
+    max-width: 25%;
+    max-height: 25%;
+    margin-left: 36%;
+}
+
+.logo-img2{
     display: block;
     max-width: 10%;
     max-height: 10%;
@@ -55,8 +62,8 @@ img{
 
 /* choice page */
 .custom-select-container {
-    margin-top: 5vh;
-    padding: 30px;
+    margin-top: 8vh;
+    padding: 40px;
     background-image: url(https://images.squarespace-cdn.com/content/v1/587860113e00be246e9fa173/1531278841877-MYEA4H1YBZ0VLR1LW55I/ke17ZwdGBToddI8pDm48kFQeQHikrO2sNCZ16cY9vUAUqsxRUqqbr1mOJYKfIPR7LoDQ9mXPOjoJoqy81S2I8PaoYXhp6HxIwZIk7-Mi3Tsic-L2IOPH3Dwrhl-Ne3Z2mAl5itlFjEswCFMjljE9Ypyqoh6NUrgRPTZR_Z5-OvXdZR9z9mxWb0yLUToVqwSd/new-zealand-north-island-cathedral-cove-amalia-bastos-travel-photography-aerial-drone-dji-phantom-4-coromandel.jpg);
     /* background-position: center center; */
     background-size: cover;
@@ -68,6 +75,8 @@ img{
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
     background-color: rgba(242, 242, 242, 0.64);
+    border-radius: 20px;
+    
 }
 
 /* Parameters */

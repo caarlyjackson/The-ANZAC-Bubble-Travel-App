@@ -23,7 +23,7 @@
     <!-- hero/ landing page -->
     <div class="hero">
         <div class="text-center position-absolute top-50 start-50 translate-middle">
-            <img class="hero-img" src="Assets\images\output-onlinepngtools.png">
+            <img class="logo-img1" src="Assets\images\output-onlinepngtools.png">
             <h1 class="hero-title ">ANZ TRAVEL <br>BUBBLE</h1>
             <button type="button" class="btn btn-dark custom-btn btn-lg">Lets Fly</button>
         </div>
@@ -34,7 +34,7 @@
     <section id="pageHeader" class="hide">
         <nav class="navbar navbar-dark bg-dark fixed-top" role="navigation">
             <div class="container-fluid">
-                <img class="navbar-brand " src="Assets\images\output-onlinepngtools.png">
+                <img class="navbar-brand logo-img2 " src="Assets\images\output-onlinepngtools.png">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -77,7 +77,7 @@
             <div class="card-body text-center">
                 <form>
                     <!-- Sort By -->
-                    <div id="parameter" style="text-align: left; padding: 15px 0 10px 0;">
+                    <div class="parameter" style="text-align: left; padding: 15px 0 10px 0;">
                         <p class=" parameter-question sort" style="text-align: left; font-size: smaller;">Sort By:</p>
                         <select id="sortOrder" class="form-control form-control-sm" style="font-size: smaller;">
                             <option value="priceMin" selected="selected">Price Min - Max</option>
@@ -88,13 +88,14 @@
 
                     <!-- Monthly Calendar TO BE ADDED IN -->
                     <!-- DatePicker form elements -->
-                    <p class="parameter-question">When would you like to travel?</p>
-                    <label for="checkIn">From: </label>
-                    <input type="text" id="checkIn" name="checkIn">
-                    <label for="checkOut">To: </label>
-                    <input type="text" id="checkOut" name="checkOut">
-
-                    <div id="parameter">
+                    <div class="parameter">
+                        <p class="parameter-question">When would you like to travel?</p>
+                        <label for="checkIn">From: </label>
+                        <input type="text" id="checkIn" name="checkIn">
+                        <label for="checkOut">To: </label>
+                        <input type="text" id="checkOut" name="checkOut">
+                    </div>
+                    <div class="parameter">
                         <!-- City Parameter -->
                         <p class="parameter-question">What city would you like to visit?</p>
                         <select id="loc" class="form-control form-control-sm">
@@ -111,7 +112,7 @@
                     </div>
 
                     <!-- Type of Accomodation Parameter -->
-                    <div id="parameter">
+                    <div class="parameter">
                         <p class="parameter-question">What type of accomodation would you like?</p>
                         <select class="form-control form-control-sm">
                             <option value="AllTypes" selected="selected">All Accomodation Types</option>
@@ -131,7 +132,7 @@
                     </div>
 
                     <!-- Price -->
-                    <div id="parameter">
+                    <div class="parameter">
                         <p class="parameter-question" style="text-align:left">Price:</p>
                         <select id="priceMin" class="form-control form-control-sm">
                             <option value="allPrices" selected="selected">All Prices</option>
@@ -145,7 +146,7 @@
                     </div>
 
                     <!-- Adults -->
-                    <div id="parameter">
+                    <div class="parameter">
                         <label class="parameter-question" style="text-align:left; text-indent: none;">Number of
                             Adults:</label><br>
                         <input type="number" id="adults1" name="adultInput" class="input" min="0" max="14"
@@ -154,18 +155,18 @@
 
 
                     <!-- More Parametres Button -->
-                    <button id="button-show" type="button" class="collapsible">More Options</button>
+                    <button id="button-show" type="button" class="collapsible bg-transparent">More Options</button>
                     <div class="content-perams">
 
                         <!-- Children -->
-                        <div id="parameter" style="padding-top: 30px;">
+                        <div class="parameter" style="padding-top: 30px;">
                             <label class="parameter-question" style="text-align:left">Number of Children:</label><br>
                             <input type="number" id="children1" name="childrenInput" class="input" min="0" max="14"
                                 placeholder="Insert Number">
                         </div>
 
                         <!-- Currency -->
-                        <div id="parameter">
+                        <div class="parameter">
                             <p class="parameter-question" style="text-align:left">Currency:</p>
                             <select id="currency" class="form-control form-control-sm">
                                 <option value="NZD" selected="selected">New Zealand Dollars</option>
@@ -253,7 +254,7 @@
                         </div>
 
                         <!-- Rating -->
-                        <div id="parameter">
+                        <div class="parameter">
                             <p class="parameter-question" style="text-align:left">Rating:</p>
                             <select id="guestRatingMin" class="form-control form-control-sm">
                                 <option value="one-star" selected="selected">5 Star</option>
@@ -265,7 +266,7 @@
                         </div>
 
                         <!-- More filters -->
-                        <div id="parameter">
+                        <div class="parameter">
                             <p class="parameter-question" style="text-align:left">More Filters:</p>
                             <div id="checkboxes" style="text-align: left;">
                                 <label for="zero">
