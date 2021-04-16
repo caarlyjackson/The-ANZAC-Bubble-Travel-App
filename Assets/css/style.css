@@ -4,6 +4,16 @@
     --dark:#181820 ;
     --mid:#8C8C8C ;
     --pop:#740404 ;
+    --modalWeight: 600;
+    --modalPadding: 14px;
+    --selectionWidth: 90%;
+}
+
+html, main, body {
+    margin: 0%;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
 }
 
 .show {
@@ -69,6 +79,11 @@ h1 {
     background-size: cover;
 }
 
+.form-label {
+    padding-top: var(--modalPadding);
+    font-weight: var(--modalWeight);
+}
+
 /* form card */
 .custom-card-select {
     display: flex;
@@ -81,9 +96,24 @@ h1 {
 
 /* Parameters */
 .parameter-question {
-    font-weight: 600;
+    font-weight: var(--modalWeight);
     margin-bottom: 5px;
-    width: 90%;
+    width: var(--selectionWidth);
+    padding-top: 5px;
+}
+
+.parameter-question-center {
+    text-align: center;
+}
+
+.parameter-question-left {
+    text-align: left;
+    text-indent: none;
+}
+
+.fromTo {
+    width: var(--selectionWidth);
+    align-content: center;
 }
 
 label {
@@ -92,7 +122,7 @@ label {
 }
 
 .input {
-    width: 90%;
+    width: var(--selectionWidth);
     display: block;
 }
 
@@ -156,9 +186,6 @@ input.box {
     margin-top: 20px;
     margin-bottom: 40px;
 }
-#nav-btn {
-    margin-top: 10px;
-}
 
 /* about us */
 .about::before {
@@ -171,4 +198,48 @@ input.box {
     background-position: center center;
     background-repeat: none;
     filter: contrast(70%) brightness(40%);
+}
+
+.modal-title {
+    color: black;
+    line-height: 1.1;
+}
+
+.modal-dialog {
+    padding: 15px;
+}
+
+h2 {
+    font-weight: 600;
+}
+
+.section-body {
+    padding:20px;
+}
+
+.btn-menu {
+    background-color: none !important;
+    border: none !important;
+    display: block !important;
+    margin-bottom: 5px !important;
+    color: white !important;
+    font-size: 16px !important;
+    font-weight: var(--modalWeight);
+    padding-left: 25px;
+}
+
+.close {
+    background-color: white !important;
+    border: none;
+}
+
+.btn-menu:active {
+    background-color: none !important;
+    color: var(--button);
+    border: none;
+    font-weight: 600;
+}
+
+.close:active {
+    color: var(--button);
 }
