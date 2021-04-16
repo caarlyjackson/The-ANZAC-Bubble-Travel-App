@@ -1,10 +1,9 @@
-* {
-    /* border: 0.5px solid black; */
-}
-
 :root {
-    --light: white;
-    --button: rgb(206, 0, 0);
+    --white: white;
+    --light:#E4E4EC ;
+    --dark:#181820 ;
+    --mid:#8C8C8C ;
+    --pop:#740404 ;
     --modalWeight: 600;
     --modalPadding: 14px;
     --selectionWidth: 90%;
@@ -25,10 +24,31 @@ html, main, body {
     display: none;
 }
 
-h1 {
-    color: var(--light);
+/*placed here to prevent overflow  */
+body {
+    max-width: 100%;
+    max-height: 100%;
 }
 
+h1 {
+    color: var(--white);
+}
+
+.logo-img1 {
+    display: block;
+    max-width: 25%;
+    max-height: 25%;
+    margin-left: 36%;
+}
+
+.logo-img2{
+    display: block;
+    max-width: 10%;
+    max-height: 10%;
+    margin-left: 45%;
+}
+    
+    
 /* landing page and hero  */
 .hero {
     position: relative;
@@ -47,7 +67,16 @@ h1 {
 }
 
 .custom-btn {
-    background-color: var(--button) ;
+    background-color: var(--pop) ;
+}
+
+/* choice page */
+.custom-select-container {
+    margin-top: 8vh;
+    padding: 40px;
+    background-image: url(https://images.squarespace-cdn.com/content/v1/587860113e00be246e9fa173/1531278841877-MYEA4H1YBZ0VLR1LW55I/ke17ZwdGBToddI8pDm48kFQeQHikrO2sNCZ16cY9vUAUqsxRUqqbr1mOJYKfIPR7LoDQ9mXPOjoJoqy81S2I8PaoYXhp6HxIwZIk7-Mi3Tsic-L2IOPH3Dwrhl-Ne3Z2mAl5itlFjEswCFMjljE9Ypyqoh6NUrgRPTZR_Z5-OvXdZR9z9mxWb0yLUToVqwSd/new-zealand-north-island-cathedral-cove-amalia-bastos-travel-photography-aerial-drone-dji-phantom-4-coromandel.jpg);
+    /* background-position: center center; */
+    background-size: cover;
 }
 
 .form-label {
@@ -55,16 +84,14 @@ h1 {
     font-weight: var(--modalWeight);
 }
 
-header {
-    display: block;
-    width: 100%;
-    height: 40px;
-    background-color: var(--button);
-}
-
-.header-title {
-    padding-top: 7px;
-    text-align: center;
+/* form card */
+.custom-card-select {
+    display: flex;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    background-color: rgba(242, 242, 242, 0.64);
+    border-radius: 20px;
+    
 }
 
 /* Parameters */
@@ -82,15 +109,6 @@ header {
 .parameter-question-left {
     text-align: left;
     text-indent: none;
-}
-
-#select-options {
-    width: 100%;
-    position: absolute;
-    text-align: center;
-    padding-bottom: 30px;
-    margin-left: 5%;
-    margin-right: 5%;
 }
 
 .fromTo {
@@ -141,10 +159,10 @@ select {
 }
 
 input.box {
-      margin-right: 5px;
+    margin-right: 5px;
 }
 
-.content {
+.content-perams {
     display: none;
     overflow: hidden;
     transition: max-height 0.2s ease-out;
@@ -160,7 +178,7 @@ input.box {
 
 .submit-one {
     margin: 20px;
-    background-color: var(--button);
+    background-color: var(--pop);
 }
 
 /* nav collapse */

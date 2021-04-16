@@ -499,11 +499,12 @@ function getReviewsList() {
 			"x-rapidapi-host": "hotels4.p.rapidapi.com"
 		}
 	})
-		.then(response => {
-			console.log(response);
-		})
-		.catch(err => {
-			console.error(err);
+	
+	.then(response => {
+		console.log(response);
+	})
+	.catch(err => {
+		console.error(err);
 
-		});
+	});
 }
