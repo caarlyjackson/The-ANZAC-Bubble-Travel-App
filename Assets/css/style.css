@@ -71,10 +71,12 @@ h1 {
     background-color: var(--pop) ;
 }
 
+
 /* choice page */
 .custom-select-container {
     margin-top: 8vh;
     padding: 40px;
+    padding-bottom: 60px;
     background-image: url(https://images.squarespace-cdn.com/content/v1/587860113e00be246e9fa173/1531278841877-MYEA4H1YBZ0VLR1LW55I/ke17ZwdGBToddI8pDm48kFQeQHikrO2sNCZ16cY9vUAUqsxRUqqbr1mOJYKfIPR7LoDQ9mXPOjoJoqy81S2I8PaoYXhp6HxIwZIk7-Mi3Tsic-L2IOPH3Dwrhl-Ne3Z2mAl5itlFjEswCFMjljE9Ypyqoh6NUrgRPTZR_Z5-OvXdZR9z9mxWb0yLUToVqwSd/new-zealand-north-island-cathedral-cove-amalia-bastos-travel-photography-aerial-drone-dji-phantom-4-coromandel.jpg);
     /* background-position: center center; */
     background-size: cover;
@@ -266,7 +268,7 @@ h2 {
         margin-top: 8vh;
         padding: 40px;
         background-image: url(https://www.nelsontasman.nz/assets/ProductImages/Awaroa-Estuary-5-credit-Abel-Tasman-AquaTaxi.jpg);
-        min-height: 110vh;
+        min-height: 105vh;
     }
 
 }
