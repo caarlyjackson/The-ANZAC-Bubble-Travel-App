@@ -34,6 +34,14 @@ h1 {
     color: var(--white);
 }
 
+input {
+    border-radius: 9px;
+    border: none;
+    background-color: var(--white);
+    -moz-box-shadow:    inset 0 0 4px #686868;
+   -webkit-box-shadow: inset 0 0 4px #686868;
+   box-shadow:         inset 0 0 4px #686868;
+}
 .logo-img1 {
     display: block;
     max-width: 25%;
@@ -48,7 +56,6 @@ h1 {
     margin-left: 45%;
 
 }
-    
     
 /* landing page and hero  */
 .hero {
