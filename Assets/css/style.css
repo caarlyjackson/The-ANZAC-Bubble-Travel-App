@@ -250,4 +250,11 @@ h2 {
     .logo-img2{
         margin-left: 2%;
     }
+
+    .collapse-custom {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        margin-left: 60%;
+    }
+
 }
