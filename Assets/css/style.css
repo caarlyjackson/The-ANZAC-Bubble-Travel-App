@@ -43,9 +43,10 @@ h1 {
 
 .logo-img2{
     display: block;
-    max-width: 10%;
-    max-height: 10%;
+    max-width: 70px;
+    max-height: 70px;
     margin-left: 45%;
+
 }
     
     
@@ -242,4 +243,11 @@ h2 {
 
 .close:active {
     color: var(--button);
+}
+
+/* media quiery for choice page */
+@media only screen and (min-width: 992px) {
+    .logo-img2{
+        margin-left: 2%;
+    }
 }
