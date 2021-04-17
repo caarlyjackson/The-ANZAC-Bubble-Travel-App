@@ -257,4 +257,16 @@ h2 {
         margin-left: 60%;
     }
 
+    .custom-card-select {
+        margin: 2% 20% 0 20%;
+
+    }
+
+    .custom-select-container {
+        margin-top: 8vh;
+        padding: 40px;
+        background-image: url(https://www.nelsontasman.nz/assets/ProductImages/Awaroa-Estuary-5-credit-Abel-Tasman-AquaTaxi.jpg);
+        min-height: 110vh;
+    }
+
 }
