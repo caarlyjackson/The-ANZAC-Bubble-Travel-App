@@ -94,6 +94,7 @@ h1 {
     backdrop-filter: blur(10px);
     background-color: rgba(242, 242, 242, 0.64);
     border-radius: 20px;
+    border: none;
     
 }
 
