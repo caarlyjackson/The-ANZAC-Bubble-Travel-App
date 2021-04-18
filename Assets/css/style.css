@@ -34,6 +34,11 @@ h1 {
     color: var(--white);
 }
 
+h4 {
+    position: relative;
+    padding-top: 10%;
+}
+
 .logo-img1 {
     display: block;
     max-width: 25%;
@@ -200,6 +205,7 @@ input.box {
     filter: contrast(70%) brightness(40%);
 }
 
+/* Modals */
 .modal-title {
     color: black;
     line-height: 1.1;
@@ -242,4 +248,71 @@ h2 {
 
 .close:active {
     color: var(--button);
+}
+
+.btn-secondary {
+    margin-top: 10px;
+}
+
+/* Weather Cards */
+
+.row {
+    margin: 0%;
+}
+
+.flex-nowrap {
+    -webkit-flex-wrap: nowrap!important;
+    -ms-flex-wrap: nowrap!important;
+}
+
+.flex-row {
+    display:flex;
+    -webkit-box-orient: horizontal!important;
+    -webkit-box-direction: normal!important;
+    -webkit-flex-direction: row!important;
+    -ms-flex-direction: row!important;
+    flex-direction: row!important;
+    overflow-x: auto;
+}
+
+/* Custom Style */
+.container {
+    margin-right: 5%;
+    padding: 5px;
+}
+
+.weather-card {
+    min-width: 110px !important;
+    max-width: 150px !important;
+    margin: 5px 10px 5px 10px;
+    padding: 8px;
+    border: 1px;
+    border-radius: 3px;
+    border-color: black;
+    display: inline-block;
+    float: none;
+}
+
+.date {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.icon {
+    width: 70%;
+    padding: 0;
+    margin: -10px;
+}
+
+.description-info {
+    font-family: -apple-system, Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    margin: 2px;
+}
+
+.weather-info {
+    font-family: -apple-system, Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    padding: 0;
+    margin: 2px;
 }
