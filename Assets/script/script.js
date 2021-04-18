@@ -591,5 +591,6 @@ submitUserDetails.addEventListener("click", function (event) {
 
 function init() {
 	saveUserDetails();
+	renderLastUser();
 }
 init();
