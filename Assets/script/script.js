@@ -3,6 +3,10 @@ var heroButton = document.querySelector(".custom-btn");
 var landingPage = document.querySelector(".hero");
 //small header
 var smallHeader = document.querySelector("#pageHeader");
+
+//footer
+var smallFooter = document.querySelector("#page-footer");
+
 //initial select page
 var selectPage = document.querySelector("#select-options");
 var checkInDate;
@@ -39,6 +43,7 @@ heroButton.addEventListener("click", function () {
 	landingPage.style.display = "none";
 	selectPage.style.display = "block";
 	smallHeader.style.display = "block";
+	smallFooter.style.display = "block";
 
 });
 
