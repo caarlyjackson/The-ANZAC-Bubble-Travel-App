@@ -131,7 +131,6 @@ function inputCheck() {
 		$("#inputErrorModal").modal();
 	}
 	else {
-		console.log(document.getElementById("adults1").value);
 		searchHotels();
 	}
 }
