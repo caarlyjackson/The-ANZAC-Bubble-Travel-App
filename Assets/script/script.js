@@ -16,6 +16,7 @@ var returnToSearchPage = document.querySelector("#returnToSearch-btn");
 var searchPageViewAgain = document.querySelector("#pageReset")
 //city searched page
 var cityPage = document.querySelector("#city-page");
+var marginPart = document.querySelector("#marginPart");
 //about us page
 var aboutUsButton = document.querySelector("#about-us-btn");
 var aboutUsPage = document.querySelector("#aboutUsPage");
@@ -44,11 +45,12 @@ heroButton.addEventListener("click", function () {
 	selectPage.style.display = "block";
 	smallHeader.style.display = "block";
 	smallFooter.style.display = "block";
-
+	marginPart.style.display = "none";
 });
 
 aboutUsButton.addEventListener("click", function () {
 	aboutUsPage.style.display = "block";
+	marginPart.style.display = "none";
 });
 
 // previouslyViewedButton.addEventListener("click", function () {
@@ -60,6 +62,7 @@ returnToSearchPage.addEventListener("click", function (event) {
 	event.preventDefault();
 	selectPage.style.display = "block";
 	searchPageViewAgain.style.display = "none";
+	marginPart.style.display = "none";
 });
 
 // Date Picker
@@ -135,6 +138,7 @@ function inputCheck() {
 function searchHotels() {
 	$('#select-options').css('display', 'none');
 	$('#city-page').css('display', 'block');
+	$('#marginPart').css('display', 'block');
 
 	//searches hotels in city by city code obtained above
 	//Need to match user selection to reponse value to obtain hotel code for the below
@@ -278,7 +282,7 @@ function searchHotels() {
 
 
 				var hotelNameEL = document.createElement('h5');
-				hotelNameEL.classList = 'card-title text-center';
+				hotelNameEL.classList = 'card-title-main text-center';
 				hotelNameEL.textContent = data.data.body.searchResults.results[i].name //hotel name 
 					;
 
@@ -299,7 +303,7 @@ function searchHotels() {
 
 				var hotelPriceEL = document.createElement('p');
 				hotelPriceEL.classList = 'card-text';
-				hotelPriceEL.textContent = 'current cost per night is USD$ ' + data.data.body.searchResults.results[i].ratePlan.price.exactCurrent //+ currency //hotel price
+				hotelPriceEL.textContent = 'Current cost per night is USD$' + data.data.body.searchResults.results[i].ratePlan.price.exactCurrent //+ currency //hotel price
 					;
 
 				var hotelRatingEL = document.createElement('p');
@@ -321,63 +325,63 @@ function searchHotels() {
 				hotelBodyEL.appendChild(hotelRatingEL);
 			}
 		});
-	
 
-				var searchInputLocEl = document.querySelector("#loc");
-				var city;
-				var loc = searchInputLocEl.value;
-				
-					switch (loc) {
-				
-						case "Select City":
-							// Needs error handling
-							console.log("ERROR")
-							return;
-						case "950540":
-							city = "Auckland";
-							break;
-						case "1636970":
-							city = "Christchurch";
-							break;
-						case "950155":
-							city = "Nelson";
-							break;
-						case "1640249":
-							city = "Northland";
-							break;
-						case "1633614":
-							city = "Queenstown";
-							break;
-						case "1633616":
-							city = "Rotorua";
-							break;
-						case "950424":
-							city = "Southland";
-							break;
-						case "951308":
-							city = "Wellington";
-							break;
-					}
-					getUrl(city);
-				};
-				
-				// Retrieve Forecast API
-				function getUrl(city) {
-					var ApiKey = "510c27e4545e6077957004db2b092e1f";
-					var requestUrl = "https://api.openweathermap.org/data/2.5/forecast?q=";
-					var queryUrl = requestUrl + city + "&appid=" + ApiKey + "&units=metric";
-				
-					fetch(queryUrl)
-						.then(function (response) {
-							return response.json();
-						}).then(function (data) {
-							fiveDayForecastData(data);
-						})
-						.catch(function (error) {
-							console.log(error);
-						})
-			
-	};
+
+	var searchInputLocEl = document.querySelector("#loc");
+	var city;
+	var loc = searchInputLocEl.value;
+
+	switch (loc) {
+
+		case "Select City":
+			// Needs error handling
+			console.log("ERROR")
+			return;
+		case "950540":
+			city = "Auckland";
+			break;
+		case "1636970":
+			city = "Christchurch";
+			break;
+		case "950155":
+			city = "Nelson";
+			break;
+		case "1640249":
+			city = "Northland";
+			break;
+		case "1633614":
+			city = "Queenstown";
+			break;
+		case "1633616":
+			city = "Rotorua";
+			break;
+		case "950424":
+			city = "Southland";
+			break;
+		case "951308":
+			city = "Wellington";
+			break;
+	}
+	getUrl(city);
+};
+
+// Retrieve Forecast API
+function getUrl(city) {
+	var ApiKey = "510c27e4545e6077957004db2b092e1f";
+	var requestUrl = "https://api.openweathermap.org/data/2.5/forecast?q=";
+	var queryUrl = requestUrl + city + "&appid=" + ApiKey + "&units=metric";
+
+	fetch(queryUrl)
+		.then(function (response) {
+			return response.json();
+		}).then(function (data) {
+			fiveDayForecastData(data);
+		})
+		.catch(function (error) {
+			console.log(error);
+		})
+
+};
 
 // Retrieve Forecast API
 function getUrl(city) {

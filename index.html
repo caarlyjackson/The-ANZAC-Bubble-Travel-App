@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
     <!-- JQuery: -->
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
-    <!-- jquery (search hotel) -->
+    <!-- JQuery (search hotel) -->
     <script src="https://code.jquery.com/jquery-3.6.0.slim.js"
         integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
     <!-- Custom CSS: -->
@@ -46,7 +46,7 @@
                     <ul class="nav navbar-nav collapse-custom">
 
                         <li class="nav-item">
-                          
+
                             <button id="returnToSearch-btn" type="button" class="btn-menu bg-dark"
                                 data-target="#select-options">
                                 Search Hotels
@@ -102,7 +102,7 @@
                 </div>
                 <div class="modal-body">
                     <!-- About App Body Content -->
-                    <h2>The App</h2>
+                    <h2 class="subtitle">The App</h2>
                     <p>In light of the new travel bubble between Australia and New Zealand, we hope to make
                         your next trip to NZ easier. Simply input your desired location and any other necessary
                         details and we'll show you accommodation within the area.
@@ -111,7 +111,7 @@
                     </p>
                     <br />
                     <!-- About Team -->
-                    <h2>About Us</h2>
+                    <h2 class="subtitle">About Us</h2>
                     <p>We're a team of four full-stack developers in training.</p>
                 </div>
                 <div class="modal-footer">
@@ -203,7 +203,8 @@
 
                     <!-- City -->
                     <div class="parameter">
-                        <label class="parameter-question parameter-question-center">What city would you like to
+                        <label class="parameter-question parameter-question-center">What city would you like
+                            to
                             visit?</label>
                         <select id="loc" class="form-control form-control-sm">
                             <option>Select City</option>
@@ -218,11 +219,9 @@
                         </select>
                     </div>
 
-                    <br>
-
                     <!-- Price -->
                     <div class="parameter">
-                        <label class="parameter-question parameter-question-left">Price:</label>
+                        <label class="parameter-question parameter-question-left label-neg">Price:</label>
                         <select id="priceMin" class="form-control form-control-sm">
                             <option value="allPrices" selected="selected">All Prices</option>
                             <option value="fifty">NZD$0-50</option>
@@ -236,7 +235,7 @@
 
                     <!-- Adults -->
                     <div class="parameter">
-                        <label class="parameter-question parameter-question-left">Number of
+                        <label class="parameter-question parameter-question-left label-neg">Number of
                             Adults:</label><br>
                         <input type="number" id="adults1" name="adultInput" class="input form-control-sm" min="0"
                             max="14" placeholder="Insert Number">
@@ -251,42 +250,51 @@
     </div>
 
     <!-- Chosen City Page -->
-    <div id="pageReset">
-        <div id="city-page" class="hide section-body page col-12 pageReset">
-            <h2 class="title">Results:</h2>
-            <section class="weatherSection">
-                <!-- City's Weather Forecast -->
-                <div class="container-fluid forecast row-horizon row">
-                    <h4>This Week's Forecast</h4>
-                    <div class="container horizontal-scrollable row flex-row flex-nowrap card-deck">
+    <main id="marginPart" class="hide">
+        <div id="pageReset">
+            <div id="city-page" class="hide section-body page col-12 pageReset">
+                <h2 class="title">Results:</h2>
+                <section class="weatherSection">
+                    <!-- City's Weather Forecast -->
+                    <div class="container-fluid forecast row-horizon row">
+                        <h4>This Week's Forecast</h4>
+                        <div class="container horizontal-scrollable row flex-row flex-nowrap card-deck">
+                        </div>
+                    </div>
+                </section>
+                <!-- Hotel Cards
+            <div id="hotels-container" class="list-group"></div>
+        </div>
+    </div> -->
+
+                <!-- Hotel Cards -->
+                <div>
+                    <ul class="cards">
+                        <li id="hotels-container" class="list-group"></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal -->
+        <div id="inputErrorModal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Input Error</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <p id="errorMsg">.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary custom-btn" data-dismiss="modal">Close</button>
                     </div>
                 </div>
-            </section>
-            <!-- Hotel Cards -->
-            <div id="hotels-container" class="list-group">
             </div>
         </div>
-    </div>
-
-    <!-- Modal -->
-    <div id="inputErrorModal" class="modal fade" role="dialog">
-        <div class="modal-dialog">
-            <!-- Modal content -->
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Input Error</h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-                <div class="modal-body">
-                    <p id="errorMsg">.</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary custom-btn" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
+    </main>
 
     <!-- JQuery: -->
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
