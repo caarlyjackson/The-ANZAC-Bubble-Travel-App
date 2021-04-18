@@ -300,7 +300,7 @@ function searchHotels() {
 
 				var hotelAddEL = document.createElement('h5');
 				hotelAddEL.classList = 'card-title text-center';
-				hotelAddEL.textContent = data.data.body.searchResults.results[i].streetaddress + ',' + data.data.doby.searchResults.results[i].locality + ',' + data.data.doby.searchResults.results[i].postalCode //address
+				hotelAddEL.textContent = data.data.body.searchResults.results[i].streetaddress + ',' + data.data.body.searchResults.results[i].locality + ',' + data.data.body.searchResults.results[i].postalCode //address
 					;
 
 				var hotelCityEl = document.createElement('h6');
