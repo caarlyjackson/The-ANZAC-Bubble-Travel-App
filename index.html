@@ -7,16 +7,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The ANZ Bubble Travel App</title>
 
-    <!-- bootstrap -->
+    <!-- Bootstrap: -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
-
-    <!-- jquery -->
+        integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <!-- Bootstrap: -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
+    <!-- JQuery: -->
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
-
-    <!-- custom css -->
+    <!-- jquery (search hotel) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.js"
+        integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
+    <!-- Custom CSS: -->
     <link rel="stylesheet" type="text/css" href="Assets\css\style.css" />
-
 </head>
 
 <body>
@@ -72,10 +74,12 @@
 
                         <li class="nav-item ">
                             <!-- Previously Viewed Page Button -->
-                            <button type="button" data-target="#previously-viewed-page" id="previouslyViewedBtn"
+
+<!--                             <button type="button" data-target="#previously-viewed-page" id="previouslyViewedBtn"
                                 href="#previously-viewed-page" class="btn-menu bg-dark">
                                 Previously Viewed By You
-                            </button>
+                            </button> -->
+
                         </li>
                     </ul>
                 </div>
@@ -130,69 +134,54 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <!-- USER NAME -->
-                    <div class="user-name">
+                    <form id="user-details" class="mb-2">
                         <label for="user name" class="form-label text-dark">Name</label>
                         <input type="name" class="form-control" id="userNameInput">
-                    </div>
-                    <div class="user-home">
                         <label for="user home" class="form-label text-dark">Home City</label>
                         <input type="text" class="form-control" id="userHomeInput">
-                    </div>
-                    <div class="user-home">
                         <label for="user postcode" class="form-label text-dark">Postcode</label>
                         <input type="number" maxlength="4" class="form-control" id="userPostcodeInput">
-                        <div class="user-mail">
-                            <label for="user mail" class="form-label text-dark">Email Address</label>
-                            <input type="email" class="form-control" id="userEmailInput">
-                        </div>
-                        <div class="user-phone">
-                            <label for="user phone" class="form-label text-dark">Phone Number</label>
-                            <input type="number" class="form-control" id="userPhoneInput"
-                                oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-                                maxlength="10">
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary custom-btn" id="user-details">Save</button>
-                            <button type="button" class="btn btn-secondary custom-btn"
-                                data-dismiss="modal">Close</button>
-                        </div>
-                    </div>
+                        <label for="user mail" class="form-label text-dark">Email Address</label>
+                        <input type="email" class="form-control" id="userEmailInput">
+                        <label for="user phone" class="form-label text-dark">Phone Number</label>
+                        <input type="number" class="form-control" id="userPhoneInput">
+                        <button type="button" class="btn btn-info btn-secondary custom-btn">Submit</button>
+                        <button type="button" class="btn btn-secondary custom-btn" data-dismiss="modal">Close</button>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
 
-
-    <!-- Previously Viewed Page -->
+    <!-- Previously Viewed Page
     <div id="pageReset">
         <section id="previously-viewed-page" class="hide section-body">
             <h2>You Previously Viewed:</h2>
 
         </section>
-    </div>
+    </div> -->
 
 
     <!-- Choice Page -->
     <div id="select-options" class="container-fluid custom-select-container hide">
 
-        <div  class="card p-4 custom-card-select ">
+        <div class="card p-4 custom-card-select ">
 
             <div class="card-head mt-4 text-center">
                 <h2>Accomodation finder</h2>
             </div>
 
-            <!-- Sort By -->         
+            <!-- Sort By -->
             <div class="card-body text-center">
                 <form>
                     <!-- Sort By -->
                     <div class="parameter" style="text-align: left; padding: 15px 0 10px 0;">
                         <p class=" parameter-question sort" style="text-align: left; font-size: smaller;">Sort By:</p>
-
                         <select id="sortOrder" class="form-control form-control-sm" style="font-size: smaller;">
-                            <option value="priceMin" selected="selected">Price Min - Max</option>
-                            <option value="guestRatingMinToMax">Rating Lowest - Highest</option>
-                            <option value="guestRatingMaxToMin">Rating Highest - Lowest</option>
+                            <option value="PRICE" selected="selected">Price Min - Max</option>
+                            <option value="STAR_RATING_HIGHEST_FIRST">Rating Highest - Lowest</option>
+                            <option value="STAR_RATING_LOWEST_FIRST">Rating Lowest - Highest</option>
+                            <option value="BEST_SELLER">Best Sellers</option>
                         </select>
                     </div>
 
@@ -250,7 +239,7 @@
 
                     <!-- Submit Button -->
                     <input id="submit-user-choices" type="submit" class="submit-one btn-lg btn btn-dark">
-        
+
                 </form>
             </div>
         </div>
@@ -275,7 +264,6 @@
                 <div class="container-fluid forecast row-horizon row">
                     <h4>This Week's Forecast</h4>
                     <div class="container horizontal-scrollable row flex-row flex-nowrap card-deck">
-
                     </div>
                 </div>
             </section>
@@ -288,16 +276,39 @@
         </div>
     </div>
 
-    <!-- jquiery -->
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-    <!-- bootsrap jquiery -->
+
+    <!-- Modal -->
+    <div id="inputErrorModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content -->
+            <div class="modal-content">
+                <div class="modal-header">
+
+                    <h4 class="modal-title">Input Error</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p id="errorMsg">.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary custom-btn" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JQuery: -->
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <!-- JQueryUI: -->
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <!-- MomentJS: -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
+    <!-- Bootsrap JQuiery: -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
-    
-    <!-- js -->
+    <!-- CustomJS: -->
     <script src="Assets\script\script.js"></script>
 
 </body>
