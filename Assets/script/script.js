@@ -16,9 +16,22 @@ var cityPage = document.querySelector("#city-page");
 var aboutUsButton = document.querySelector("#about-us-btn");
 var aboutUsPage = document.querySelector("#aboutUsPage");
 //previously viewed button
-var previouslyViewedButton = document.querySelector("#previouslyViewedBtn");
-var previouslyViewedPage = document.querySelector("#previously-viewed-page");
-var prevPageShow = document.querySelector(".page");
+// var previouslyViewedButton = document.querySelector("#previouslyViewedBtn");
+// var previouslyViewedPage = document.querySelector("#previously-viewed-page");
+// var prevPageShow = document.querySelector(".page");
+// USER DETAILS
+// var userDetailsBtn = document.getElementById("user-details");
+var submitUserDetails = document.querySelector("#user-details");
+var userNameEl = document.querySelector("#userNameInput");
+var userHomeEl = document.querySelector("#userHomeInput");
+var userPostcodeEl = document.querySelector("#userPostcodeInput");
+var userEmailEl = document.querySelector("#userEmailInput");
+var userMobileEl = document.querySelector("#userPhoneInput");
+var userName;
+var userHome;
+var userPostcode;
+var userEmail;
+var userMobile;
 
 
 // Page change buttons
@@ -33,10 +46,10 @@ aboutUsButton.addEventListener("click", function () {
 	aboutUsPage.style.display = "block";
 });
 
-previouslyViewedButton.addEventListener("click", function () {
-	previouslyViewedPage.style.display = "block";
-	prevPageShow.style.display = "none";
-});
+// previouslyViewedButton.addEventListener("click", function () {
+// 	previouslyViewedPage.style.display = "block";
+// 	prevPageShow.style.display = "none";
+// });
 
 returnToSearchPage.addEventListener("click", function (event) {
 	event.preventDefault();
@@ -580,3 +593,55 @@ function getReviewsList() {
 
 		});
 }
+
+// User Details
+function saveUserDetails() {
+	if (userNameEl.value === null) {
+		submitUserDetails.disabled = true;
+	} else {
+		userName = userNameEl.value;
+	}
+
+	//
+	var userDetails = {
+		userName: userNameEl.value,
+		userHome: userHomeEl.value,
+		userPostcode: userPostcodeEl.value,
+		userEmail: userEmailEl.value,
+		userMobile: userMobileEl.value
+	};
+
+	// console.log(userName);
+	// console.log(userHome);
+	// console.log(userPostcode);
+	// console.log(userEmail);
+	// console.log(userMobile);
+
+	localStorage.setItem("userDetails", JSON.stringify(userDetails));
+}
+
+function renderLastUser() {
+	var lastUser = JSON.parse(localStorage.getItem("userDetails"));
+
+	if (lastUser !== null) {
+		document.getElementById("userNameInput").innerHTML = lastUserName.userName;
+		document.getElementById("userHomeInput").innerHTML = lastHomeAddress.userHome;
+		document.getElementById("userPostcodeInput").innerHTML = lastPostcode.userPostcode;
+		document.getElementById("userEmailInput").innerHTML = lastEmail.userEmail;
+		document.getElementById("userPhoneInput").innerHTML = lastMobile.userMobile;
+	} else {
+		return;
+	}
+}
+
+submitUserDetails.addEventListener("click", function (event) {
+	event.preventDefault();
+	saveUserDetails();
+	renderLastUser();
+});
+
+function init() {
+	saveUserDetails();
+	renderLastUser();
+}
+init();
