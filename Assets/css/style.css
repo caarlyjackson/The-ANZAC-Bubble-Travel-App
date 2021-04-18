@@ -16,6 +16,7 @@ html, main, body {
     overflow-x: hidden;
 }
 
+/* Display class */
 .show {
     display: block;
 }
@@ -34,16 +35,9 @@ h1 {
     color: var(--white);
 }
 
-
-input {
-    border-radius: 9px;
-    border: none;
-    background-color: var(--white);
-}
-
 h4 {
     position: relative;
-    padding-top: 10%;
+    padding-top: 7%;
 }
 
 
@@ -62,12 +56,13 @@ h4 {
 
 }
     
-/* landing page and hero  */
+/* Landing Page & Hero  */
 .hero {
     position: relative;
     width: 100vw;
     height: 100vh;
 }
+
 .hero::before {
     content: "";
     position: absolute;
@@ -84,7 +79,32 @@ h4 {
 }
 
 
-/* choice page */
+/* Input Form */
+input {
+    border-radius: .2rem;
+    border: var(--darkBorder);
+    border-width: 1px;
+    background-color: var(--white);
+}
+
+.input {
+    width: var(--selectionWidth);
+    display: block;
+    border: var(--darkBorder);
+    border-width: 1px;
+}
+
+.form-control-sm,
+select {
+    width: 90%;
+    border: var(--darkBorder) !important;
+    border-width: 1px;
+}
+
+select {
+    text-align: center;
+}
+
 .custom-select-container {
     margin-top: 8vh;
     padding: 40px;
@@ -99,7 +119,7 @@ h4 {
     font-weight: var(--modalWeight);
 }
 
-/* form card */
+/* Form Card */
 .custom-card-select {
     display: flex;
     -webkit-backdrop-filter: blur(10px);
@@ -137,18 +157,8 @@ label {
     padding: 0;
 }
 
-.input {
-    width: var(--selectionWidth);
-    display: block;
-}
-
-select {
-    text-align: center;
-}
-
 #sortOrder {
-    width: 40%;
-    /* display: block; */
+    width: 30%;
 }
 
 .sort {
@@ -159,11 +169,6 @@ select {
 #sortOrder {
     display: inline-block;
     justify-items:left;
-}
-
-.form-control-sm {
-    width: 90%;
-    border-color: rgb(73, 73, 73);
 }
 
 .parameter {
@@ -197,13 +202,13 @@ input.box {
     background-color: var(--pop);
 }
 
-/* nav collapse */
+/* Nav Collapse */
 .collapse-custom {
     margin-top: 20px;
     margin-bottom: 40px;
 }
 
-/* about us */
+/* About Us */
 .about::before {
     content: "";
     position: absolute;
@@ -289,6 +294,27 @@ h2 {
 
 .btn-secondary {
     margin-top: 10px;
+}
+}
+
+@media only screen and (max-width: 600px) {
+#sortOrder {
+    width: 50%;
+}
+
+h4 {
+    padding-top: 10%;
+}
+}
+
+@media only screen and (max-width: 550px) {
+    input {
+        margin: 5px;
+    }
+
+    .to {
+        display: block;
+    }
 }
 
 /* Weather Cards */

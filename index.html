@@ -46,8 +46,7 @@
                     <ul class="nav navbar-nav collapse-custom">
 
                         <li class="nav-item">
-
-
+                          
                             <button id="returnToSearch-btn" type="button" class="btn-menu bg-dark"
                                 data-target="#select-options">
                                 Search Hotels
@@ -55,7 +54,7 @@
 
                         </li>
 
-                        <li class="nav-item ">
+                        <li class="nav-item">
                             <!-- About Modal Button -->
                             <button id="about-us-btn" type="button" class="btn-menu bg-dark" data-toggle="modal"
                                 data-target="#AboutUsModal">
@@ -64,7 +63,7 @@
 
                         </li>
 
-                        <li class="nav-item ">
+                        <li class="nav-item">
                             <!-- User Details Modal Button -->
                             <button id="user-details-btn" type="button" class="btn-menu bg-dark" data-toggle="modal"
                                 data-target="#userDetailsModal">
@@ -72,10 +71,10 @@
                             </button>
                         </li>
 
-                        <li class="nav-item ">
+                        <li class="nav-item">
                             <!-- Previously Viewed Page Button -->
-
-                            <!--                             <button type="button" data-target="#previously-viewed-page" id="previouslyViewedBtn"
+                            <!-- <button type="button" data-target="#previously-viewed-page" id="previouslyViewedBtn"
+                            <!-- <button type="button" data-target="#previously-viewed-page" id="previouslyViewedBtn"
                                 href="#previously-viewed-page" class="btn-menu bg-dark">
                                 Previously Viewed By You
                             </button> -->
@@ -83,6 +82,7 @@
                         </li>
                     </ul>
                 </div>
+            </div>
         </nav>
     </section>
 
@@ -168,7 +168,7 @@
         <div class="card p-4 custom-card-select ">
 
             <div class="card-head mt-4 text-center">
-                <h2>Accomodation finder</h2>
+                <h2>Accomodation Finder</h2>
             </div>
 
             <!-- Sort By -->
@@ -176,30 +176,35 @@
                 <form>
                     <!-- Sort By -->
                     <div class="parameter" style="text-align: left; padding: 15px 0 10px 0;">
-                        <p class=" parameter-question sort" style="text-align: left; font-size: smaller;">Sort By:</p>
+                        <label class=" parameter-question sort" style="text-align: left; font-size: smaller;">Sort
+                            By:</label>
                         <select id="sortOrder" class="form-control form-control-sm" style="font-size: smaller;">
                             <option value="PRICE" selected="selected">Price Min - Max</option>
-                            <option value="STAR_RATING_HIGHEST_FIRST">Rating Highest - Lowest</option>
-                            <option value="STAR_RATING_LOWEST_FIRST">Rating Lowest - Highest</option>
+                            <option value="GUEST_RATING">Guest Rating</option>
                             <option value="BEST_SELLER">Best Sellers</option>
                         </select>
                     </div>
 
-                    <br>
-
-                    <!-- Monthly Calendar TO BE ADDED IN -->
                     <!-- DatePicker form elements -->
-                    <p class="parameter-question parameter-question-center">When would you like to travel?</p>
-                    <div class="fromTo">
-                        <label for="checkIn">From: </label>
-                        <input type="text" id="checkIn" name="checkIn">
-                        <label for="checkOut">To: </label>
-                        <input type="text" id="checkOut" name="checkOut">
+                    <div class="parameter">
+                        <label class="parameter-question parameter-question-center">When would you like to
+                            travel?</label>
+                        <div class="fromTo">
+                            <div class="from">
+                                <label for="checkIn">From: </label>
+                                <input type="text" id="checkIn" name="checkIn">
+                            </div>
+                            <div class="to">
+                                <label for="checkOut">To: </label>
+                                <input type="text" id="checkOut" name="checkOut">
+                            </div>
+                        </div>
                     </div>
 
+                    <!-- City -->
                     <div class="parameter">
-                        <!-- City Parameter -->
-                        <p class="parameter-question parameter-question-center">What city would you like to visit?</p>
+                        <label class="parameter-question parameter-question-center">What city would you like to
+                            visit?</label>
                         <select id="loc" class="form-control form-control-sm">
                             <option>Select City</option>
                             <option value="950540">Auckland</option>
@@ -216,10 +221,8 @@
                     <br>
 
                     <!-- Price -->
-
-                    <div id="parameter">
-                        <p class="parameter-question parameter-question-left">Search by Minimum Price:</p>
-
+                    <div class="parameter">
+                        <label class="parameter-question parameter-question-left">Price:</label>
                         <select id="priceMin" class="form-control form-control-sm">
                             <option value="allPrices" selected="selected">All Prices</option>
                             <option value="fifty">NZD$0-50</option>
@@ -235,23 +238,21 @@
                     <div class="parameter">
                         <label class="parameter-question parameter-question-left">Number of
                             Adults:</label><br>
-                        <input type="number" id="adults1" name="adultInput" class="input" min="0" max="14"
-                            placeholder="Insert Number">
+                        <input type="number" id="adults1" name="adultInput" class="input form-control-sm" min="0"
+                            max="14" placeholder="Insert Number">
                     </div>
 
                     <!-- Submit Button -->
                     <input id="submit-user-choices" type="submit" class="submit-one btn-lg btn btn-dark">
-
-                </form>
             </div>
+            </form>
         </div>
-
+    </div>
     </div>
 
     <!-- Chosen City Page -->
     <div id="pageReset">
         <div id="city-page" class="hide section-body page col-12 pageReset">
-            <!-- <div class="col-12"> -->
             <h2 class="title">Results:</h2>
             <section class="weatherSection">
                 <!-- City's Weather Forecast -->
@@ -261,11 +262,9 @@
                     </div>
                 </div>
             </section>
-
+            <!-- Hotel Cards -->
             <div id="hotels-container" class="list-group">
-                <!-- Hotel Cards -->
             </div>
-
         </div>
     </div>
 
@@ -275,7 +274,6 @@
             <!-- Modal content -->
             <div class="modal-content">
                 <div class="modal-header">
-
                     <h4 class="modal-title">Input Error</h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
@@ -289,6 +287,7 @@
         </div>
     </div>
 
+
     <!-- JQuery: -->
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <!-- JQueryUI: -->
@@ -301,7 +300,6 @@
         crossorigin="anonymous"></script>
     <!-- CustomJS: -->
     <script src="Assets\script\script.js"></script>
-
 </body>
 
 </html>
