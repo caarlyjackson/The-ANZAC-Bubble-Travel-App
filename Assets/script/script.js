@@ -101,28 +101,7 @@ $(function () {
 
 });
 
-// Parameter Page - More Options - collapse/hide and show
-var coll = document.getElementsByClassName("collapsible");
-var i;
-for (i = 0; i < coll.length; i++) {
-	coll[i].addEventListener("click", function () {
-		this.classList.toggle("active");
-		var button = document.getElementById("button-show")
-		var content = this.nextElementSibling;
-		if (content.style.display === "block") {
-			content.style.display = "none";
-			(content.style.maxHeight)
-			content.style.maxHeight = null;
-		} else {
-			content.style.display = "block";
-			content.style.maxHeight = content.scrollHeight + "px";
-			// button.style.display = "none";
-		}
-	});
-}
-
 // Need to build parameter verification(string, number)
-
 
 submitButton.addEventListener("click", function (event) {
 	event.preventDefault();
@@ -245,7 +224,7 @@ function searchHotels() {
 	//}
 	if (sortOrder) {
 
-	url = url + '&sortOrder=' + sortOrder;
+		url = url + '&sortOrder=' + sortOrder;
 	}
 	//if (loc) {
 
@@ -274,11 +253,10 @@ function searchHotels() {
 			console.log(data);
 
 			var hotelContainerEl = document.querySelector('#hotels-container');
-			var hotels = data.body.searchresults.results;
-			var currency = document.getElementById('currency').value;
+			var hotels = data.data.body.searchResults.results;
+			//var currency = document.getElementById('currency').value;
 
 			// function for results 
-			var displayHotels = function (hotels) {
 			if (hotels.length === 0) {
 				// display text for no hotels
 				hotelContainerEl.textContent = 'No hotels found.';
@@ -292,7 +270,7 @@ function searchHotels() {
 				var hotelCardEL = document.createElement('div');
 				hotelCardEL.classList = 'card';
 				hotelCardEL.setAttribute('style', 'width: 18rem');
-				hotelCardEL.setAttribute('href', '' + hotelName);
+				//hotelCardEL.setAttribute('href', '' + hotelName);
 				hotelContainerEl.appendChild(hotelCardEL);
 
 				var hotelBodyEL = document.createElement('div');
@@ -301,47 +279,51 @@ function searchHotels() {
 
 				var hotelNameEL = document.createElement('h5');
 				hotelNameEL.classList = 'card-title text-center';
-				hotelNameEL.textContent = data.body.searchresults.results[i].name //hotel name 
+				hotelNameEL.textContent = data.data.body.searchResults.results[i].name //hotel name 
 					;
 
 				var hotelAddEL = document.createElement('h5');
 				hotelAddEL.classList = 'card-title text-center';
-				hotelAddEL.textContent = data.body.searchresults.results[i].streetaddress + ',' + data.doby.searchresults.results[i].locality + ',' + data.doby.searchresults.results[i].postalCode //address
+				hotelAddEL.textContent = data.data.body.searchResults.results[i].address.streetAddress  //address
 					;
 
 				var hotelCityEl = document.createElement('h6');
 				hotelCityEl.classList = 'card-subtitle mb-2 text-muted';
-				hotelCityEl.textContent = data.body.searchresults.results[i].neighbourhood //city/town
+				hotelCityEl.textContent = data.data.body.searchResults.results[i].neighbourhood //city/town
 					;
 
 				var hotelDescriptEL = document.createElement('p');
 				hotelDescriptEL.classList = 'card-text';
-				hotelDescriptEL.textContent = 'This hotel is a ' + data.body.searchresults.results[i].vrBadge //hotel description
+				hotelDescriptEL.textContent = 'This hotel is a ' + data.data.body.searchResults.results[i].vrBadge //hotel description
 					;
 
 				var hotelPriceEL = document.createElement('p');
 				hotelPriceEL.classList = 'card-text';
-				hotelPriceEL.textContent = 'current cost per night is ' + data.body.searchresults.results[i].ratePlan.price.exactCurrent + currency //hotel price
+				hotelPriceEL.textContent = 'current cost per night is USD$ ' + data.data.body.searchResults.results[i].ratePlan.price.exactCurrent //+ currency //hotel price
 					;
 
 				var hotelRatingEL = document.createElement('p');
 				hotelRatingEL.classList = 'card-text';
-				hotelRatingEL.textContent = 'Hotel is rated ' + data.body.searchresults.results[i].guestReviews.rating + '/' + data.body.searchresults.results[i].guestReviews.scale + ' with ' + data.body.searchresults.results[i].guestReviews.total + ' number of reviews'
+				hotelRatingEL.textContent = 'Hotel is rated ' + data.data.body.searchResults.results[i].guestReviews.rating + '/' + data.data.body.searchResults.results[i].guestReviews.scale + ' with ' + data.data.body.searchResults.results[i].guestReviews.total + ' reviews'
 					;
 
 				var hotelImageEL = document.createElement('img');
 				hotelImageEL.classList = 'card-img-bottom';
-				hotelImageEL.setAttribute('src', data.body.searchresults.results[i].optimizedThumbUrls.srpDesktop);
+				hotelImageEL.setAttribute('src', data.data.body.searchResults.results[i].optimizedThumbUrls.srpDesktop);
 
 				hotelCardEL.appendChild(hotelBodyEL);
 				hotelCardEL.appendChild(hotelImageEL);
-				hotelBodyEL.appendChild(hotelNameEL, hotelAddEL, hotelCityEl, hotelDescriptEL, hotelPriceEL, hotelRatingEL);
+				hotelBodyEL.appendChild(hotelNameEL);
+				hotelBodyEL.appendChild(hotelAddEL);
+				hotelBodyEL.appendChild(hotelCityEl);
+				hotelBodyEL.appendChild(hotelDescriptEL);
+				hotelBodyEL.appendChild(hotelPriceEL);
+				hotelBodyEL.appendChild(hotelRatingEL);
 			}
-		}
-				});
+		});
+	
 
 				var searchInputLocEl = document.querySelector("#loc");
-				var ApiKey = "510c27e4545e6077957004db2b092e1f";
 				var city;
 				var loc = searchInputLocEl.value;
 				
@@ -381,6 +363,7 @@ function searchHotels() {
 				
 				// Retrieve Forecast API
 				function getUrl(city) {
+					var ApiKey = "510c27e4545e6077957004db2b092e1f";
 					var requestUrl = "https://api.openweathermap.org/data/2.5/forecast?q=";
 					var queryUrl = requestUrl + city + "&appid=" + ApiKey + "&units=metric";
 				
@@ -393,28 +376,145 @@ function searchHotels() {
 						.catch(function (error) {
 							console.log(error);
 						})
+			var displayHotels = function (hotels) {
+				if (hotels.length === 0) {
+					// display text for no hotels
+					hotelContainerEl.textContent = 'No hotels found.';
+					return;
 				}
-				
-				// Print Forecast
-				function fiveDayForecastData(forecastData) {
-					var filteredForecast = forecastData.list.filter(function (day) {
-						return day.dt_txt.indexOf("15:00:00") !== -1
-					});
-					document.querySelector(".horizontal-scrollable").innerHTML = "";
-				
-					for (var i = 0; i < filteredForecast.length; i += 1) {
-						var card = $("<div>").attr("class", "card", "weather-card", "col-xs-4");
-						var date = $("<h5>").text(moment.unix(filteredForecast[i].dt).format('L')).attr("class", "date");
-						var img = $("<img>").attr("src", "https://openweathermap.org/img/wn/" + filteredForecast[i].weather[0].icon + "@2x.png").attr("class", "icon");
-						var description = $("<p>").text("Description: " + filteredForecast[i].weather[0].description).attr("class", "description-info")
-						var p1 = $("<p>").text("Temperature: " + filteredForecast[i].main.temp + '°C').attr("class", "weather-info");
-						var p2 = $("<p>").text("Wind: " + filteredForecast[i].wind.speed + ' MPH').attr("class", "weather-info");
-						var p3 = $("<p>").text("Humidity: " + filteredForecast[i].main.humidity + '%').attr("class", "weather-info");
-						card.append(date, img, description, p1, p2, p3);
-						$(".horizontal-scrollable").append($(card));
-					}
+
+				// appending cards for results
+				for (var i = 0; i < hotels.length; i++) {
+					// append card parts
+
+					var hotelCardEL = document.createElement('div');
+					hotelCardEL.classList = 'card';
+					hotelCardEL.setAttribute('style', 'width: 18rem');
+					hotelCardEL.setAttribute('href', '' + hotelName);
+					hotelContainerEl.appendChild(hotelCardEL);
+
+					var hotelBodyEL = document.createElement('div');
+					hotelBodyEL.classList = 'card-body';
+
+
+					var hotelNameEL = document.createElement('h5');
+					hotelNameEL.classList = 'card-title text-center';
+					hotelNameEL.textContent = data.body.searchresults.results[i].name //hotel name 
+						;
+
+					var hotelAddEL = document.createElement('h5');
+					hotelAddEL.classList = 'card-title text-center';
+					hotelAddEL.textContent = data.body.searchresults.results[i].streetaddress + ',' + data.doby.searchresults.results[i].locality + ',' + data.doby.searchresults.results[i].postalCode //address
+						;
+
+					var hotelCityEl = document.createElement('h6');
+					hotelCityEl.classList = 'card-subtitle mb-2 text-muted';
+					hotelCityEl.textContent = data.body.searchresults.results[i].neighbourhood //city/town
+						;
+
+					var hotelDescriptEL = document.createElement('p');
+					hotelDescriptEL.classList = 'card-text';
+					hotelDescriptEL.textContent = 'This hotel is a ' + data.body.searchresults.results[i].vrBadge //hotel description
+						;
+
+					var hotelPriceEL = document.createElement('p');
+					hotelPriceEL.classList = 'card-text';
+					hotelPriceEL.textContent = 'current cost per night is ' + data.body.searchresults.results[i].ratePlan.price.exactCurrent + currency //hotel price
+						;
+
+					var hotelRatingEL = document.createElement('p');
+					hotelRatingEL.classList = 'card-text';
+					hotelRatingEL.textContent = 'Hotel is rated ' + data.body.searchresults.results[i].guestReviews.rating + '/' + data.body.searchresults.results[i].guestReviews.scale + ' with ' + data.body.searchresults.results[i].guestReviews.total + ' number of reviews'
+						;
+
+					var hotelImageEL = document.createElement('img');
+					hotelImageEL.classList = 'card-img-bottom';
+					hotelImageEL.setAttribute('src', data.body.searchresults.results[i].optimizedThumbUrls.srpDesktop);
+
+					hotelCardEL.appendChild(hotelBodyEL);
+					hotelCardEL.appendChild(hotelImageEL);
+					hotelBodyEL.appendChild(hotelNameEL, hotelAddEL, hotelCityEl, hotelDescriptEL, hotelPriceEL, hotelRatingEL);
 				}
-			
+			}
+		});
+
+	var searchInputLocEl = document.querySelector("#loc");
+	var weatherApiKey = "510c27e4545e6077957004db2b092e1f";
+	var city;
+	var loc = searchInputLocEl.value;
+
+	switch (loc) {
+
+		case "Select City":
+			// Needs error handling
+			console.log("ERROR")
+			return;
+		case "950540":
+			city = "Auckland";
+			break;
+		case "1636970":
+			city = "Christchurch";
+			break;
+		case "950155":
+			city = "Nelson";
+			break;
+		case "1640249":
+			city = "Northland";
+			break;
+		case "1633614":
+			city = "Queenstown";
+			break;
+		case "1633616":
+			city = "Rotorua";
+			break;
+		case "950424":
+			city = "Southland";
+			break;
+		case "951308":
+			city = "Wellington";
+			break;
+	}
+	getUrl(city);
+};
+
+// Retrieve Forecast API
+function getUrl(city) {
+	var weatherApiKey = "510c27e4545e6077957004db2b092e1f";
+
+	var requestUrl = "https://api.openweathermap.org/data/2.5/forecast?q=";
+	var queryUrl = requestUrl + city + "&appid=" + weatherApiKey + "&units=metric";
+
+	fetch(queryUrl)
+		.then(function (response) {
+			return response.json();
+		}).then(function (data) {
+			fiveDayForecastData(data);
+		})
+		.catch(function (error) {
+			console.log(error);
+		})
+}
+
+// Print Forecast
+function fiveDayForecastData(forecastData) {
+	var filteredForecast = forecastData.list.filter(function (day) {
+		return day.dt_txt.indexOf("15:00:00") !== -1
+	});
+	document.querySelector(".horizontal-scrollable").innerHTML = "";
+
+	for (var i = 0; i < filteredForecast.length; i += 1) {
+		var card = $("<div>").attr("class", "weather-card", "col-xs-4");
+		var date = $("<h5>").text(moment.unix(filteredForecast[i].dt).format('L')).attr("class", "date");
+		var img = $("<img>").attr("src", "https://openweathermap.org/img/wn/" + filteredForecast[i].weather[0].icon + "@2x.png").attr("class", "icon");
+		var description = $("<p>").text("Description: " + filteredForecast[i].weather[0].description).attr("class", "description-info")
+		var p1 = $("<p>").text("Temperature: " + filteredForecast[i].main.temp + '°C').attr("class", "weather-info");
+		var p2 = $("<p>").text("Wind: " + filteredForecast[i].wind.speed + ' MPH').attr("class", "weather-info");
+		var p3 = $("<p>").text("Humidity: " + filteredForecast[i].main.humidity + '%').attr("class", "weather-info");
+		card.append(date, img, description, p1, p2, p3);
+		$(".horizontal-scrollable").append($(card));
+	}
+}
+
 
 
 
@@ -607,7 +707,6 @@ function saveUserDetails() {
 		userName = userNameEl.value;
 	}
 
-	//
 	var userDetails = {
 		userName: userNameEl.value,
 		userHome: userHomeEl.value,
@@ -629,11 +728,11 @@ function renderLastUser() {
 	var lastUser = JSON.parse(localStorage.getItem("userDetails"));
 
 	if (lastUser !== null) {
-		document.getElementById("userNameInput").innerHTML = lastUserName.userName;
-		document.getElementById("userHomeInput").innerHTML = lastHomeAddress.userHome;
-		document.getElementById("userPostcodeInput").innerHTML = lastPostcode.userPostcode;
-		document.getElementById("userEmailInput").innerHTML = lastEmail.userEmail;
-		document.getElementById("userPhoneInput").innerHTML = lastMobile.userMobile;
+		document.getElementById("userNameInput").innerHTML = lastUser.userName;
+		document.getElementById("userHomeInput").innerHTML = lastUser.userHome;
+		document.getElementById("userPostcodeInput").innerHTML = lastUser.userPostcode;
+		document.getElementById("userEmailInput").innerHTML = lastUser.userEmail;
+		document.getElementById("userPhoneInput").innerHTML = lastUser.userMobile;
 	} else {
 		return;
 	}
@@ -647,6 +746,5 @@ submitUserDetails.addEventListener("click", function (event) {
 
 function init() {
 	saveUserDetails();
-	renderLastUser();
 }
 init();
