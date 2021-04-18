@@ -176,7 +176,34 @@ function searchHotels() {
 
 	// var children1 = document.getElementById('children1').value;
 	//var currency = document.getElementById('currency').value;
-	//var priceMin = document.getElementById('priceMin').value;
+
+	var priceMinSwitch = document.getElementById('priceMin').value;
+	var priceMin;
+	switch (priceMinSwitch) {
+		case "Select City":
+			// Needs error handling
+			console.log("ERROR")
+			return;
+		case "fifty":
+			priceMin = 50;
+			break;
+		case "hundred":
+			priceMin = 100;
+			break;
+		case "hundredFifty":
+			priceMin = 150;
+			break;
+		case "twoHundred":
+			priceMin = 200;
+			break;
+		case "twoHundredFifty":
+			priceMin = 250;
+			break;
+		case "threeHundredPlus":
+			priceMin = 300;
+			break;
+	}
+
 	//var priceMax = document.getElementById('priceMax').value;
 	//var amenityIds = document.getElementById('amenityIds').value;
 	//var themeIds = document.getElementById('themeIds').value;
@@ -198,10 +225,10 @@ function searchHotels() {
 	// }
 
 
-	//if (priceMin) {
+	if (priceMin) {
 
-	//url = url + '&priceMin=' + priceMin;
-	//}
+		url = url + '&priceMin=' + priceMin;
+	}
 	//if (priceMax) {
 
 	//url = url + '&priceMax=' + priceMax;
@@ -251,6 +278,14 @@ function searchHotels() {
 
 		.then(function (data) {
 			console.log(data);
+
+			var hotelSearchResultsEl = document.createElement("h5");
+			hotelSearchResultsEl.textContent = "Your search for " + city;
+			hotelSearchResultsEl.textContent += " for " + adults1 + " adults";
+			hotelSearchResultsEl.textContent += ". Checking in on " + moment(checkIn).format("Do MMM YYYY");
+			hotelSearchResultsEl.textContent += ". Checking out on " + moment(checkOut).format("Do MMM YYYY");
+			hotelSearchResultsEl.textContent += ". returned the following results:";
+			$(".weatherSection").prepend(hotelSearchResultsEl);
 
 			var hotelContainerEl = document.querySelector('#hotels-container');
 			var hotels = data.data.body.searchResults.results;
@@ -321,63 +356,63 @@ function searchHotels() {
 				hotelBodyEL.appendChild(hotelRatingEL);
 			}
 		});
-	
 
-				var searchInputLocEl = document.querySelector("#loc");
-				var city;
-				var loc = searchInputLocEl.value;
-				
-					switch (loc) {
-				
-						case "Select City":
-							// Needs error handling
-							console.log("ERROR")
-							return;
-						case "950540":
-							city = "Auckland";
-							break;
-						case "1636970":
-							city = "Christchurch";
-							break;
-						case "950155":
-							city = "Nelson";
-							break;
-						case "1640249":
-							city = "Northland";
-							break;
-						case "1633614":
-							city = "Queenstown";
-							break;
-						case "1633616":
-							city = "Rotorua";
-							break;
-						case "950424":
-							city = "Southland";
-							break;
-						case "951308":
-							city = "Wellington";
-							break;
-					}
-					getUrl(city);
-				};
-				
-				// Retrieve Forecast API
-				function getUrl(city) {
-					var ApiKey = "510c27e4545e6077957004db2b092e1f";
-					var requestUrl = "https://api.openweathermap.org/data/2.5/forecast?q=";
-					var queryUrl = requestUrl + city + "&appid=" + ApiKey + "&units=metric";
-				
-					fetch(queryUrl)
-						.then(function (response) {
-							return response.json();
-						}).then(function (data) {
-							fiveDayForecastData(data);
-						})
-						.catch(function (error) {
-							console.log(error);
-						})
-			
-	};
+
+	var searchInputLocEl = document.querySelector("#loc");
+	var city;
+	var loc = searchInputLocEl.value;
+
+	switch (loc) {
+
+		case "Select City":
+			// Needs error handling
+			console.log("ERROR")
+			return;
+		case "950540":
+			city = "Auckland";
+			break;
+		case "1636970":
+			city = "Christchurch";
+			break;
+		case "950155":
+			city = "Nelson";
+			break;
+		case "1640249":
+			city = "Northland";
+			break;
+		case "1633614":
+			city = "Queenstown";
+			break;
+		case "1633616":
+			city = "Rotorua";
+			break;
+		case "950424":
+			city = "Southland";
+			break;
+		case "951308":
+			city = "Wellington";
+			break;
+	}
+	getUrl(city);
+};
+
+// Retrieve Forecast API
+function getUrl(city) {
+	var ApiKey = "510c27e4545e6077957004db2b092e1f";
+	var requestUrl = "https://api.openweathermap.org/data/2.5/forecast?q=";
+	var queryUrl = requestUrl + city + "&appid=" + ApiKey + "&units=metric";
+
+	fetch(queryUrl)
+		.then(function (response) {
+			return response.json();
+		}).then(function (data) {
+			fiveDayForecastData(data);
+		})
+		.catch(function (error) {
+			console.log(error);
+		})
+
+};
 
 // Retrieve Forecast API
 function getUrl(city) {
