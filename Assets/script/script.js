@@ -300,7 +300,7 @@ function searchHotels() {
 
 				var hotelAddEL = document.createElement('h5');
 				hotelAddEL.classList = 'card-title text-center';
-				hotelAddEL.textContent = data.data.body.searchResults.results[i].streetaddress + ',' + data.data.body.searchResults.results[i].locality + ',' + data.data.body.searchResults.results[i].postalCode //address
+				hotelAddEL.textContent = data.data.body.searchResults.results[i].address.streetAddress  //address
 					;
 
 				var hotelCityEl = document.createElement('h6');
@@ -315,12 +315,12 @@ function searchHotels() {
 
 				var hotelPriceEL = document.createElement('p');
 				hotelPriceEL.classList = 'card-text';
-				hotelPriceEL.textContent = 'current cost per night is ' + data.data.body.searchResults.results[i].ratePlan.price.exactCurrent //+ currency //hotel price
+				hotelPriceEL.textContent = 'current cost per night is USD$ ' + data.data.body.searchResults.results[i].ratePlan.price.exactCurrent //+ currency //hotel price
 					;
 
 				var hotelRatingEL = document.createElement('p');
 				hotelRatingEL.classList = 'card-text';
-				hotelRatingEL.textContent = 'Hotel is rated ' + data.data.body.searchResults.results[i].guestReviews.rating + '/' + data.data.body.searchResults.results[i].guestReviews.scale + ' with ' + data.data.body.searchResults.results[i].guestReviews.total + ' number of reviews'
+				hotelRatingEL.textContent = 'Hotel is rated ' + data.data.body.searchResults.results[i].guestReviews.rating + '/' + data.data.body.searchResults.results[i].guestReviews.scale + ' with ' + data.data.body.searchResults.results[i].guestReviews.total + ' reviews'
 					;
 
 				var hotelImageEL = document.createElement('img');
@@ -329,7 +329,12 @@ function searchHotels() {
 
 				hotelCardEL.appendChild(hotelBodyEL);
 				hotelCardEL.appendChild(hotelImageEL);
-				hotelBodyEL.appendChild(hotelNameEL, hotelAddEL, hotelCityEl, hotelDescriptEL, hotelPriceEL, hotelRatingEL);
+				hotelBodyEL.appendChild(hotelNameEL);
+				hotelBodyEL.appendChild(hotelAddEL);
+				hotelBodyEL.appendChild(hotelCityEl);
+				hotelBodyEL.appendChild(hotelDescriptEL);
+				hotelBodyEL.appendChild(hotelPriceEL);
+				hotelBodyEL.appendChild(hotelRatingEL);
 			}
 		});
 	
