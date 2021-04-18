@@ -55,7 +55,7 @@ $(function () {
 				numberOfMonths: 3
 			})
 			.on("change", function () {
-				checkIn.datepicker("option", "minDate", getDate(this));
+				checkOut.datepicker("option", "minDate", getDate(this));
 
 			}),
 		checkOut = $("#checkOut").datepicker({
@@ -65,7 +65,7 @@ $(function () {
 			numberOfMonths: 3
 		})
 			.on("change", function () {
-				checkOut.datepicker("option", "maxDate", getDate(this));
+				checkIn.datepicker("option", "maxDate", getDate(this));
 			});
 
 	function getDate(element) {
