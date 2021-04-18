@@ -16,6 +16,7 @@ html, main, body {
     overflow-x: hidden;
 }
 
+/* Display class */
 .show {
     display: block;
 }
@@ -36,8 +37,9 @@ h1 {
 
 h4 {
     position: relative;
-    padding-top: 10%;
+    padding-top: 7%;
 }
+
 
 .logo-img1 {
     display: block;
@@ -48,18 +50,19 @@ h4 {
 
 .logo-img2{
     display: block;
-    max-width: 10%;
-    max-height: 10%;
+    max-width: 70px;
+    max-height: 70px;
     margin-left: 45%;
+
 }
     
-    
-/* landing page and hero  */
+/* Landing Page & Hero  */
 .hero {
     position: relative;
     width: 100vw;
     height: 100vh;
 }
+
 .hero::before {
     content: "";
     position: absolute;
@@ -75,10 +78,37 @@ h4 {
     background-color: var(--pop) ;
 }
 
-/* choice page */
+
+/* Input Form */
+input {
+    border-radius: .2rem;
+    border: var(--darkBorder);
+    border-width: 1px;
+    background-color: var(--white);
+}
+
+.input {
+    width: var(--selectionWidth);
+    display: block;
+    border: var(--darkBorder);
+    border-width: 1px;
+}
+
+.form-control-sm,
+select {
+    width: 90%;
+    border: var(--darkBorder) !important;
+    border-width: 1px;
+}
+
+select {
+    text-align: center;
+}
+
 .custom-select-container {
     margin-top: 8vh;
     padding: 40px;
+    padding-bottom: 60px;
     background-image: url(https://images.squarespace-cdn.com/content/v1/587860113e00be246e9fa173/1531278841877-MYEA4H1YBZ0VLR1LW55I/ke17ZwdGBToddI8pDm48kFQeQHikrO2sNCZ16cY9vUAUqsxRUqqbr1mOJYKfIPR7LoDQ9mXPOjoJoqy81S2I8PaoYXhp6HxIwZIk7-Mi3Tsic-L2IOPH3Dwrhl-Ne3Z2mAl5itlFjEswCFMjljE9Ypyqoh6NUrgRPTZR_Z5-OvXdZR9z9mxWb0yLUToVqwSd/new-zealand-north-island-cathedral-cove-amalia-bastos-travel-photography-aerial-drone-dji-phantom-4-coromandel.jpg);
     /* background-position: center center; */
     background-size: cover;
@@ -89,13 +119,14 @@ h4 {
     font-weight: var(--modalWeight);
 }
 
-/* form card */
+/* Form Card */
 .custom-card-select {
     display: flex;
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
     background-color: rgba(242, 242, 242, 0.64);
     border-radius: 20px;
+    border: none;
     
 }
 
@@ -126,18 +157,8 @@ label {
     padding: 0;
 }
 
-.input {
-    width: var(--selectionWidth);
-    display: block;
-}
-
-select {
-    text-align: center;
-}
-
 #sortOrder {
-    width: 40%;
-    /* display: block; */
+    width: 30%;
 }
 
 .sort {
@@ -150,12 +171,7 @@ select {
     justify-items:left;
 }
 
-.form-control-sm {
-    width: 90%;
-    border-color: rgb(73, 73, 73);
-}
-
-#parameter {
+.parameter {
     padding: 15px 0 10px 0;
 }
 
@@ -186,13 +202,13 @@ input.box {
     background-color: var(--pop);
 }
 
-/* nav collapse */
+/* Nav Collapse */
 .collapse-custom {
     margin-top: 20px;
     margin-bottom: 40px;
 }
 
-/* about us */
+/* About Us */
 .about::before {
     content: "";
     position: absolute;
@@ -250,8 +266,55 @@ h2 {
     color: var(--button);
 }
 
+
+/* media quiery for choice page */
+@media only screen and (min-width: 992px) {
+    .logo-img2{
+        margin-left: 2%;
+    }
+
+    .collapse-custom {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        margin-left: 60%;
+    }
+
+    .custom-card-select {
+        margin: 2% 20% 0 20%;
+
+    }
+
+    .custom-select-container {
+        margin-top: 8vh;
+        padding: 40px;
+        background-image: url(https://www.nelsontasman.nz/assets/ProductImages/Awaroa-Estuary-5-credit-Abel-Tasman-AquaTaxi.jpg);
+        min-height: 105vh;
+    }
+
+
 .btn-secondary {
     margin-top: 10px;
+}
+}
+
+@media only screen and (max-width: 600px) {
+#sortOrder {
+    width: 50%;
+}
+
+h4 {
+    padding-top: 10%;
+}
+}
+
+@media only screen and (max-width: 550px) {
+    input {
+        margin: 5px;
+    }
+
+    .to {
+        display: block;
+    }
 }
 
 /* Weather Cards */
@@ -315,4 +378,5 @@ h2 {
     font-size: 10px;
     padding: 0;
     margin: 2px;
+
 }

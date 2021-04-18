@@ -3,6 +3,10 @@ var heroButton = document.querySelector(".custom-btn");
 var landingPage = document.querySelector(".hero");
 //small header
 var smallHeader = document.querySelector("#pageHeader");
+
+//footer
+var smallFooter = document.querySelector("#page-footer");
+
 //initial select page
 var selectPage = document.querySelector("#select-options");
 var checkInDate;
@@ -39,6 +43,7 @@ heroButton.addEventListener("click", function () {
 	landingPage.style.display = "none";
 	selectPage.style.display = "block";
 	smallHeader.style.display = "block";
+	smallFooter.style.display = "block";
 
 });
 
@@ -248,110 +253,131 @@ function searchHotels() {
 			console.log(data);
 
 			var hotelContainerEl = document.querySelector('#hotels-container');
-			var hotels = data.body.searchresults.results;
-			var currency = document.getElementById('currency').value;
+			var hotels = data.data.body.searchResults.results;
+			//var currency = document.getElementById('currency').value;
 
 			// function for results 
-			var displayHotels = function (hotels) {
-				if (hotels.length === 0) {
-					// display text for no hotels
-					hotelContainerEl.textContent = 'No hotels found.';
-					return;
-				}
+			if (hotels.length === 0) {
+				// display text for no hotels
+				hotelContainerEl.textContent = 'No hotels found.';
+				return;
+			}
 
-				// appending cards for results
-				for (var i = 0; i < hotels.length; i++) {
-					// append card parts
+			// appending cards for results
+			for (var i = 0; i < hotels.length; i++) {
+				// append card parts
 
-					var hotelCardEL = document.createElement('div');
-					hotelCardEL.classList = 'card';
-					hotelCardEL.setAttribute('style', 'width: 18rem');
-					hotelCardEL.setAttribute('href', '' + hotelName);
-					hotelContainerEl.appendChild(hotelCardEL);
+				var hotelCardEL = document.createElement('div');
+				hotelCardEL.classList = 'card';
+				hotelCardEL.setAttribute('style', 'width: 18rem');
+				//hotelCardEL.setAttribute('href', '' + hotelName);
+				hotelContainerEl.appendChild(hotelCardEL);
 
-					var hotelBodyEL = document.createElement('div');
-					hotelBodyEL.classList = 'card-body';
+				var hotelBodyEL = document.createElement('div');
+				hotelBodyEL.classList = 'card-body';
 
 
-					var hotelNameEL = document.createElement('h5');
-					hotelNameEL.classList = 'card-title text-center';
-					hotelNameEL.textContent = data.body.searchresults.results[i].name //hotel name 
-						;
+				var hotelNameEL = document.createElement('h5');
+				hotelNameEL.classList = 'card-title text-center';
+				hotelNameEL.textContent = data.data.body.searchResults.results[i].name //hotel name 
+					;
 
-					var hotelAddEL = document.createElement('h5');
-					hotelAddEL.classList = 'card-title text-center';
-					hotelAddEL.textContent = data.body.searchresults.results[i].streetaddress + ',' + data.doby.searchresults.results[i].locality + ',' + data.doby.searchresults.results[i].postalCode //address
-						;
+				var hotelAddEL = document.createElement('h5');
+				hotelAddEL.classList = 'card-title text-center';
+				hotelAddEL.textContent = data.data.body.searchResults.results[i].address.streetAddress  //address
+					;
 
-					var hotelCityEl = document.createElement('h6');
-					hotelCityEl.classList = 'card-subtitle mb-2 text-muted';
-					hotelCityEl.textContent = data.body.searchresults.results[i].neighbourhood //city/town
-						;
+				var hotelCityEl = document.createElement('h6');
+				hotelCityEl.classList = 'card-subtitle mb-2 text-muted';
+				hotelCityEl.textContent = data.data.body.searchResults.results[i].neighbourhood //city/town
+					;
 
-					var hotelDescriptEL = document.createElement('p');
-					hotelDescriptEL.classList = 'card-text';
-					hotelDescriptEL.textContent = 'This hotel is a ' + data.body.searchresults.results[i].vrBadge //hotel description
-						;
+				var hotelDescriptEL = document.createElement('p');
+				hotelDescriptEL.classList = 'card-text';
+				hotelDescriptEL.textContent = 'This hotel is a ' + data.data.body.searchResults.results[i].vrBadge //hotel description
+					;
 
-					var hotelPriceEL = document.createElement('p');
-					hotelPriceEL.classList = 'card-text';
-					hotelPriceEL.textContent = 'current cost per night is ' + data.body.searchresults.results[i].ratePlan.price.exactCurrent + currency //hotel price
-						;
+				var hotelPriceEL = document.createElement('p');
+				hotelPriceEL.classList = 'card-text';
+				hotelPriceEL.textContent = 'current cost per night is USD$ ' + data.data.body.searchResults.results[i].ratePlan.price.exactCurrent //+ currency //hotel price
+					;
 
-					var hotelRatingEL = document.createElement('p');
-					hotelRatingEL.classList = 'card-text';
-					hotelRatingEL.textContent = 'Hotel is rated ' + data.body.searchresults.results[i].guestReviews.rating + '/' + data.body.searchresults.results[i].guestReviews.scale + ' with ' + data.body.searchresults.results[i].guestReviews.total + ' number of reviews'
-						;
+				var hotelRatingEL = document.createElement('p');
+				hotelRatingEL.classList = 'card-text';
+				hotelRatingEL.textContent = 'Hotel is rated ' + data.data.body.searchResults.results[i].guestReviews.rating + '/' + data.data.body.searchResults.results[i].guestReviews.scale + ' with ' + data.data.body.searchResults.results[i].guestReviews.total + ' reviews'
+					;
 
-					var hotelImageEL = document.createElement('img');
-					hotelImageEL.classList = 'card-img-bottom';
-					hotelImageEL.setAttribute('src', data.body.searchresults.results[i].optimizedThumbUrls.srpDesktop);
+				var hotelImageEL = document.createElement('img');
+				hotelImageEL.classList = 'card-img-bottom';
+				hotelImageEL.setAttribute('src', data.data.body.searchResults.results[i].optimizedThumbUrls.srpDesktop);
 
-					hotelCardEL.appendChild(hotelBodyEL);
-					hotelCardEL.appendChild(hotelImageEL);
-					hotelBodyEL.appendChild(hotelNameEL, hotelAddEL, hotelCityEl, hotelDescriptEL, hotelPriceEL, hotelRatingEL);
-				}
+				hotelCardEL.appendChild(hotelBodyEL);
+				hotelCardEL.appendChild(hotelImageEL);
+				hotelBodyEL.appendChild(hotelNameEL);
+				hotelBodyEL.appendChild(hotelAddEL);
+				hotelBodyEL.appendChild(hotelCityEl);
+				//hotelBodyEL.appendChild(hotelDescriptEL);
+				hotelBodyEL.appendChild(hotelPriceEL);
+				hotelBodyEL.appendChild(hotelRatingEL);
 			}
 		});
+	
 
-	var searchInputLocEl = document.querySelector("#loc");
-	var weatherApiKey = "510c27e4545e6077957004db2b092e1f";
-	var city;
-	var loc = searchInputLocEl.value;
-
-	switch (loc) {
-
-		case "Select City":
-			// Needs error handling
-			console.log("ERROR")
-			return;
-		case "950540":
-			city = "Auckland";
-			break;
-		case "1636970":
-			city = "Christchurch";
-			break;
-		case "950155":
-			city = "Nelson";
-			break;
-		case "1640249":
-			city = "Northland";
-			break;
-		case "1633614":
-			city = "Queenstown";
-			break;
-		case "1633616":
-			city = "Rotorua";
-			break;
-		case "950424":
-			city = "Southland";
-			break;
-		case "951308":
-			city = "Wellington";
-			break;
-	}
-	getUrl(city);
-};
+				var searchInputLocEl = document.querySelector("#loc");
+				var city;
+				var loc = searchInputLocEl.value;
+				
+					switch (loc) {
+				
+						case "Select City":
+							// Needs error handling
+							console.log("ERROR")
+							return;
+						case "950540":
+							city = "Auckland";
+							break;
+						case "1636970":
+							city = "Christchurch";
+							break;
+						case "950155":
+							city = "Nelson";
+							break;
+						case "1640249":
+							city = "Northland";
+							break;
+						case "1633614":
+							city = "Queenstown";
+							break;
+						case "1633616":
+							city = "Rotorua";
+							break;
+						case "950424":
+							city = "Southland";
+							break;
+						case "951308":
+							city = "Wellington";
+							break;
+					}
+					getUrl(city);
+				};
+				
+				// Retrieve Forecast API
+				function getUrl(city) {
+					var ApiKey = "510c27e4545e6077957004db2b092e1f";
+					var requestUrl = "https://api.openweathermap.org/data/2.5/forecast?q=";
+					var queryUrl = requestUrl + city + "&appid=" + ApiKey + "&units=metric";
+				
+					fetch(queryUrl)
+						.then(function (response) {
+							return response.json();
+						}).then(function (data) {
+							fiveDayForecastData(data);
+						})
+						.catch(function (error) {
+							console.log(error);
+						})
+			
+	};
 
 // Retrieve Forecast API
 function getUrl(city) {
