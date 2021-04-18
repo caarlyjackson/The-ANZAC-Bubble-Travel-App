@@ -180,7 +180,30 @@ function searchHotels() {
 
 	// var children1 = document.getElementById('children1').value;
 	//var currency = document.getElementById('currency').value;
-	//var priceMin = document.getElementById('priceMin').value;
+
+	var priceMinSwitch = document.getElementById('priceMin').value;
+	var priceMin;
+	switch (priceMinSwitch) {
+		case "fifty":
+			priceMin = 50;
+			break;
+		case "hundred":
+			priceMin = 100;
+			break;
+		case "hundredFifty":
+			priceMin = 150;
+			break;
+		case "twoHundred":
+			priceMin = 200;
+			break;
+		case "twoHundredFifty":
+			priceMin = 250;
+			break;
+		case "threeHundredPlus":
+			priceMin = 300;
+			break;
+	}
+
 	//var priceMax = document.getElementById('priceMax').value;
 	//var amenityIds = document.getElementById('amenityIds').value;
 	//var themeIds = document.getElementById('themeIds').value;
@@ -202,10 +225,10 @@ function searchHotels() {
 	// }
 
 
-	//if (priceMin) {
+	if (priceMin) {
 
-	//url = url + '&priceMin=' + priceMin;
-	//}
+		url = url + '&priceMin=' + priceMin;
+	}
 	//if (priceMax) {
 
 	//url = url + '&priceMax=' + priceMax;
@@ -255,6 +278,14 @@ function searchHotels() {
 
 		.then(function (data) {
 			console.log(data);
+
+			var hotelSearchResultsEl = document.createElement("h5");
+			hotelSearchResultsEl.textContent = "Your search for " + city;
+			hotelSearchResultsEl.textContent += " for " + adults1 + " adults";
+			hotelSearchResultsEl.textContent += ". Checking in on " + moment(checkIn).format("Do MMM YYYY");
+			hotelSearchResultsEl.textContent += ". Checking out on " + moment(checkOut).format("Do MMM YYYY");
+			hotelSearchResultsEl.textContent += ". returned the following results:";
+			$(".weatherSection").prepend(hotelSearchResultsEl);
 
 			var hotelContainerEl = document.querySelector('#hotels-container');
 			var hotels = data.data.body.searchResults.results;
@@ -333,10 +364,6 @@ function searchHotels() {
 
 	switch (loc) {
 
-		case "Select City":
-			// Needs error handling
-			console.log("ERROR")
-			return;
 		case "950540":
 			city = "Auckland";
 			break;
