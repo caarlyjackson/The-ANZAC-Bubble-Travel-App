@@ -38,7 +38,7 @@ previouslyViewedButton.addEventListener("click", function () {
 	prevPageShow.style.display = "none";
 });
 
-returnToSearchPage.addEventListener("click", function () {
+returnToSearchPage.addEventListener("click", function (event) {
 	event.preventDefault();
 	selectPage.style.display = "block";
 	searchPageViewAgain.style.display = "none";
@@ -46,10 +46,10 @@ returnToSearchPage.addEventListener("click", function () {
 
 // Date Picker
 $(function () {
-	var dateFormat = "yyyy-MM-dd",
+	var dateFormat = "yy-mm-dd",
 		checkIn = $("#checkIn")
 			.datepicker({
-				dateFormat: 'dd/mm/yy',
+				dateFormat: 'yy-mm-dd',
 				defaultDate: "+1w",
 				changeMonth: true,
 				numberOfMonths: 3
@@ -59,7 +59,7 @@ $(function () {
 
 			}),
 		checkOut = $("#checkOut").datepicker({
-			dateFormat: 'dd/mm/yy',
+			dateFormat: 'yy-mm-dd',
 			defaultDate: "+1w",
 			changeMonth: true,
 			numberOfMonths: 3
@@ -132,6 +132,7 @@ function inputCheck() {
 	}
 	else {
 		searchHotels();
+		console.log(checkInDate)
 	}
 }
 
@@ -161,10 +162,9 @@ function searchHotels() {
 	//loc(string) The language code should be left as en_US or not used for our purposes
 	//Get perimeters from .index
 
-
 	var destinationId = document.getElementById('loc').value;
-	var checkIn = document.getElementById('checkIn').value
-	var checkOut = document.getElementById('checkOut').value
+	var checkIn = $('#checkIn').val();
+	var checkOut = $('#checkOut').val();
 	var pageSize = 25
 	var adults1 = document.getElementById('adults1').value
 
@@ -175,18 +175,18 @@ function searchHotels() {
 
 
 
+
 	//Optional parameter select string building
 
 	// var children1 = document.getElementById('children1').value;
-	// var currency = document.getElementById('currency').value;
-
+	//var currency = document.getElementById('currency').value;
 	//var priceMin = document.getElementById('priceMin').value;
 	//var priceMax = document.getElementById('priceMax').value;
 	//var amenityIds = document.getElementById('amenityIds').value;
 	//var themeIds = document.getElementById('themeIds').value;
 	//var landmarkIds = document.getElementById('landmarkIds').value;
 	//var guestRatingMin = document.getElementById('guestRatingMin').value;
-	//var sortOrder = document.getElementById('sortOrder').value;
+	var sortOrder = document.getElementById('sortOrder').value;
 	//var loc = 'en_US'
 
 
@@ -226,98 +226,10 @@ function searchHotels() {
 
 	//url = url + '&landmarkIds=' + landmarkIds;
 	//}
-	//if (sortOrder) {
+	if (sortOrder) {
 
-	//url = url + '&sortOrder=' + sortOrder;
-	//}
-	//if (loc) {
-
-	//url = url + '&locs=' + loc;
-	//}
-
-
-
-	var hotelSearchQuery = url
-	console.log(hotelSearchQuery)
-
-	//Fetch hotel listing.
-	fetch(hotelSearchQuery, {
-		"method": "GET",
-		"headers": {
-			"x-rapidapi-key": "c6aa062b9amsh42c409cede2d9bep1e5e77jsnbca33b5d4fcc",
-			"x-rapidapi-host": "hotels4.p.rapidapi.com"
-		}
-	})
-
-	var destinationId = document.getElementById('loc').value;
-	var checkIn = document.getElementById('checkIn').value
-	var checkOut = document.getElementById('checkOut').value
-	var pageSize = 25
-	var adults1 = document.getElementById('adults1').value
-
-	//Basic string with required parameters
-	var requiredString = "https://hotels4.p.rapidapi.com/properties/list?destinationId=" + destinationId + '&pagenumber=1&checkIn=' + checkIn + '&checkOut=' + checkOut + '&pageSize=' + pageSize + '&adults1=' + adults1;
-
-	var url = requiredString
-
-
-
-
-	//Optional parameter select string building
-
-	// var children1 = document.getElementById('children1').value;
-	// var currency = document.getElementById('currency').value;
-
-	//var priceMin = document.getElementById('priceMin').value;
-	//var priceMax = document.getElementById('priceMax').value;
-	//var amenityIds = document.getElementById('amenityIds').value;
-	//var themeIds = document.getElementById('themeIds').value;
-	//var landmarkIds = document.getElementById('landmarkIds').value;
-	//var guestRatingMin = document.getElementById('guestRatingMin').value;
-	//var sortOrder = document.getElementById('sortOrder').value;
-	//var loc = 'en_US'
-
-
-	console.log(url)
-
-	// if (children1) {
-
-	// 	url = url + '&children1=' + children1;
-	// }
-	// if (currency) {
-
-	// 	url = url + '&currency=' + currency;
-	// }
-
-
-	//if (priceMin) {
-
-	//url = url + '&priceMin=' + priceMin;
-	//}
-	//if (priceMax) {
-
-	//url = url + '&priceMax=' + priceMax;
-	//}
-	//if (amenityIds) {
-
-	//url = url + '&amenityIds=' + amenityIds;
-	//}
-	//if (themeIds) {
-
-	//url = url + '&themeIds=' + themeIds;
-	//}
-	//if (guestRatingMin) {
-
-	//url = url + '&guestRatingMins=' + guestRatingMin;
-	//}
-	//if (landmarkIds) {
-
-	//url = url + '&landmarkIds=' + landmarkIds;
-	//}
-	//if (sortOrder) {
-
-	//url = url + '&sortOrder=' + sortOrder;
-	//}
+	url = url + '&sortOrder=' + sortOrder;
+	}
 	//if (loc) {
 
 	//url = url + '&locs=' + loc;
@@ -343,9 +255,149 @@ function searchHotels() {
 
 		.then(function (data) {
 			console.log(data);
-		});
 
-}
+			var hotelContainerEl = document.querySelector('#hotels-container');
+			var hotels = data.body.searchresults.results;
+			var currency = document.getElementById('currency').value;
+
+			// function for results 
+			var displayHotels = function (hotels) {
+			if (hotels.length === 0) {
+				// display text for no hotels
+				hotelContainerEl.textContent = 'No hotels found.';
+				return;
+			}
+
+			// appending cards for results
+			for (var i = 0; i < hotels.length; i++) {
+				// append card parts
+
+				var hotelCardEL = document.createElement('div');
+				hotelCardEL.classList = 'card';
+				hotelCardEL.setAttribute('style', 'width: 18rem');
+				hotelCardEL.setAttribute('href', '' + hotelName);
+				hotelContainerEl.appendChild(hotelCardEL);
+
+				var hotelBodyEL = document.createElement('div');
+				hotelBodyEL.classList = 'card-body';
+
+
+				var hotelNameEL = document.createElement('h5');
+				hotelNameEL.classList = 'card-title text-center';
+				hotelNameEL.textContent = data.body.searchresults.results[i].name //hotel name 
+					;
+
+				var hotelAddEL = document.createElement('h5');
+				hotelAddEL.classList = 'card-title text-center';
+				hotelAddEL.textContent = data.body.searchresults.results[i].streetaddress + ',' + data.doby.searchresults.results[i].locality + ',' + data.doby.searchresults.results[i].postalCode //address
+					;
+
+				var hotelCityEl = document.createElement('h6');
+				hotelCityEl.classList = 'card-subtitle mb-2 text-muted';
+				hotelCityEl.textContent = data.body.searchresults.results[i].neighbourhood //city/town
+					;
+
+				var hotelDescriptEL = document.createElement('p');
+				hotelDescriptEL.classList = 'card-text';
+				hotelDescriptEL.textContent = 'This hotel is a ' + data.body.searchresults.results[i].vrBadge //hotel description
+					;
+
+				var hotelPriceEL = document.createElement('p');
+				hotelPriceEL.classList = 'card-text';
+				hotelPriceEL.textContent = 'current cost per night is ' + data.body.searchresults.results[i].ratePlan.price.exactCurrent + currency //hotel price
+					;
+
+				var hotelRatingEL = document.createElement('p');
+				hotelRatingEL.classList = 'card-text';
+				hotelRatingEL.textContent = 'Hotel is rated ' + data.body.searchresults.results[i].guestReviews.rating + '/' + data.body.searchresults.results[i].guestReviews.scale + ' with ' + data.body.searchresults.results[i].guestReviews.total + ' number of reviews'
+					;
+
+				var hotelImageEL = document.createElement('img');
+				hotelImageEL.classList = 'card-img-bottom';
+				hotelImageEL.setAttribute('src', data.body.searchresults.results[i].optimizedThumbUrls.srpDesktop);
+
+				hotelCardEL.appendChild(hotelBodyEL);
+				hotelCardEL.appendChild(hotelImageEL);
+				hotelBodyEL.appendChild(hotelNameEL, hotelAddEL, hotelCityEl, hotelDescriptEL, hotelPriceEL, hotelRatingEL);
+			}
+		}
+				});
+
+				var searchInputLocEl = document.querySelector("#loc");
+				var ApiKey = "510c27e4545e6077957004db2b092e1f";
+				var city;
+				var loc = searchInputLocEl.value;
+				
+					switch (loc) {
+				
+						case "Select City":
+							// Needs error handling
+							console.log("ERROR")
+							return;
+						case "950540":
+							city = "Auckland";
+							break;
+						case "1636970":
+							city = "Christchurch";
+							break;
+						case "950155":
+							city = "Nelson";
+							break;
+						case "1640249":
+							city = "Northland";
+							break;
+						case "1633614":
+							city = "Queenstown";
+							break;
+						case "1633616":
+							city = "Rotorua";
+							break;
+						case "950424":
+							city = "Southland";
+							break;
+						case "951308":
+							city = "Wellington";
+							break;
+					}
+					getUrl(city);
+				};
+				
+				// Retrieve Forecast API
+				function getUrl(city) {
+					var requestUrl = "https://api.openweathermap.org/data/2.5/forecast?q=";
+					var queryUrl = requestUrl + city + "&appid=" + ApiKey + "&units=metric";
+				
+					fetch(queryUrl)
+						.then(function (response) {
+							return response.json();
+						}).then(function (data) {
+							fiveDayForecastData(data);
+						})
+						.catch(function (error) {
+							console.log(error);
+						})
+				}
+				
+				// Print Forecast
+				function fiveDayForecastData(forecastData) {
+					var filteredForecast = forecastData.list.filter(function (day) {
+						return day.dt_txt.indexOf("15:00:00") !== -1
+					});
+					document.querySelector(".horizontal-scrollable").innerHTML = "";
+				
+					for (var i = 0; i < filteredForecast.length; i += 1) {
+						var card = $("<div>").attr("class", "card", "weather-card", "col-xs-4");
+						var date = $("<h5>").text(moment.unix(filteredForecast[i].dt).format('L')).attr("class", "date");
+						var img = $("<img>").attr("src", "https://openweathermap.org/img/wn/" + filteredForecast[i].weather[0].icon + "@2x.png").attr("class", "icon");
+						var description = $("<p>").text("Description: " + filteredForecast[i].weather[0].description).attr("class", "description-info")
+						var p1 = $("<p>").text("Temperature: " + filteredForecast[i].main.temp + '°C').attr("class", "weather-info");
+						var p2 = $("<p>").text("Wind: " + filteredForecast[i].wind.speed + ' MPH').attr("class", "weather-info");
+						var p3 = $("<p>").text("Humidity: " + filteredForecast[i].main.humidity + '%').attr("class", "weather-info");
+						card.append(date, img, description, p1, p2, p3);
+						$(".horizontal-scrollable").append($(card));
+					}
+				}
+			
 
 
 
