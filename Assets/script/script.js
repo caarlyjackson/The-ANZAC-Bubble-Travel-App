@@ -46,10 +46,10 @@ returnToSearchPage.addEventListener("click", function () {
 
 // Date Picker
 $(function () {
-	var dateFormat = "yyyy-MM-dd",
+	var dateFormat = "yy-mm-dd",
 		checkIn = $("#checkIn")
 			.datepicker({
-				dateFormat: 'dd/mm/yy',
+				dateFormat: 'yy-mm-dd',
 				defaultDate: "+1w",
 				changeMonth: true,
 				numberOfMonths: 3
@@ -59,7 +59,7 @@ $(function () {
 
 			}),
 		checkOut = $("#checkOut").datepicker({
-			dateFormat: 'dd/mm/yy',
+			dateFormat: 'yy-mm-dd',
 			defaultDate: "+1w",
 			changeMonth: true,
 			numberOfMonths: 3
@@ -75,7 +75,6 @@ $(function () {
 		} catch (error) {
 			date = null;
 		}
-		console.log(date);
 		checkInDate = $('#checkIn').val();
 		checkOutDate = $('#checkOut').val();
 
