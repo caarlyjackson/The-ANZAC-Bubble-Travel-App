@@ -180,10 +180,6 @@ function searchHotels() {
 	var priceMinSwitch = document.getElementById('priceMin').value;
 	var priceMin;
 	switch (priceMinSwitch) {
-		case "Select City":
-			// Needs error handling
-			console.log("ERROR")
-			return;
 		case "fifty":
 			priceMin = 50;
 			break;
@@ -364,10 +360,6 @@ function searchHotels() {
 
 	switch (loc) {
 
-		case "Select City":
-			// Needs error handling
-			console.log("ERROR")
-			return;
 		case "950540":
 			city = "Auckland";
 			break;
