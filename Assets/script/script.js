@@ -5,8 +5,8 @@ var landingPage = document.querySelector(".hero");
 var smallHeader = document.querySelector("#pageHeader");
 //initial select page
 var selectPage = document.querySelector("#select-options");
-var fromDate;
-var toDate;
+var checkInDate;
+var checkOutDate;
 var submitButton = document.querySelector("#submit-user-choices");
 var returnToSearchPage = document.querySelector("#returnToSearch-btn");
 var searchPageViewAgain = document.querySelector("#pageReset")
@@ -109,10 +109,31 @@ for (i = 0; i < coll.length; i++) {
 
 submitButton.addEventListener("click", function (event) {
 	event.preventDefault();
-	searchHotels();
+	inputCheck();
 });
 
-
+function inputCheck() {
+	if (document.getElementById("loc").value == "Select City") {
+		document.getElementById("errorMsg").textContent = "Please select a city";
+		document.getElementById("loc").style.backgroundColor = "rgba(116,4,4,0.5)";
+		$("#inputErrorModal").modal();
+	} else if (!checkInDate) {
+		document.getElementById("errorMsg").textContent = "Please select a Check In date";
+		document.getElementById("checkIn").style.backgroundColor = "rgba(116,4,4,0.5)";
+		$("#inputErrorModal").modal();
+	} else if (!checkOutDate) {
+		document.getElementById("errorMsg").textContent = "Please select a Check Out date";
+		document.getElementById("checkOut").style.backgroundColor = "rgba(116,4,4,0.5)";
+		$("#inputErrorModal").modal();
+	} else if (document.getElementById("adults1").value <= 0) {
+		document.getElementById("errorMsg").textContent = "Please select the Number of Adults travelling";
+		document.getElementById("adults1").style.backgroundColor = "rgba(116,4,4,0.5)";
+		$("#inputErrorModal").modal();
+	}
+	else {
+		searchHotels();
+	}
+}
 
 function searchHotels() {
 	$('#select-options').css('display', 'none');
@@ -499,12 +520,12 @@ function getReviewsList() {
 			"x-rapidapi-host": "hotels4.p.rapidapi.com"
 		}
 	})
-	
-	.then(response => {
-		console.log(response);
-	})
-	.catch(err => {
-		console.error(err);
 
-	});
+		.then(response => {
+			console.log(response);
+		})
+		.catch(err => {
+			console.error(err);
+
+		});
 }
