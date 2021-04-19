@@ -582,3 +582,12 @@ h2 {
     margin-bottom: 5px;
     font-family: var(--fontGlobal);
 }
+
+.card-img-bottom {
+    filter: saturate(0);
+}
+
+.card-img-bottom:hover {
+    filter: saturate(100%);
+    transition: 0.4s;
+}

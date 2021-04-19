@@ -364,10 +364,6 @@ function searchHotels() {
 
 	switch (loc) {
 
-		case "Select City":
-			// Needs error handling
-			console.log("ERROR")
-			return;
 		case "950540":
 			city = "Auckland";
 			break;
