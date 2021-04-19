@@ -86,7 +86,7 @@ h4 {
     position: absolute;
     width: 100vw;
     height: 100vh;
-    background-image: url(https://mustdonewzealand.co.nz/wp-content/uploads/2013/09/Milford-mirrowed-Mitre-Peak.jpg);
+    background-image: url(../images/Milford-mirrowed-Mitre-Peak.jpg);
     background-size: cover;
     background-position: center center;
     filter: contrast(70%) brightness(50%);
@@ -95,7 +95,6 @@ h4 {
 .custom-btn {
     background-color: var(--pop) ;
 }
-
 
 /* Input Form */
 input {
@@ -129,7 +128,6 @@ select {
     padding: 40px;
     padding-bottom: 60px;
     background-image: url(https://images.squarespace-cdn.com/content/v1/587860113e00be246e9fa173/1531278841877-MYEA4H1YBZ0VLR1LW55I/ke17ZwdGBToddI8pDm48kFQeQHikrO2sNCZ16cY9vUAUqsxRUqqbr1mOJYKfIPR7LoDQ9mXPOjoJoqy81S2I8PaoYXhp6HxIwZIk7-Mi3Tsic-L2IOPH3Dwrhl-Ne3Z2mAl5itlFjEswCFMjljE9Ypyqoh6NUrgRPTZR_Z5-OvXdZR9z9mxWb0yLUToVqwSd/new-zealand-north-island-cathedral-cove-amalia-bastos-travel-photography-aerial-drone-dji-phantom-4-coromandel.jpg);
-    /* background-position: center center; */
     background-size: cover;
 }
 
@@ -315,6 +313,126 @@ h2 {
     flex-basis: auto;
 }
 
+
+/* Weather Cards */
+.row {
+    margin: 0%;
+}
+
+.flex-nowrap {
+    -webkit-flex-wrap: nowrap!important;
+    -ms-flex-wrap: nowrap!important;
+}
+
+.flex-row {
+    display:flex;
+    -webkit-box-orient: horizontal!important;
+    -webkit-box-direction: normal!important;
+    -webkit-flex-direction: row!important;
+    -ms-flex-direction: row!important;
+    flex-direction: row!important;
+    overflow-x: auto;
+}
+
+/* Custom Style */
+.container {
+    margin-right: 5%;
+    padding: 5px;
+}
+
+.weather-card {
+    min-width: 150px !important;
+    max-width: 180px !important;
+    padding: 8px;
+    border: 1px;
+    border-radius: 3px;
+    border-color: black;
+    display: inline-block;
+    float: none;
+}
+
+.date {
+    font-family: var(--fontGlobal);
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.icon {
+    width: 70%;
+    padding: 0;
+    margin: -10px;
+}
+
+.description-info {
+    font-family: -apple-system, Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    margin: 2px;
+}
+
+.weather-info {
+    font-family: -apple-system, Arial, Helvetica, sans-serif;
+    font-size: 11px;
+    padding: 0;
+    margin: 2px;
+}
+
+
+.card-body:hover {
+    cursor: grab;
+}
+
+/* Cards */
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+#hotels-container {
+    display: flex;
+    padding: 30px 8px 8px 8px;
+    flex-direction: column;
+
+    @media(min-width: 40rem) {
+      width: 50%;
+    }
+    @media(min-width: 56rem) {
+      width: 33.3333%;
+    }
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+}
+
+.card-title-main {
+    font-size: 22px;
+    font-weight: 700;
+    font-family: var(--fontGlobal);
+}
+
+.card-title {
+    font-size: 19px;
+    font-weight: 600;
+    font-family: var(--fontGlobal);
+}
+
+.text-muted {
+    color: var(--blue) !important;
+    font-family: var(--fontGlobal);
+}
+
+.card-text {
+    font-size: 14.5px;
+    margin-bottom: 5px;
+    font-family: var(--fontGlobal);
+}
+
 /* media quiery for choice page */
 @media only screen and (min-width: 992px) {
     main {
@@ -461,124 +579,4 @@ h2 {
         padding: 10px;
         font-family: var(--fontGlobal);
     }
-}
-
-/* Weather Cards */
-.row {
-    margin: 0%;
-}
-
-.flex-nowrap {
-    -webkit-flex-wrap: nowrap!important;
-    -ms-flex-wrap: nowrap!important;
-}
-
-.flex-row {
-    display:flex;
-    -webkit-box-orient: horizontal!important;
-    -webkit-box-direction: normal!important;
-    -webkit-flex-direction: row!important;
-    -ms-flex-direction: row!important;
-    flex-direction: row!important;
-    overflow-x: auto;
-}
-
-/* Custom Style */
-.container {
-    margin-right: 5%;
-    padding: 5px;
-}
-
-.weather-card {
-    min-width: 150px !important;
-    max-width: 180px !important;
-    padding: 8px;
-    border: 1px;
-    border-radius: 3px;
-    border-color: black;
-    display: inline-block;
-    float: none;
-}
-
-.date {
-    font-family: var(--fontGlobal);
-    font-size: 20px;
-    font-weight: 700;
-}
-
-.icon {
-    width: 70%;
-    padding: 0;
-    margin: -10px;
-}
-
-.description-info {
-    font-family: -apple-system, Arial, Helvetica, sans-serif;
-    font-size: 12px;
-    margin: 2px;
-}
-
-.weather-info {
-    font-family: -apple-system, Arial, Helvetica, sans-serif;
-    font-size: 11px;
-    padding: 0;
-    margin: 2px;
-}
-
-
-.card-body:hover {
-    cursor: grab;
-}
-
-
-/* Cards */
-.cards {
-    display: flex;
-    flex-wrap: wrap;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    flex-direction: column;
-    overflow: hidden;
-}
-
-#hotels-container {
-    display: flex;
-    padding: 30px 8px 8px 8px;
-    flex-direction: column;
-
-    @media(min-width: 40rem) {
-      width: 50%;
-    }
-    @media(min-width: 56rem) {
-      width: 33.3333%;
-    }
-}
-
-.card {
-    display: flex;
-    flex-direction: column;
-}
-
-.card-title-main {
-    font-size: 22px;
-    font-weight: 700;
-    font-family: var(--fontGlobal);
-}
-
-.card-title {
-    font-size: 19px;
-    font-weight: 600;
-    font-family: var(--fontGlobal);
-}
-
-.text-muted {
-    color: var(--blue) !important;
-    font-family: var(--fontGlobal);
-}
-
-.card-text {
-    font-size: 14.5px;
-    margin-bottom: 5px;
-    font-family: var(--fontGlobal);
 }
