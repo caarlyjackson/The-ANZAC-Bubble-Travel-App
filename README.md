@@ -124,11 +124,11 @@ Modals, Hero/Landing Page, Error Messages...
 
 ## Wireframe
 Initial Wireframes:
-<img src='./Assets/images/Wireframe-1a.png'>
-<img src='./Assets/images/Wireframe-2a.png'>
-<img src='./Assets/images/Wireframe-2b.png'>
-<img src='./Assets/images/Wireframe-2c.png'>
-<img src='./Assets/images/Wireframe-3a.png'>
+<img src='./assets/images/Wireframe-1a.png'>
+<img src='./assets/images/Wireframe-2a.png'>
+<img src='./assets/images/Wireframe-2b.png'>
+<img src='./assets/images/Wireframe-2c.png'>
+<img src='./assets/images/Wireframe-3a.png'>
 
 
 ## APIs
