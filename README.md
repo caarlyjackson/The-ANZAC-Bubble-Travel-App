@@ -15,29 +15,31 @@ In light of the new travel bubble between Australia and New Zealand, we hope to 
 - [Deployed Site](#Deployed-Site)
 
 ## About Us
-Ushante Lancaster
-Sam Law
-Tim Rabbidge
-Carly Jackson
+- Ushante Lancaster
+- Sam Law
+- Tim Rabbidge
+- Carly Jackson
 
 ## Our App
 The application we have created is a dynamic, user friendly, and convenient travel and accomodation searcher for Australians that are keen to visit our New Zealand neighbours! The ANZAC Bubble Travel App provides each user with the option to search by a range of categories, including the prefered city they'd like to explore, the price range of their choosing and the number of adults traveling. Additionally, the app provides the keen traveller with the current weekly weather forecast of their chosen city, displaying a brief description, temperature reading, the average wind speed, humidity percentage and a cute weather icon for the day.
 
 ### User Stories
-As a tourist from Melbourne,
-I WANT to visit a bed and breakfast near a mountain range and have the option of zip lining activities.
-SO THAT
+    As a tourist from Melbourne,
+    I WANT to visit a bed and breakfast near a mountain range and have the option of zip lining activities.
+    SO THAT
 
-As a NZ Tourism employee,
-I WANT to see where Australians are planning on travelling
-SO THAT I can plan future funding ventures
+    As a NZ Tourism employee,
+    I WANT to see where Australians are planning on travelling
+    SO THAT I can plan future funding ventures
 
-As a family of four,
-I WANT to go camping and explore the Maori culture.
-SO THAT
+    As a family of four,
+    I WANT to go camping and explore the Maori culture.
+    SO THAT
 
 ### Functionality
-# CARLY WILL ADD THESE IN ON MONDAY !!!!! images and/or gifs to show site
+> The following shows the functionality of the app.
+
+
 
 ## Process
 For our travel app, we used the following technologies:
